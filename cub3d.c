@@ -6,7 +6,7 @@
 /*   By: gleal <gleal@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/03/02 15:01:37 by gleal             #+#    #+#             */
-/*   Updated: 2021/03/03 21:03:55 by gleal            ###   ########.fr       */
+/*   Updated: 2021/03/04 16:24:59 by gleal            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,7 +25,8 @@ void	cub3d(char *cubname)
 			printf("there was an error while extracting");
 			return ;
 		}
-		ft_parse_cub(map.text, &map);
+		if (!ft_parse_cub(map.text, &map))
+			return ;
 		ft_printcub(map.text);
 		ft_freetext(map.text);
 }
