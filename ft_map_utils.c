@@ -6,7 +6,7 @@
 /*   By: gleal <gleal@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/03/03 14:04:29 by gleal             #+#    #+#             */
-/*   Updated: 2021/03/04 21:23:08 by gleal            ###   ########.fr       */
+/*   Updated: 2021/03/05 19:19:09 by gleal            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,6 +46,10 @@ int		ft_error(int errornbr)
 		printf("multiple ceiling colors");
 	if (errornbr == BADCEIL)
 		printf("invalid ceiling colors");
+	if (errornbr == INVALIDMAP)
+		printf("invalid map");
+	if (errornbr == INVALIDCHAR)
+		printf("invalid character in cub text");
 	return (0);
 }
 
@@ -85,6 +89,8 @@ void	ft_start_tmap(t_map *map)
 	map->rceil = 0;
 	map->gceil = 0;
 	map->bceil = 0;
+	map->map_size = 0;
+    map->player_or = 0;
 }
 
 int		ft_countchr(char *str, char c)

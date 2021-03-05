@@ -6,11 +6,60 @@
 /*   By: gleal <gleal@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/03/04 18:58:48 by gleal             #+#    #+#             */
-/*   Updated: 2021/03/04 21:34:36 by gleal            ###   ########.fr       */
+/*   Updated: 2021/03/05 21:25:24 by gleal            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "cub3d.h"
+
+int		check_valid_map(char **strs, t_map *map)
+{
+	int		i;
+
+	i = 0;
+	while (is_map(strs[i]))
+	{
+		if (i == 0)
+		{
+			if (!checkwall(strs[i]))
+					return (0);
+		}
+		else if (!is_map(strs[i + 1]))
+		{
+			if (i < 2)
+				return (0);
+			if (!playeringame(map))
+				return (0);
+		}
+		else
+		{
+			if (!checkfirstwall(strs[i]))
+				return (0);
+			if (!checkmapclosed(&strs[i]))
+				return (0);
+			if (!checkmultiplayer(strs[i], map))
+				return (0);
+		}
+		i++;
+	}
+	map->map_size = i;
+	if (!ft_copy_map(strs, map))
+		return (0);
+	return (1);
+}
+
+int		is_map(char *str)
+{
+	if(*str == '\0')
+		return (0);
+	while (*str)
+	{
+		if (!ft_isspace(*str) && !ft_strchr(MAP_CHARS, *str))
+			return (0);
+		str++;
+	}
+	return (1);
+}
 
 int		ft_parseceilcolor(char *str, t_map *map)
 {

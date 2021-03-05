@@ -6,7 +6,7 @@
 /*   By: gleal <gleal@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/03/02 15:13:07 by gleal             #+#    #+#             */
-/*   Updated: 2021/03/04 20:27:39 by gleal            ###   ########.fr       */
+/*   Updated: 2021/03/05 21:46:44 by gleal            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,7 +28,9 @@
 
 #define MAX_X_SIZE 2560
 #define MAX_Y_SIZE 1440
-
+#define MAP_CHARS "012NSEW"
+#define MAP_INSIDE "02NSEW"
+#define PLAYER "NSEW"
 
 typedef struct	s_map
 {
@@ -48,6 +50,9 @@ typedef struct	s_map
 	int		rceil;
 	int		gceil;
 	int		bceil;
+	int		map_size;
+	char	player_or;
+	char	**mapstr;
 }				t_map;
 
 enum e_errors
@@ -68,7 +73,9 @@ enum e_errors
 	MULTIFLOOR,
 	BADFLOOR,
 	MULTICEIL,
-	BADCEIL
+	BADCEIL,
+	INVALIDMAP,
+	INVALIDCHAR
 };
 
 void	*ft_freetext(char **strs);
@@ -89,5 +96,14 @@ int		ft_parseeasttext(char *str, t_map *map);
 int		ft_parsespritetext(char *str, t_map *map);
 int		ft_parsefloorcolor(char *str, t_map *map);
 int		ft_parseceilcolor(char *str, t_map *map);
+int		is_map(char *str);
+int		checkwall(char *str);
+int		playeringame(t_map *map);
+int		checkmapclosed(char **strs);
+int		checkmultiplayer(char *str, t_map *map);
+int		check_valid_map(char **strs, t_map *map);
+int		checkfirstwall(char *str);
+int		ft_copy_map(char **map_start, t_map *map);
+void	free_all_strs(char **strs);
 
 #endif
