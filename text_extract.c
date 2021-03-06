@@ -6,37 +6,37 @@
 /*   By: gleal <gleal@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/03/03 19:53:19 by gleal             #+#    #+#             */
-/*   Updated: 2021/03/05 21:59:08 by gleal            ###   ########.fr       */
+/*   Updated: 2021/03/06 12:33:07 by gleal            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "cub3d.h"
 
-void	ft_replacetabs(char *temp, char *str, int len)
+void	ft_replacetabs(char **temp, char **str, int len)
 {	
 	size_t	i;
 	size_t	j;
 	
-	*temp = '\0';
+	**temp = '\0';
 	i = 0;
 	j = 0;
-	while (i < ft_strlen(str))
+	while (i < ft_strlen(str[0]))
 	{
-		if (str[i] == '\t')
+		if (str[0][i] == '\t')
 		{
-			strlcat((void *)temp, "    ", len);
+			strlcat((void *)temp[0], "    ", len);
 			j += 4;
 		}
 		else
 		{
-			temp[j] = str[i];
+			temp[0][j] = str[0][i];
 			j++;
 		}
 		i++;
 	}
-	temp[j] = '\0';
-	free(str);
-	str = temp;
+	temp[0][j] = '\0';
+	free(*str);
+	*str = 0;
 }
 
 void	*ft_realloctabs(char *str, int tab_nbr, t_map *map)
@@ -51,7 +51,7 @@ void	*ft_realloctabs(char *str, int tab_nbr, t_map *map)
 		map->error++;
 		return (0);
 	}
-	ft_replacetabs(temp, str, len);
+	ft_replacetabs(&temp, &str, len);
 	return (temp);
 }
 

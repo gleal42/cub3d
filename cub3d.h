@@ -6,7 +6,7 @@
 /*   By: gleal <gleal@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/03/02 15:13:07 by gleal             #+#    #+#             */
-/*   Updated: 2021/03/05 21:46:44 by gleal            ###   ########.fr       */
+/*   Updated: 2021/03/06 19:43:59 by gleal            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,9 +22,10 @@
 # include <unistd.h>
 # include <fcntl.h>
 #include <mlx.h>
-
-# include "./libft_cub3d/libft.h"
-# include "./libft_cub3d/get_next_line.h"
+#include <math.h>
+# include "./libft/libft.h"
+# include "./libft/get_next_line.h"
+# include "./minilibx/mlx.h"
 
 #define MAX_X_SIZE 2560
 #define MAX_Y_SIZE 1440
@@ -78,6 +79,15 @@ enum e_errors
 	INVALIDCHAR
 };
 
+typedef struct  s_data 
+{
+    void        *img;
+    char        *addr;
+    int         bits_per_pixel;
+    int         line_length;
+    int         endian;
+}               t_data;
+
 void	*ft_freetext(char **strs);
 void	*ft_realloctabs(char *str, int tab_nbr, t_map *map);
 void	ft_start_tmap(t_map *map);
@@ -105,5 +115,6 @@ int		check_valid_map(char **strs, t_map *map);
 int		checkfirstwall(char *str);
 int		ft_copy_map(char **map_start, t_map *map);
 void	free_all_strs(char **strs);
+void	start_game(t_map *map);
 
 #endif
