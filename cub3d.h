@@ -6,7 +6,7 @@
 /*   By: gleal <gleal@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/03/02 15:13:07 by gleal             #+#    #+#             */
-/*   Updated: 2021/03/06 19:43:59 by gleal            ###   ########.fr       */
+/*   Updated: 2021/03/07 12:10:45 by gleal            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,6 @@
 # include <limits.h>
 # include <unistd.h>
 # include <fcntl.h>
-#include <mlx.h>
 #include <math.h>
 # include "./libft/libft.h"
 # include "./libft/get_next_line.h"
