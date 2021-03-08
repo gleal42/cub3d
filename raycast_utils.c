@@ -6,12 +6,47 @@
 /*   By: gleal <gleal@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/03/07 13:21:39 by gleal             #+#    #+#             */
-/*   Updated: 2021/03/08 16:52:23 by gleal            ###   ########.fr       */
+/*   Updated: 2021/03/08 22:15:23 by gleal            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "cub3d.h"
 #include "raycasting.h"
+
+double	spawnrotation(char c)
+{
+	if (c == 'E')
+		return (0);
+	else if (c == 'S')
+		return (M_PI_2);
+	else if (c == 'W')
+		return (M_PI);
+	else
+		return (3 * M_PI_2);
+}
+
+void	ft_playerinfo(t_map2d *map, t_player *joe, char **strs)
+{
+	double i;
+	double	j;
+
+	i = 0;
+	while (strs[(int)i])
+	{
+		j = 0;
+		while (strs[(int)i][(int)j])
+		{
+			if (ft_strchr("NSEW", strs[(int)i][(int)j]))
+			{
+				joe->x = (j - 0.5) * (map->map_w / map->tile_size);
+				joe->y = (i - 0.5) * (map->map_h / map->tile_size);
+				joe->rotangle = spawnrotation(strs[(int)i][(int)j]);
+			}
+			j++;
+		}
+		i++;
+	}
+}
 
 int		ft_max_strlen(char **strs)
 {
@@ -32,7 +67,7 @@ int		ft_max_strlen(char **strs)
 		i++;
 	}
 	return (max_len);
-}	
+}
 
 int		ft_count_lines(char **strs)
 {
