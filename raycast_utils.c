@@ -6,12 +6,33 @@
 /*   By: gleal <gleal@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/03/07 13:21:39 by gleal             #+#    #+#             */
-/*   Updated: 2021/03/07 20:10:58 by gleal            ###   ########.fr       */
+/*   Updated: 2021/03/08 16:52:23 by gleal            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "cub3d.h"
 #include "raycasting.h"
+
+int		ft_max_strlen(char **strs)
+{
+	int		i;
+	int		j;
+	int		max_len;
+
+	i = 0;
+	j = 0;
+	max_len = 0;
+	while (strs[i])
+	{
+		j = 0;
+		while (strs[i][j])
+			j++;
+		if (j > max_len)
+			max_len = j;
+		i++;
+	}
+	return (max_len);
+}	
 
 int		ft_count_lines(char **strs)
 {
@@ -21,17 +42,6 @@ int		ft_count_lines(char **strs)
 	while (strs[i])
 		i++;
 	return (i);
-}
-
-
-void	screenstart(t_datat *data)
-{
-	data->window_width = 1920;
-	data->window_height = 1080;
-	data->mapinfo->map = ft_test_map();
-	data->mapinfo->map_num_rows = ft_count_lines(data->mapinfo->map);
-	data->mapinfo->tile_size = (data->window_height/2) / data->mapinfo->map_num_rows;
-	
 }
 
 char	**ft_test_map(void)
@@ -67,11 +77,3 @@ char	**ft_test_map(void)
 	official[i] = 0;
 	return (official);
 }
-
-void	ft_allocinfo(t_datat **data)
-{
-	*data = (t_datat*)malloc(sizeof(t_datat));
-	(*data)->mapinfo = (t_testmap*)malloc(sizeof(t_testmap));
-	(*data)->player = (t_player*)malloc(sizeof(t_player));
-}
-
