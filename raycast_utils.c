@@ -6,7 +6,7 @@
 /*   By: gleal <gleal@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/03/07 13:21:39 by gleal             #+#    #+#             */
-/*   Updated: 2021/03/08 22:15:23 by gleal            ###   ########.fr       */
+/*   Updated: 2021/03/09 12:13:04 by gleal            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,8 +38,8 @@ void	ft_playerinfo(t_map2d *map, t_player *joe, char **strs)
 		{
 			if (ft_strchr("NSEW", strs[(int)i][(int)j]))
 			{
-				joe->x = (j - 0.5) * (map->map_w / map->tile_size);
-				joe->y = (i - 0.5) * (map->map_h / map->tile_size);
+				joe->x = (j + 0.5) * map->tile_size;
+				joe->y = (i + 0.5) * map->tile_size;
 				joe->rotangle = spawnrotation(strs[(int)i][(int)j]);
 			}
 			j++;

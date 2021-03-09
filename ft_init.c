@@ -6,7 +6,7 @@
 /*   By: gleal <gleal@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/03/08 17:40:35 by gleal             #+#    #+#             */
-/*   Updated: 2021/03/08 22:04:10 by gleal            ###   ########.fr       */
+/*   Updated: 2021/03/09 12:14:02 by gleal            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,7 @@ void	ft_init_player(t_adata *a)
 	t_player	joe;
 
 	ft_playerinfo(&a->map, &joe, a->map.maptxt);
-	joe.radius = a->map.tile_size / 2;
+	joe.radius = a->map.tile_size / 4;
 	joe.turndir = 0;
 	joe.walkdir = 0;
 	joe.movespeed = 3.0;
