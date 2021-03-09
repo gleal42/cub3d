@@ -6,11 +6,10 @@
 /*   By: gleal <gleal@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/03/07 13:21:39 by gleal             #+#    #+#             */
-/*   Updated: 2021/03/09 12:13:04 by gleal            ###   ########.fr       */
+/*   Updated: 2021/03/09 17:57:16 by gleal            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "cub3d.h"
 #include "raycasting.h"
 
 double	spawnrotation(char c)
