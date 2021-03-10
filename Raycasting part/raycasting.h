@@ -6,7 +6,7 @@
 /*   By: gleal <gleal@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/03/06 19:21:33 by gleal             #+#    #+#             */
-/*   Updated: 2021/03/09 22:00:04 by gleal            ###   ########.fr       */
+/*   Updated: 2021/03/10 17:14:20 by gleal            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -59,6 +59,19 @@ typedef struct	s_player
 	double	movespeed;
 	double	rotatespeed;
 }				t_player;
+typedef struct	s_line
+{
+	double		start_x;
+	double		start_y;
+	double		end_x;
+	double		end_y;
+	int			color;
+	double		deltax;
+	double		deltay;
+	double		pixels;
+	double		pixelx;
+	double 		pixely;
+}				t_line;
 
 typedef struct	s_adata
 {
@@ -66,17 +79,8 @@ typedef struct	s_adata
 	t_map2d		map;;
 	t_player	joe;
 	t_img		img_m;
+	t_line		dir_l;
 }				t_adata;
-
-typedef struct	s_line
-{
-	int			start_x;
-	int			start_y;
-	int			end_x;
-	int			end_y;
-	int			color;
-	int			width;
-}				t_line;
 
 char	**ft_test_map(void);
 int		ft_max_strlen(char **strs);
@@ -87,5 +91,9 @@ void	ft_init_player(t_adata *a);
 void	ft_playerinfo(t_map2d *map, t_player *joe, char **strs);
 void	events(t_adata *a);
 void	ft_init_img(t_adata *a);
+void	ft_init_all(t_adata *a);
+void	drawbycomp(double  p_w, double  p_h, t_adata *a);
+void	draw_dirline(t_adata *a);
+void	ft_init_dirline(t_adata *a);
 
 #endif

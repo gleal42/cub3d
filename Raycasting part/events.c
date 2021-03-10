@@ -6,11 +6,16 @@
 /*   By: gleal <gleal@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/03/09 19:42:43 by gleal             #+#    #+#             */
-/*   Updated: 2021/03/09 19:55:28 by gleal            ###   ########.fr       */
+/*   Updated: 2021/03/10 18:26:39 by gleal            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "raycasting.h"
+
+int		render_next_frame(t_adata *a)
+{
+
+}
 
 int		butt_released(int keycode, t_adata *a)
 {

@@ -6,7 +6,7 @@
 /*   By: gleal <gleal@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/03/08 17:40:35 by gleal             #+#    #+#             */
-/*   Updated: 2021/03/09 22:16:35 by gleal            ###   ########.fr       */
+/*   Updated: 2021/03/10 16:51:17 by gleal            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -58,4 +58,12 @@ void	ft_init_win(t_adata *a)
 	win.win_h = 1080;
 	win.win = mlx_new_window(win.mlx, win.win_w, win.win_h, "Wolfenstein3D");
 	a->win = win;
+}
+
+void	ft_init_all(t_adata *a)
+{
+	ft_init_win(a);
+	ft_init_map(a);
+	ft_init_img(a);
+	ft_init_player(a);
 }
