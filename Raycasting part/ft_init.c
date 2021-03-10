@@ -6,7 +6,7 @@
 /*   By: gleal <gleal@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/03/08 17:40:35 by gleal             #+#    #+#             */
-/*   Updated: 2021/03/10 16:51:17 by gleal            ###   ########.fr       */
+/*   Updated: 2021/03/10 20:54:41 by gleal            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -64,6 +64,5 @@ void	ft_init_all(t_adata *a)
 {
 	ft_init_win(a);
 	ft_init_map(a);
-	ft_init_img(a);
 	ft_init_player(a);
 }

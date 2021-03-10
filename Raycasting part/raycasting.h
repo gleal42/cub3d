@@ -6,7 +6,7 @@
 /*   By: gleal <gleal@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/03/06 19:21:33 by gleal             #+#    #+#             */
-/*   Updated: 2021/03/10 17:14:20 by gleal            ###   ########.fr       */
+/*   Updated: 2021/03/10 22:08:11 by gleal            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,8 +53,8 @@ typedef struct	s_player
 	double	x;
 	double	y;
 	double	radius;
-	double	walkdir;
-	double	turndir;
+	int		walkdir;
+	int		turndir;
 	double	rotangle;
 	double	movespeed;
 	double	rotatespeed;
@@ -63,8 +63,6 @@ typedef struct	s_line
 {
 	double		start_x;
 	double		start_y;
-	double		end_x;
-	double		end_y;
 	int			color;
 	double		deltax;
 	double		deltay;
@@ -95,5 +93,8 @@ void	ft_init_all(t_adata *a);
 void	drawbycomp(double  p_w, double  p_h, t_adata *a);
 void	draw_dirline(t_adata *a);
 void	ft_init_dirline(t_adata *a);
+int		render_next_frame(t_adata *a);
+void	render_mini(t_adata *a, void (*draw)(double, double, t_adata *a));
+void	update(t_adata *a);
 
 #endif

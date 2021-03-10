@@ -6,7 +6,7 @@
 /*   By: gleal <gleal@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/03/10 12:58:40 by gleal             #+#    #+#             */
-/*   Updated: 2021/03/10 17:46:21 by gleal            ###   ########.fr       */
+/*   Updated: 2021/03/10 21:41:43 by gleal            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,7 +25,7 @@ void	draw_dirline(t_adata *a)
 		a->dir_l.pixely += a->dir_l.deltay;
 		a->dir_l.pixels--;
 	}
-}
+	}
 
 void	draw_minicircle(double p_w, double p_h, t_adata *a)
 {

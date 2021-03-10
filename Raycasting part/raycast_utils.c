@@ -6,7 +6,7 @@
 /*   By: gleal <gleal@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/03/07 13:21:39 by gleal             #+#    #+#             */
-/*   Updated: 2021/03/09 17:57:16 by gleal            ###   ########.fr       */
+/*   Updated: 2021/03/10 21:06:48 by gleal            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,11 +26,11 @@ double	spawnrotation(char c)
 
 void	ft_playerinfo(t_map2d *map, t_player *joe, char **strs)
 {
-	double i;
-	double	j;
+	int		i;
+	int		j;
 
 	i = 0;
-	while (strs[(int)i])
+	while (strs[i])
 	{
 		j = 0;
 		while (strs[(int)i][(int)j])
