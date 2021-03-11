@@ -6,7 +6,7 @@
 /*   By: gleal <gleal@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/03/08 17:40:35 by gleal             #+#    #+#             */
-/*   Updated: 2021/03/11 15:28:07 by gleal            ###   ########.fr       */
+/*   Updated: 2021/03/11 21:14:26 by gleal            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,8 +18,8 @@ void	ft_init_player(t_adata *a)
 	a->joe.radius = a->map.tile_size / 6;
 	a->joe.turndir = 0;
 	a->joe.walkdir = 0;
-	a->joe.movespeed = 3.0;
-	a->joe.rotatespeed = 3 * (M_PI / 180);
+	a->joe.movespeed = 5.0;
+	a->joe.rotatespeed = 7 * (M_PI / 180);
 }
 
 void	ft_init_img(t_adata *a)
