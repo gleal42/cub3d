@@ -6,16 +6,23 @@
 /*   By: gleal <gleal@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/03/10 19:02:02 by gleal             #+#    #+#             */
-/*   Updated: 2021/03/10 22:05:56 by gleal            ###   ########.fr       */
+/*   Updated: 2021/03/11 19:43:23 by gleal            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "raycasting.h"
 
-void	update(t_adata *a)
+double	normalrad(double movestep)
 {
-	double	movestep;
-	if (!a->joe.turndir)
-		return ;
-	a->joe.rotangle += a->joe.turndir * a->joe.rotatespeed;;
+	if (movestep >= (2 * M_PI))
+		movestep -= (2 * M_PI);
+	if (movestep <= (-2 * M_PI))
+		movestep += (2 * M_PI);
+	return (movestep);
+}
+
+void	ft_update(t_adata *a)
+{
+	a->joe.rotangle += a->joe.turndir * a->joe.rotatespeed;
+	printf("%f\n", a->joe.rotangle);
 }

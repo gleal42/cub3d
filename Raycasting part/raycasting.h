@@ -6,7 +6,7 @@
 /*   By: gleal <gleal@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/03/06 19:21:33 by gleal             #+#    #+#             */
-/*   Updated: 2021/03/10 22:08:11 by gleal            ###   ########.fr       */
+/*   Updated: 2021/03/11 19:50:34 by gleal            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,16 +42,16 @@ typedef struct	s_map2d
 {
 	double	tile_size;
 	char	**maptxt;
-	double		map_w;
-	double	map_h;
+	int		map_w;
+	int		map_h;
 	double	map_rows;
 	double	map_cols;
 }				t_map2d;
 
 typedef struct	s_player
 {
-	double	x;
-	double	y;
+	int		x;
+	int		y;
 	double	radius;
 	int		walkdir;
 	int		turndir;
@@ -59,10 +59,13 @@ typedef struct	s_player
 	double	movespeed;
 	double	rotatespeed;
 }				t_player;
+
 typedef struct	s_line
 {
-	double		start_x;
-	double		start_y;
+	int			start_x;
+	int			start_y;
+	int			end_x;
+	int			end_y;
 	int			color;
 	double		deltax;
 	double		deltay;
@@ -77,7 +80,7 @@ typedef struct	s_adata
 	t_map2d		map;;
 	t_player	joe;
 	t_img		img_m;
-	t_line		dir_l;
+	t_line		line;
 }				t_adata;
 
 char	**ft_test_map(void);
@@ -90,11 +93,11 @@ void	ft_playerinfo(t_map2d *map, t_player *joe, char **strs);
 void	events(t_adata *a);
 void	ft_init_img(t_adata *a);
 void	ft_init_all(t_adata *a);
-void	drawbycomp(double  p_w, double  p_h, t_adata *a);
-void	draw_dirline(t_adata *a);
-void	ft_init_dirline(t_adata *a);
-int		render_next_frame(t_adata *a);
-void	render_mini(t_adata *a, void (*draw)(double, double, t_adata *a));
-void	update(t_adata *a);
+void	drawbycomp(int  p_w, int  p_h, t_adata *a);
+void	ft_update(t_adata *a);
+int		draw_map(t_adata *a);
+int		draw_minicircle(t_adata *a);
+int		butt_pressed(int keycode, t_adata *a);
+int		butt_released(int keycode, t_adata *a);
 
 #endif

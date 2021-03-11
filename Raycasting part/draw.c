@@ -1,4 +1,4 @@
-/* ************************************************************************** */
+:* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
 /*   draw.c                                             :+:      :+:    :+:   */
@@ -6,34 +6,38 @@
 /*   By: gleal <gleal@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/03/10 12:58:40 by gleal             #+#    #+#             */
-/*   Updated: 2021/03/10 21:41:43 by gleal            ###   ########.fr       */
+/*   Updated: 2021/03/11 19:55:21 by gleal            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "raycasting.h"
 
-void	draw_dirline(t_adata *a)
-{
-	ft_init_dirline(a);
-	a->dir_l.pixelx = a->dir_l.start_x;
-	a->dir_l.pixely = a->dir_l.start_y;
-
-	while (a->dir_l.pixels)
-	{
-		a->img_m.addr[(int)(a->dir_l.pixely * a->map.map_w + a->dir_l.pixelx)] = 0x7cb3b8;
-		a->dir_l.pixelx += a->dir_l.deltax;
-		a->dir_l.pixely += a->dir_l.deltay;
-		a->dir_l.pixels--;
-	}
-	}
-
-void	draw_minicircle(double p_w, double p_h, t_adata *a)
+int		draw_comp_circle(int  p_w, int p_h, t_adata *a)
 {
 	if (sqrt(pow(a->joe.x - p_w, 2) + pow(a->joe.y - p_h, 2)) <= a->joe.radius)
-		a->img_m.addr[(int)(p_h * a->map.map_w + p_w)] = 0xb87cb3;
+		a->img_m.addr[(p_h * a->map.map_w + p_w)] = 0xb87cb3;
+	return (0);
+}
+int		draw_minicircle(t_adata *a)
+{
+	int	pixel_w;
+	int	pixel_h;
+
+	pixel_h = 0;
+	while (pixel_h < a->map.map_h)
+	{
+		pixel_w = 0;
+		while (pixel_w < a->map.map_w)
+		{
+			draw_comp_circle(pixel_w, pixel_h, a);
+			pixel_w++;
+		}
+		pixel_h++;
+	}
+	return (0);
 }
 
-void	draw_map(double  p_w, double  p_h, t_adata *a)
+int		draw_comp_map(int p_w, int p_h, t_adata *a)
 {
 	int	cur_x;
 	int cur_y;
@@ -49,10 +53,24 @@ void	draw_map(double  p_w, double  p_h, t_adata *a)
 		a->img_m.addr[(int)(p_h * a->map.map_w + p_w)] = 0xebdbb7;
 	else
 		a->img_m.addr[(int)(p_h * a->map.map_w + p_w)] = 0xD6D6D6;
+	return (0);
 }
 
-void	drawbycomp(double  p_w, double  p_h, t_adata *a)
+int		draw_map(t_adata *a)
 {
-	draw_map(p_w, p_h, a);
-	draw_minicircle(p_w, p_h, a);
+	int	pixel_w;
+	int	pixel_h;
+
+	pixel_h = 0;
+	while (pixel_h < a->map.map_h)
+	{
+		pixel_w = 0;
+		while (pixel_w < a->map.map_w)
+		{
+			draw_comp_map(pixel_w, pixel_h, a);
+			pixel_w++;
+		}
+		pixel_h++;
+	}
+	return (0);
 }
