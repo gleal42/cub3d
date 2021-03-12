@@ -6,7 +6,7 @@
 /*   By: gleal <gleal@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/03/08 15:20:19 by gleal             #+#    #+#             */
-/*   Updated: 2021/03/11 21:00:47 by gleal            ###   ########.fr       */
+/*   Updated: 2021/03/12 18:26:36 by gleal            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,29 +20,36 @@ int 	destroy_img(t_adata *a)
 	return (0);
 }
 
-int draw_line(void *mlx, void *win, int beginx, int beginy, int endx, int endy, t_adata *a)
+int		line(t_line line, t_adata *a)
 {
-	double deltax = endx - beginx;
-	double deltay = endy - beginy;
-	int pixels = sqrt(pow(deltax, 2) + pow(deltay, 2));
-	deltax /= pixels;
-	deltay /= pixels;
-	double pixelx = beginx;
-	double pixely = beginy;
-	while (pixels)
+	double remain_pixels;
+	double pixelx;
+	double pixely;
+	pixelx = line.start_x;
+	pixely = line.start_y;
+	remain_pixels = line.pixels;
+	while (remain_pixels >= 0)
 	{
-		a->img_m.addr[(int)pixely * a->map.map_w + (int)pixelx] =0xb87cb3;
-		pixelx += deltax;
-		pixely += deltay;
-		--pixels;
+		a->img_m.addr[(int)pixely * a->map.map_w + (int)pixelx] = line.color;
+		pixelx += line.deltax;
+		pixely += line.deltay;
+		--remain_pixels;
 	}
 	return (0);
 }
 
 int 	ft_initline(t_adata *a)
 {
+	a->line.start_x = a->joe.x;
+	a->line.start_y = a->joe.y;
 	a->line.end_x = a->joe.x + (cos(a->joe.rotangle) * a->map.tile_size );
 	a->line.end_y = a->joe.y + (sin(a->joe.rotangle) * a->map.tile_size );
+	a->line.deltax = a->line.end_x - a->line.start_x;
+	a->line.deltay = a->line.end_y - a->line.start_y;
+	a->line.pixels = sqrt(pow(a->line.deltax, 2) + pow(a->line.deltay, 2));
+	a->line.deltax /= a->line.pixels;
+	a->line.deltay /= a->line.pixels;
+	a->line.color = 0xb87cb3;
 	return (0);
 }
 
@@ -53,7 +60,8 @@ int		render_next_frame(t_adata *a)
 	draw_map(a);
 	draw_minicircle(a);
 	ft_initline(a);
-	draw_line(a->win.mlx, a->win.win, a->line.end_x, a->line.end_y, a->joe.x, a->joe.y, a);
+	line(a->line, a);
+	cast_rays(a);
 	mlx_put_image_to_window(a->win.mlx, a->win.win, a->img_m.ptr, 0, 0);
 	destroy_img(a);
 	return (0);

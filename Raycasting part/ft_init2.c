@@ -6,10 +6,15 @@
 /*   By: gleal <gleal@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/03/10 15:32:26 by gleal             #+#    #+#             */
-/*   Updated: 2021/03/11 17:22:31 by gleal            ###   ########.fr       */
+/*   Updated: 2021/03/12 18:33:53 by gleal            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "raycasting.h"
 
-
+void	ft_init_rays(t_adata *a)
+{
+	a->ray.fov = 60  * (M_PI / 180);
+	a->ray.wall_strip_w = 1;
+	a->ray.num_rays = a->win.win_w /a->ray.wall_strip_w;
+}

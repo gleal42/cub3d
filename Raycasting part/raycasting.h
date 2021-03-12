@@ -6,7 +6,7 @@
 /*   By: gleal <gleal@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/03/06 19:21:33 by gleal             #+#    #+#             */
-/*   Updated: 2021/03/11 19:50:34 by gleal            ###   ########.fr       */
+/*   Updated: 2021/03/12 18:24:30 by gleal            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,8 +50,8 @@ typedef struct	s_map2d
 
 typedef struct	s_player
 {
-	int		x;
-	int		y;
+	double		x;
+	double		y;
 	double	radius;
 	int		walkdir;
 	int		turndir;
@@ -62,17 +62,23 @@ typedef struct	s_player
 
 typedef struct	s_line
 {
-	int			start_x;
-	int			start_y;
-	int			end_x;
-	int			end_y;
+	double		start_x;
+	double		start_y;
+	double		end_x;
+	double		end_y;
 	int			color;
 	double		deltax;
 	double		deltay;
 	double		pixels;
-	double		pixelx;
-	double 		pixely;
 }				t_line;
+
+typedef struct	s_ray
+{
+	double		fov;
+	double		wall_strip_w;
+	int			num_rays;
+	t_line		line;
+}				t_ray;
 
 typedef struct	s_adata
 {
@@ -81,6 +87,7 @@ typedef struct	s_adata
 	t_player	joe;
 	t_img		img_m;
 	t_line		line;
+	t_ray		ray;
 }				t_adata;
 
 char	**ft_test_map(void);
@@ -99,5 +106,8 @@ int		draw_map(t_adata *a);
 int		draw_minicircle(t_adata *a);
 int		butt_pressed(int keycode, t_adata *a);
 int		butt_released(int keycode, t_adata *a);
+void	ft_init_rays(t_adata *a);
+int		cast_rays(t_adata *a);
+int		line(t_line line, t_adata *a);
 
 #endif
