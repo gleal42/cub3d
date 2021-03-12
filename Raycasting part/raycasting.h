@@ -6,7 +6,7 @@
 /*   By: gleal <gleal@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/03/06 19:21:33 by gleal             #+#    #+#             */
-/*   Updated: 2021/03/12 18:24:30 by gleal            ###   ########.fr       */
+/*   Updated: 2021/03/12 21:04:41 by gleal            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -77,6 +77,15 @@ typedef struct	s_ray
 	double		fov;
 	double		wall_strip_w;
 	int			num_rays;
+	double		wallhit_x;
+	double		wallhit_y;
+	double		size;
+	int			facing_down;
+	int			facing_left;
+	double		intercept_x;
+	double		intercept_y;
+	double		xstep;
+	double		ystep;
 	t_line		line;
 }				t_ray;
 
@@ -107,7 +116,8 @@ int		draw_minicircle(t_adata *a);
 int		butt_pressed(int keycode, t_adata *a);
 int		butt_released(int keycode, t_adata *a);
 void	ft_init_rays(t_adata *a);
-int		cast_rays(t_adata *a);
+int		cast_all_rays(t_adata *a);
 int		line(t_line line, t_adata *a);
+double	normalrad(double movestep);
 
 #endif

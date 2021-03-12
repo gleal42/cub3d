@@ -6,7 +6,7 @@
 /*   By: gleal <gleal@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/03/08 15:20:19 by gleal             #+#    #+#             */
-/*   Updated: 2021/03/12 18:26:36 by gleal            ###   ########.fr       */
+/*   Updated: 2021/03/12 20:10:19 by gleal            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -61,7 +61,7 @@ int		render_next_frame(t_adata *a)
 	draw_minicircle(a);
 	ft_initline(a);
 	line(a->line, a);
-	cast_rays(a);
+	cast_all_rays(a);
 	mlx_put_image_to_window(a->win.mlx, a->win.win, a->img_m.ptr, 0, 0);
 	destroy_img(a);
 	return (0);
