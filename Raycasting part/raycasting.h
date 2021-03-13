@@ -6,7 +6,7 @@
 /*   By: gleal <gleal@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/03/06 19:21:33 by gleal             #+#    #+#             */
-/*   Updated: 2021/03/12 21:04:41 by gleal            ###   ########.fr       */
+/*   Updated: 2021/03/13 21:00:35 by gleal            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -86,6 +86,8 @@ typedef struct	s_ray
 	double		intercept_y;
 	double		xstep;
 	double		ystep;
+	double		wall_hit_x;
+	double		wall_hit_y;
 	t_line		line;
 }				t_ray;
 
@@ -119,5 +121,6 @@ void	ft_init_rays(t_adata *a);
 int		cast_all_rays(t_adata *a);
 int		line(t_line line, t_adata *a);
 double	normalrad(double movestep);
+int		has_wall(double x, double y, t_adata *a);
 
 #endif
