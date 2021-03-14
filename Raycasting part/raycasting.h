@@ -6,7 +6,7 @@
 /*   By: gleal <gleal@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/03/06 19:21:33 by gleal             #+#    #+#             */
-/*   Updated: 2021/03/13 21:00:35 by gleal            ###   ########.fr       */
+/*   Updated: 2021/03/14 17:44:37 by gleal            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -77,17 +77,21 @@ typedef struct	s_ray
 	double		fov;
 	double		wall_strip_w;
 	int			num_rays;
-	double		wallhit_x;
-	double		wallhit_y;
-	double		size;
 	int			facing_down;
 	int			facing_left;
-	double		intercept_x;
-	double		intercept_y;
-	double		xstep;
-	double		ystep;
+	double		horxstep;
+	double		horystep;
+	double		verxstep;
+	double		verystep;
+	double		wall_hit_horx;
+	double		wall_hit_hory;
+	double		wall_hit_verx;
+	double		wall_hit_very;
 	double		wall_hit_x;
 	double		wall_hit_y;
+	int			found_hor_wall;
+	int			found_ver_wall;
+	double		distance;
 	t_line		line;
 }				t_ray;
 
