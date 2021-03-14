@@ -6,7 +6,7 @@
 /*   By: gleal <gleal@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/03/12 16:36:09 by gleal             #+#    #+#             */
-/*   Updated: 2021/03/14 18:06:33 by gleal            ###   ########.fr       */
+/*   Updated: 2021/03/14 20:02:56 by gleal            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,6 +27,7 @@ int		ray_construct(double ray_angle, t_ray *ray, t_adata *a)
 	ray->wall_hit_y = 0;
 	ray->found_hor_wall = 0;
 	ray->found_ver_wall = 0;
+	ray->hit_vertical = 0;
 
 	if (ray_angle > 0 && ray_angle < M_PI)
 		ray->facing_down = 1;
@@ -68,25 +69,43 @@ int		vertical_cast(double ray_angle, t_ray *ray, t_adata *a)
 	nexttouch_verx = inter_x;
 	nexttouch_very = inter_y;
 
-	if (ray->facing_left)
+/*	if (ray->facing_left)
 		nexttouch_verx--;
 	else
-		nexttouch_verx++;
+		nexttouch_verx++;*/
 
 	while (nexttouch_verx >= 0 && nexttouch_verx <= a->map.map_w &&
 			nexttouch_very >= 0 && nexttouch_very <= a->map.map_h)
 	{
-		if (has_wall(nexttouch_verx, nexttouch_very, a))
+		if (ray->facing_left)
 		{
-			ray->found_ver_wall = 1;
-			ray->wall_hit_verx = nexttouch_verx;
-			ray->wall_hit_very = nexttouch_very;
-			break;
+			if (has_wall(nexttouch_verx - 1, nexttouch_very, a))
+			{
+				ray->found_ver_wall = 1;
+				ray->wall_hit_verx = nexttouch_verx;
+				ray->wall_hit_very = nexttouch_very;
+				break;
+			}
+			else
+			{
+				nexttouch_verx += ray->verxstep;
+				nexttouch_very += ray->verystep;
+			}
 		}
 		else
 		{
-			nexttouch_verx += ray->verxstep;
-			nexttouch_very += ray->verystep;
+			if (has_wall(nexttouch_verx +  1, nexttouch_very, a))
+			{
+				ray->found_ver_wall = 1;
+				ray->wall_hit_verx = nexttouch_verx;
+				ray->wall_hit_very = nexttouch_very;
+				break;
+			}
+			else
+			{
+				nexttouch_verx += ray->verxstep;
+				nexttouch_very += ray->verystep;
+			}
 		}
 	}
 /*	printf("a->joe.x %f\n", a->joe.x);
@@ -127,25 +146,43 @@ int		horizontal_cast(double ray_angle, t_ray *ray, t_adata *a)
 	nexttouch_horx = inter_x;
 	nexttouch_hory = inter_y;
 
-	if (!ray->facing_down)
+/*	if (!ray->facing_down)
 		nexttouch_hory--;
 	else
-		nexttouch_hory++;
+		nexttouch_hory++;*/
 
 	while (nexttouch_horx >= 0 && nexttouch_horx <= a->map.map_w &&
 			nexttouch_hory >= 0 && nexttouch_hory <= a->map.map_h)
 	{
-		if (has_wall(nexttouch_horx, nexttouch_hory, a))
+		if (!ray->facing_down)
 		{
-			ray->found_hor_wall = 1;
-			ray->wall_hit_horx = nexttouch_horx;
-			ray->wall_hit_hory = nexttouch_hory;
-			break;
+			if (has_wall(nexttouch_horx, nexttouch_hory - 1, a))
+			{
+				ray->found_hor_wall = 1;
+				ray->wall_hit_horx = nexttouch_horx;
+				ray->wall_hit_hory = nexttouch_hory;
+				break;
+			}
+			else
+			{
+				nexttouch_horx += ray->horxstep;
+				nexttouch_hory += ray->horystep;
+			}
 		}
 		else
 		{
-			nexttouch_horx += ray->horxstep;
-			nexttouch_hory += ray->horystep;
+			if (has_wall(nexttouch_horx, nexttouch_hory + 1, a))
+			{
+				ray->found_hor_wall = 1;
+				ray->wall_hit_horx = nexttouch_horx;
+				ray->wall_hit_hory = nexttouch_hory;
+				break;
+			}
+			else
+			{
+				nexttouch_horx += ray->horxstep;
+				nexttouch_hory += ray->horystep;
+			}
 		}
 	}
 
@@ -187,6 +224,14 @@ int		dda_alg(double ray_angle, t_ray *ray, t_adata *a)
 			ray->wall_hit_y = ray->wall_hit_hory;
 		else
 			ray->wall_hit_y = ray->wall_hit_very;
+		if (horz_dist < vert_dist)
+			ray->distance = horz_dist;
+		else
+			ray->distance = vert_dist;
+		if (horz_dist < vert_dist)
+			ray->hit_vertical = 0;
+		else
+			ray->hit_vertical = 1;
 
 //	printf("a->joe.x %f\n", a->joe.x);
 //	printf("a->joe.y %f\n", a->joe.y);
@@ -196,9 +241,14 @@ int		dda_alg(double ray_angle, t_ray *ray, t_adata *a)
 //	printf("ray->wall_hit_hory %f\n", ray->wall_hit_hory);
 //	printf("ray->wall_hit_verx %f\n", ray->wall_hit_verx);
 //	printf("ray->wall_hit_very %f\n", ray->wall_hit_very);
+//	printf("ray->wall_hit_x %f\n", ray->wall_hit_x);
+//	printf("ray->wall_hit_y %f\n", ray->wall_hit_y);
+//	printf("horz_dist %f\n", horz_dist);
 //	printf("vert_dist %f\n", vert_dist);
+//	printf("distance %f\n", ray->distance);
 //	printf("ray->wall_hit_x %f\n", ray->wall_hit_x);
 //	printf("ray->wall_hit_y%f\n", ray->wall_hit_y);
+//	printf("hit_vertical%d\n", ray->hit_vertical);
 		return (0);
 }
 

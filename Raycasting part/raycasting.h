@@ -6,7 +6,7 @@
 /*   By: gleal <gleal@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/03/06 19:21:33 by gleal             #+#    #+#             */
-/*   Updated: 2021/03/14 17:44:37 by gleal            ###   ########.fr       */
+/*   Updated: 2021/03/14 19:26:05 by gleal            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -92,6 +92,7 @@ typedef struct	s_ray
 	int			found_hor_wall;
 	int			found_ver_wall;
 	double		distance;
+	int			hit_vertical;
 	t_line		line;
 }				t_ray;
 
