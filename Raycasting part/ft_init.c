@@ -6,13 +6,13 @@
 /*   By: gleal <gleal@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/03/08 17:40:35 by gleal             #+#    #+#             */
-/*   Updated: 2021/03/12 16:23:00 by gleal            ###   ########.fr       */
+/*   Updated: 2021/03/14 20:54:43 by gleal            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "raycasting.h"
 
-void	ft_init_player(t_adata *a)
+void	ftinit_player(t_adata *a)
 {
 	ft_playerinfo(&a->map, &a->joe, a->map.maptxt);
 	a->joe.radius = a->map.tile_size / 6;
@@ -22,24 +22,24 @@ void	ft_init_player(t_adata *a)
 	a->joe.rotatespeed = 7 * (M_PI / 180);
 }
 
-void	ft_init_img(t_adata *a)
+void	ftinit_img_m(t_adata *a)
 {
 	a->img_m.ptr = mlx_new_image(a->win.mlx, a->map.map_w, a->map.map_h);
 	a->img_m.addr = (int *)mlx_get_data_addr(a->img_m.ptr,
 	&a->img_m.pixel_bits, &a->img_m.line_bytes, &a->img_m.endian);
 }
 
-void	ft_init_map(t_adata *a)
+void	ftinit_map(t_adata *a)
 {
 	a->map.maptxt = ft_test_map();
 	a->map.map_rows = ft_count_lines(a->map.maptxt);
 	a->map.map_cols = ft_max_strlen(a->map.maptxt);
-	a->map.tile_size = 32;
+	a->map.tile_size = 18;
 	a->map.map_h = a->map.map_rows * a->map.tile_size;
 	a->map.map_w = a->map.map_cols * a->map.tile_size;
 }
 
-void	ft_init_win(t_adata *a)
+void	ftinit_win(t_adata *a)
 {
 	t_win		win;
 
@@ -51,8 +51,8 @@ void	ft_init_win(t_adata *a)
 
 void	ft_init_all(t_adata *a)
 {
-	ft_init_win(a);
-	ft_init_map(a);
-	ft_init_player(a);
-	ft_init_rays(a);
+	ftinit_win(a);
+	ftinit_map(a);
+	ftinit_player(a);
+	ftinit_rays(a);
 }

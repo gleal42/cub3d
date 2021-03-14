@@ -6,13 +6,21 @@
 /*   By: gleal <gleal@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/03/08 15:20:19 by gleal             #+#    #+#             */
-/*   Updated: 2021/03/13 20:22:26 by gleal            ###   ########.fr       */
+/*   Updated: 2021/03/14 21:45:54 by gleal            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "raycasting.h"
 
-int 	destroy_img(t_adata *a)
+int 	destroyimg_3d(t_adata *a)
+{
+	mlx_destroy_image (a->win.mlx, a->img_3d.ptr);
+	a->img_3d.ptr = 0;
+	a->img_3d.addr = 0;
+	return (0);
+}
+
+int 	destroyimg_map(t_adata *a)
 {
 	mlx_destroy_image (a->win.mlx, a->img_m.ptr);
 	a->img_m.ptr = 0;
@@ -55,15 +63,18 @@ int 	ft_initline(t_adata *a)
 
 int		render_next_frame(t_adata *a)
 {
-	ft_init_img(a);
+	ftinit_img_3d(a);
+	ftinit_img_m(a);
 	ft_update(a);
 	draw_map(a);
 	draw_minicircle(a);
-	ft_initline(a);
-	line(a->line, a);
+	//ft_initline(a);
+	//line(a->line, a);
 	cast_all_rays(a);
+	mlx_put_image_to_window(a->win.mlx, a->win.win, a->img_3d.ptr, 0, 0);
 	mlx_put_image_to_window(a->win.mlx, a->win.win, a->img_m.ptr, 0, 0);
-	destroy_img(a);
+	destroyimg_3d(a);
+	destroyimg_map(a);
 	return (0);
 }
 

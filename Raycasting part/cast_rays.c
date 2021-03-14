@@ -6,7 +6,7 @@
 /*   By: gleal <gleal@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/03/12 16:36:09 by gleal             #+#    #+#             */
-/*   Updated: 2021/03/14 20:02:56 by gleal            ###   ########.fr       */
+/*   Updated: 2021/03/14 21:12:00 by gleal            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -282,6 +282,7 @@ int		cast_all_rays(t_adata *a)
 		dda_alg(ray_angle, &ray, a);
 		ft_prepare_ray_line(ray_angle, &ray, a);
 		line(ray.line, a);
+		draw3d(ray_angle, &ray, a, col_id);
 		ray_angle = normalrad(ray_angle + (a->ray.fov /a->ray.num_rays)); 
 		col_id++;
 	}

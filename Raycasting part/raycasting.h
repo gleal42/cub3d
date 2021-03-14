@@ -6,7 +6,7 @@
 /*   By: gleal <gleal@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/03/06 19:21:33 by gleal             #+#    #+#             */
-/*   Updated: 2021/03/14 19:26:05 by gleal            ###   ########.fr       */
+/*   Updated: 2021/03/14 21:44:25 by gleal            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -102,9 +102,14 @@ typedef struct	s_adata
 	t_map2d		map;;
 	t_player	joe;
 	t_img		img_m;
+	t_img		img_3d;
+	t_line		line_3d;
 	t_line		line;
 	t_ray		ray;
 }				t_adata;
+
+
+
 
 char	**ft_test_map(void);
 int		ft_max_strlen(char **strs);
@@ -114,7 +119,8 @@ void	ft_init_map(t_adata *a);
 void	ft_init_player(t_adata *a);
 void	ft_playerinfo(t_map2d *map, t_player *joe, char **strs);
 void	events(t_adata *a);
-void	ft_init_img(t_adata *a);
+void	ftinit_img_m(t_adata *a);
+void	ftinit_img_3d(t_adata *a);
 void	ft_init_all(t_adata *a);
 void	drawbycomp(int  p_w, int  p_h, t_adata *a);
 void	ft_update(t_adata *a);
@@ -122,10 +128,11 @@ int		draw_map(t_adata *a);
 int		draw_minicircle(t_adata *a);
 int		butt_pressed(int keycode, t_adata *a);
 int		butt_released(int keycode, t_adata *a);
-void	ft_init_rays(t_adata *a);
+void	ftinit_rays(t_adata *a);
 int		cast_all_rays(t_adata *a);
 int		line(t_line line, t_adata *a);
 double	normalrad(double movestep);
 int		has_wall(double x, double y, t_adata *a);
+int		draw3d(double ray_angle, t_ray *ray, t_adata *a, int col_id);
 
 #endif
