@@ -6,7 +6,7 @@
 /*   By: gleal <gleal@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/03/06 19:21:33 by gleal             #+#    #+#             */
-/*   Updated: 2021/03/15 17:48:25 by gleal            ###   ########.fr       */
+/*   Updated: 2021/03/15 18:37:58 by gleal            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,6 +35,8 @@ typedef struct	s_img
 	int		pixel_bits;
 	int		line_bytes;
 	int		endian;
+	int		width;
+	int		height;
 }				t_img;
 
 
@@ -112,11 +114,11 @@ typedef struct	s_adata
 	t_line		line_3d;
 	t_line		line;
 	t_ray		ray;
-	t_text		text;
+	t_text		notext;
+	t_text		sotext;
+	t_text		eatext;
+	t_text		wetext;
 }				t_adata;
-
-
-
 
 char	**ft_test_map(void);
 int		ft_max_strlen(char **strs);
@@ -141,5 +143,6 @@ int		line(t_line line, t_adata *a);
 double	normalrad(double movestep);
 int		has_wall(double x, double y, t_adata *a);
 int		draw3d(double ray_angle, t_ray *ray, t_adata *a, int col_id);
+int		ftinit_texts(t_adata *a);
 
 #endif
