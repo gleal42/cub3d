@@ -6,7 +6,7 @@
 /*   By: gleal <gleal@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/03/06 19:21:33 by gleal             #+#    #+#             */
-/*   Updated: 2021/03/14 21:44:25 by gleal            ###   ########.fr       */
+/*   Updated: 2021/03/15 17:48:25 by gleal            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -96,6 +96,12 @@ typedef struct	s_ray
 	t_line		line;
 }				t_ray;
 
+typedef struct	s_text
+{
+	char	*text_name;
+	t_img		imgt;
+}				t_text;
+
 typedef struct	s_adata
 {
 	t_win		win;
@@ -106,6 +112,7 @@ typedef struct	s_adata
 	t_line		line_3d;
 	t_line		line;
 	t_ray		ray;
+	t_text		text;
 }				t_adata;
 
 

@@ -6,7 +6,7 @@
 /*   By: gleal <gleal@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/03/12 16:36:09 by gleal             #+#    #+#             */
-/*   Updated: 2021/03/14 21:12:00 by gleal            ###   ########.fr       */
+/*   Updated: 2021/03/15 17:19:56 by gleal            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -204,12 +204,12 @@ int		horizontal_cast(double ray_angle, t_ray *ray, t_adata *a)
 int		dda_alg(double ray_angle, t_ray *ray, t_adata *a)
 {
 	double horz_dist;
-		double vert_dist;
+	double vert_dist;
 
 	horizontal_cast(ray_angle, ray, a);
 		vertical_cast(ray_angle, ray, a);
 	if (ray->found_hor_wall)
-			horz_dist = (int)distancepoints(a->joe.x, a->joe.y, ray->wall_hit_horx, ray->wall_hit_hory);
+			horz_dist = distancepoints(a->joe.x, a->joe.y, ray->wall_hit_horx, ray->wall_hit_hory);
 		else
 			horz_dist = INT_MAX;
 		if (ray->found_ver_wall)

@@ -6,7 +6,7 @@
 /*   By: gleal <gleal@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/03/08 15:20:19 by gleal             #+#    #+#             */
-/*   Updated: 2021/03/14 21:45:54 by gleal            ###   ########.fr       */
+/*   Updated: 2021/03/15 15:21:21 by gleal            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -68,8 +68,8 @@ int		render_next_frame(t_adata *a)
 	ft_update(a);
 	draw_map(a);
 	draw_minicircle(a);
-	//ft_initline(a);
-	//line(a->line, a);
+	ft_initline(a);
+	line(a->line, a);
 	cast_all_rays(a);
 	mlx_put_image_to_window(a->win.mlx, a->win.win, a->img_3d.ptr, 0, 0);
 	mlx_put_image_to_window(a->win.mlx, a->win.win, a->img_m.ptr, 0, 0);
