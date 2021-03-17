@@ -6,7 +6,7 @@
 /*   By: gleal <gleal@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/03/06 19:21:33 by gleal             #+#    #+#             */
-/*   Updated: 2021/03/15 18:37:58 by gleal            ###   ########.fr       */
+/*   Updated: 2021/03/17 20:01:52 by gleal            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -79,6 +79,7 @@ typedef struct	s_ray
 	double		fov;
 	double		wall_strip_w;
 	int			num_rays;
+	double		distprojplane;
 	int			facing_down;
 	int			facing_left;
 	double		horxstep;
@@ -104,10 +105,31 @@ typedef struct	s_text
 	t_img		imgt;
 }				t_text;
 
+typedef struct	s_item
+{
+	double		x;
+	double		y;
+	double		angle;
+	double		distance;
+	double		sprite_hw;
+	double		ystart;
+	double		yend;
+	double		xstart;
+	double		xend;
+	int			is_visible;
+	t_img		imgsp;
+}				t_item;
+
+typedef struct	s_sps
+{
+	int			number;
+	t_item		*items;
+}				t_sps;
+
 typedef struct	s_adata
 {
 	t_win		win;
-	t_map2d		map;;
+	t_map2d		map;
 	t_player	joe;
 	t_img		img_m;
 	t_img		img_3d;
@@ -118,6 +140,8 @@ typedef struct	s_adata
 	t_text		sotext;
 	t_text		eatext;
 	t_text		wetext;
+	t_sps		sps;
+	t_line		line_sp;
 }				t_adata;
 
 char	**ft_test_map(void);
@@ -144,5 +168,9 @@ double	normalrad(double movestep);
 int		has_wall(double x, double y, t_adata *a);
 int		draw3d(double ray_angle, t_ray *ray, t_adata *a, int col_id);
 int		ftinit_texts(t_adata *a);
+int		update_sprites(t_adata *a);
+int		ft_countsprites(char **strs);
+double	distancepoints(double x1, double y1, double x2, double y2);
+int		ftinit_img_sps(t_item *item, t_adata *a);
 
 #endif

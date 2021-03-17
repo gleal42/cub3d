@@ -6,7 +6,7 @@
 /*   By: gleal <gleal@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/03/08 15:20:19 by gleal             #+#    #+#             */
-/*   Updated: 2021/03/15 18:19:35 by gleal            ###   ########.fr       */
+/*   Updated: 2021/03/17 21:00:46 by gleal            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,6 +19,20 @@ int 	destroyimg(t_adata *a, t_img *img)
 	img->addr = 0;
 	return (0);
 }
+
+/*int		destroyspritetexts(t_adata *a, t_item **item)
+{
+	int		i;
+
+	i = 0;
+
+	while (i < a->sps.number)
+	{
+		destroyimg(a, &item[i]->imgsp);
+		i++;
+	}
+	return (0);
+}*/
 
 int		line(t_line line, t_adata *a)
 {
@@ -57,8 +71,8 @@ int		render_next_frame(t_adata *a)
 {
 	ftinit_img_3d(a);
 	ftinit_img_m(a);
-	ftinit_texts(a);
 	ft_update(a);
+	update_sprites(a);
 	draw_map(a);
 	draw_minicircle(a);
 	ft_initline(a);
@@ -68,6 +82,7 @@ int		render_next_frame(t_adata *a)
 	mlx_put_image_to_window(a->win.mlx, a->win.win, a->img_m.ptr, 0, 0);
 	destroyimg(a, &a->img_m);
 	destroyimg(a, &a->img_3d);
+	//destroyspritetexts(a, &a->sps.items);
 	return (0);
 }
 

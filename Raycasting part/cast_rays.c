@@ -6,15 +6,96 @@
 /*   By: gleal <gleal@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/03/12 16:36:09 by gleal             #+#    #+#             */
-/*   Updated: 2021/03/15 21:18:28 by gleal            ###   ########.fr       */
+/*   Updated: 2021/03/17 20:56:34 by gleal            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "raycasting.h"
 
-double	distancepoints(double x1, double y1, double x2, double y2)
+int		bitmap_offset_sp(t_ray *ray, t_adata *a, t_item *item, int col_id)
 {
-	return (sqrt(pow((x2 -x1), 2) + pow((y2 - y1), 2)));
+	double	remainder;
+	double	offset;
+
+	remainder = (double)(((double)col_id - a->line_sp.start_x)/item->sprite_hw);
+	offset = item->imgsp.width * remainder;
+	return (offset);
+}
+
+int		linesprite(double ray_angle, t_ray * ray, t_item *item, t_adata *a, int col_id)
+{
+	double remain_pixels;
+	double pixelx;
+	double pixely;
+	double texx;
+	double texy;
+
+	pixelx = a->line_sp.start_x;
+	pixely = a->line_sp.start_y;
+	texy = 0;
+	texx = bitmap_offset_sp(ray, a, item, col_id);
+	remain_pixels = a->line_sp.pixels;
+	//printf("texx %f\n", texx);
+	while (remain_pixels >= 0)
+	{
+		a->img_3d.addr[((int)pixely * (int)a->win.win_w + (int)pixelx)] =
+			item->imgsp.addr[(int)texy * (int)item->imgsp.width + (int)texx];
+		pixelx += a->line_sp.deltax;
+		pixely += a->line_sp.deltay;
+		texy = ((pixely - a->line_sp.start_y) * item->imgsp.width)/ a->line_sp.pixels;
+		//printf("texy %f\n", texy);
+		--remain_pixels;
+	}
+	return (0);
+
+}
+
+int		ft_prepare_sprite_line(double ray_angle, t_item *item, t_adata *a, int col_id)
+{
+	double		line_height;
+
+	line_height = a->ray.distprojplane/(item->distance/a->map.tile_size);
+	a->line_sp.start_x = col_id;
+	a->line_sp.start_y = (a->win.win_h/2) - (line_height/2);
+	if(a->line_sp.start_y < 0)
+		a->line_sp.start_y= 0;
+	a->line_sp.end_x = col_id;
+	a->line_sp.end_y = (a->win.win_h/2) + (line_height/2);
+	if(a->line_sp.end_y >= a->win.win_h)
+		a->line_sp.end_y = a->win.win_h - 1.0;
+	a->line_sp.deltax = a->line_sp.end_x - a->line_sp.start_x;
+	a->line_sp.deltay = a->line_sp.end_y - a->line_sp.start_y;
+	a->line_sp.pixels = sqrt(pow(a->line_sp.deltax, 2) + pow(a->line_sp.deltay, 2));
+	a->line_sp.deltax /= a->line_sp.pixels;
+	a->line_sp.deltay /= a->line_sp.pixels;
+	return (0);
+}
+
+int		is_sprite_stripe(t_item *item, int col_id)
+{
+	if (col_id >= item->xstart && col_id <= item->xend)
+		return (1);
+	else
+		return (0);
+}
+
+int		drawsps(double ray_angle, t_ray *ray, t_adata *a, int col_id)
+{
+	int		i;
+
+	i = 0;
+	while (i < a->sps.number)
+	{
+		if ((a->sps.items[i]).is_visible && is_sprite_stripe(&a->sps.items[i], col_id)
+					&& ray->distance > a->sps.items[i].distance
+					&& a->sps.items[i].xstart > 0 && a->sps.items[i].xend < a->map.map_w)
+		{
+			ft_prepare_sprite_line(ray_angle, &a->sps.items[i], a, col_id);
+			linesprite(ray_angle, ray, &a->sps.items[i], a, col_id);
+		}
+		i++;
+	}
+	return (0);
 }
 
 int		ray_construct(double ray_angle, t_ray *ray, t_adata *a)
@@ -284,6 +365,7 @@ int		cast_all_rays(t_adata *a)
 		line(ray.line, a);
 		draw3d(ray_angle, &ray, a, col_id);
 		ray_angle = normalrad(ray_angle + (a->ray.fov /a->ray.num_rays)); 
+		drawsps(ray_angle, &ray, a, col_id);
 		col_id++;
 	}
 	return (0);

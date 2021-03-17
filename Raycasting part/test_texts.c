@@ -6,7 +6,7 @@
 /*   By: gleal <gleal@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/03/15 15:35:28 by gleal             #+#    #+#             */
-/*   Updated: 2021/03/15 17:02:56 by gleal            ###   ########.fr       */
+/*   Updated: 2021/03/17 21:07:56 by gleal            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,7 +22,7 @@ void	inittest_img_m(void *mlx, void *win)
 	int		width;
 	int		height;
 
-	ptr = mlx_xpm_file_to_image(mlx, "../textures/purplestone.xpm", &width, &height);
+	ptr = mlx_xpm_file_to_image(mlx, "../textures/barrel.xpm", &width, &height);
 	/*addr = (int *)mlx_get_data_addr(ptr, &pixel_bits, &line_bytes, &endian);*/
 	mlx_put_image_to_window(mlx, win, ptr, 0, 0);
 }

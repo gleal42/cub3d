@@ -6,7 +6,7 @@
 /*   By: gleal <gleal@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/03/14 20:16:24 by gleal             #+#    #+#             */
-/*   Updated: 2021/03/15 21:19:04 by gleal            ###   ########.fr       */
+/*   Updated: 2021/03/17 15:29:32 by gleal            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -70,7 +70,7 @@ int		ft_prepare_3d_line(double ray_angle, t_ray *ray, t_adata *a, int col_id)
 	double		nofish_dist;
 
 	nofish_dist = (ray->distance/a->map.tile_size)* cos(ray_angle - a->joe.rotangle);
-	line_height = a->win.win_h/nofish_dist;
+	line_height = a->ray.distprojplane/nofish_dist;
 	a->line_3d.start_x = col_id;
 	a->line_3d.start_y = (a->win.win_h/2) - (line_height/2);
 	if(a->line_3d.start_y < 0)

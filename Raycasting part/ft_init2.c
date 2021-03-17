@@ -6,11 +6,19 @@
 /*   By: gleal <gleal@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/03/10 15:32:26 by gleal             #+#    #+#             */
-/*   Updated: 2021/03/15 20:41:05 by gleal            ###   ########.fr       */
+/*   Updated: 2021/03/17 21:01:36 by gleal            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "raycasting.h"
+
+int		ftinit_img_sps(t_item *item, t_adata *a)
+{
+	item->imgsp.ptr = mlx_xpm_file_to_image(a->win.mlx, "../textures/barrel.xpm", &item->imgsp.width, &item->imgsp.height); 
+	item->imgsp.addr = (int *)mlx_get_data_addr(item->imgsp.ptr,
+	&item->imgsp.pixel_bits, &item->imgsp.line_bytes, &item->imgsp.endian);
+	return (0);
+}
 
 int		ftinitnotext(t_adata *a)
 {
@@ -65,4 +73,5 @@ void	ftinit_rays(t_adata *a)
 	a->ray.fov = 60  * (M_PI / 180);
 	a->ray.wall_strip_w = 1;
 	a->ray.num_rays = a->win.win_w /a->ray.wall_strip_w;
+	a->ray.distprojplane = (a->win.win_w/2)/tan(a->ray.fov/2);
 }
