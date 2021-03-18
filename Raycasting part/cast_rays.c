@@ -6,31 +6,11 @@
 /*   By: gleal <gleal@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/03/12 16:36:09 by gleal             #+#    #+#             */
-/*   Updated: 2021/03/18 19:41:15 by gleal            ###   ########.fr       */
+/*   Updated: 2021/03/18 22:02:41 by gleal            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "raycasting.h"
-
-int		drawsps(double ray_angle, t_ray *ray, t_adata *a, int col_id)
-{
-	int		i;
-
-	i = 0;
-	while (i < a->sps.number)
-	{
-		if ((a->sps.items[i]).is_visible &&
-		is_sprite_stripe(&a->sps.items[i], col_id)
-		&& ray->distance > a->sps.items[i].distance
-		&& a->sps.items[i].xstart > 0 && a->sps.items[i].xend < a->win.win_w)
-		{
-			ft_prepare_sprite_line(ray_angle, &a->sps.items[i], a, col_id);
-			linesprite(ray_angle, ray, &a->sps.items[i], a, col_id);
-		}
-		i++;
-	}
-	return (0);
-}
 
 int		ray_construct(double ray_angle, t_ray *ray, t_adata *a)
 {
@@ -58,23 +38,8 @@ int		vertical_cast(double ray_angle, t_ray *ray, t_adata *a)
 {
 	double	nexttouch_verx;
 	double	nexttouch_very;
-	double	inter_y;
-	double	inter_x;
 
-	inter_x = floor(a->joe.x / a->map.tile_size) * a->map.tile_size;
-	if (!ray->facing_left)
-		inter_x += a->map.tile_size;
-	inter_y = a->joe.y + ((inter_x - a->joe.x) * tan(ray_angle));
-	ray->verxstep = a->map.tile_size;
-	if (ray->facing_left)
-		ray->verxstep *= -1;
-	ray->verystep = a->map.tile_size * tan(ray_angle);
-	if (!ray->facing_down && ray->verystep > 0)
-		ray->verystep *= -1;
-	if (ray->facing_down && ray->verystep < 0)
-		ray->verystep *= -1;
-	nexttouch_verx = inter_x;
-	nexttouch_very = inter_y;
+	vertical_interstep(a, ray, &nexttouch_verx, &nexttouch_very);
 	while (nexttouch_verx >= 0 && nexttouch_verx <= a->map.map_w &&
 			nexttouch_very >= 0 && nexttouch_very <= a->map.map_h)
 	{
@@ -116,23 +81,8 @@ int		horizontal_cast(double ray_angle, t_ray *ray, t_adata *a)
 {
 	double	nexttouch_horx;
 	double	nexttouch_hory;
-	double	inter_y;
-	double	inter_x;
-
-	inter_y = floor(a->joe.y / a->map.tile_size) * a->map.tile_size;
-	if (ray->facing_down)
-		inter_y += a->map.tile_size;
-	inter_x = a->joe.x + ((inter_y - a->joe.y) / tan(ray_angle));
-	ray->horystep = a->map.tile_size;
-	if (!ray->facing_down)
-		ray->horystep *= -1;
-	ray->horxstep = a->map.tile_size / tan(ray_angle);
-	if (ray->facing_left && ray->horxstep > 0)
-		ray->horxstep *= -1;
-	if (!ray->facing_left && ray->horxstep < 0)
-		ray->horxstep *= -1;
-	nexttouch_horx = inter_x;
-	nexttouch_hory = inter_y;
+	
+	horizontal_interstep(a, ray, &nexttouch_horx, &nexttouch_hory);
 	while (nexttouch_horx >= 0 && nexttouch_horx <= a->map.map_w &&
 			nexttouch_hory >= 0 && nexttouch_hory <= a->map.map_h)
 	{
@@ -211,19 +161,18 @@ int		draw3d(t_adata *a)
 {
 	t_ray	ray;
 	int		col_id;
-	double	ray_angle;
 
 	col_id = 0;
-	ray_angle = normalrad(a->joe.rotangle - (a->ray.fov / 2));
+	ray.ray_angle = normalrad(a->joe.rotangle - (a->ray.fov / 2));
 	while (col_id < a->ray.num_rays)
 	{
-		ray_construct(ray_angle, &ray, a);
-		dda_alg(ray_angle, &ray, a);
-		ft_prepare_ray_line(ray_angle, &ray, a);
+		ray_construct(ray.ray_angle, &ray, a);
+		dda_alg(ray.ray_angle, &ray, a);
+		ft_prepare_ray_line(ray.ray_angle, &ray, a);
 		line(ray.line, a);
-		draw3dline(ray_angle, &ray, a, col_id);
-		drawsps(ray_angle, &ray, a, col_id);
-		ray_angle = normalrad(ray_angle + (a->ray.fov /a->ray.num_rays));
+		draw3dline(ray.ray_angle, &ray, a, col_id);
+		drawsps(ray.ray_angle, &ray, a, col_id);
+		ray.ray_angle = normalrad(ray.ray_angle + (a->ray.fov /a->ray.num_rays));
 		col_id++;
 	}
 	return (0);

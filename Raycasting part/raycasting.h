@@ -6,7 +6,7 @@
 /*   By: gleal <gleal@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/03/06 19:21:33 by gleal             #+#    #+#             */
-/*   Updated: 2021/03/18 19:20:10 by gleal            ###   ########.fr       */
+/*   Updated: 2021/03/18 22:03:08 by gleal            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -80,6 +80,7 @@ typedef struct	s_ray
 	double		wall_strip_w;
 	int			num_rays;
 	double		distprojplane;
+	double		ray_angle;
 	int			facing_down;
 	int			facing_left;
 	double		horxstep;
@@ -196,5 +197,8 @@ int		bitmap_offset_sp(t_ray *ray, t_adata *a, t_item *item, int col_id);
 int		has_wall(double x, double y, t_adata *a);
 int		is_sprite_stripe(t_item *item, int col_id);
 int		ft_prepare_ray_line(double ray_angle, t_ray *ray, t_adata *a);
+int		vertical_interstep(t_adata *a, t_ray *ray, double *nexttouch_verx, double *nexttouch_very);
+int		horizontal_interstep(t_adata *a, t_ray *ray, double *nexttouch_horx, double *nexttouch_hory);
+int		drawsps(double ray_angle, t_ray *ray, t_adata *a, int col_id);
 
 #endif
