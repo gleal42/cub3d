@@ -6,7 +6,7 @@
 /*   By: gleal <gleal@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/03/10 19:02:02 by gleal             #+#    #+#             */
-/*   Updated: 2021/03/17 20:32:03 by gleal            ###   ########.fr       */
+/*   Updated: 2021/03/18 15:42:03 by gleal            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,11 +16,11 @@ int		spritescreenposition(t_item *item, t_adata *a)
 {
 	double	centersprite;
 
-	item->sprite_hw = a->ray.distprojplane/item->distance;
-	item->ystart = a->map.map_h/2 - item->sprite_hw/2;
+	item->sprite_hw = a->ray.distprojplane/(item->distance/a->map.tile_size);
+	item->ystart = a->win.win_h/2 - item->sprite_hw/2;
 	item->yend = item->ystart + item->sprite_hw;
 	centersprite = tan(item->angle) * a->ray.distprojplane;
-	item->xstart = a->map.map_w/2 + centersprite - item->sprite_hw/2;
+	item->xstart = a->win.win_w/2 + centersprite - item->sprite_hw/2;
 	item->xend = item->xstart + item->sprite_hw;
 	return (0);
 }
@@ -41,26 +41,26 @@ int		sps_pos_on_screen(t_item *item, t_adata *a)
 
 int		sort_sps(t_item *items, t_adata *a)
 {
-	int smaller;
+	int further;
 	int check;
 	t_item	swap;
 
 	check = 0;
-	smaller = 0;
-	while (smaller < a->sps.number)
+	further = 0;
+	while (further < a->sps.number)
 	{
-		check = smaller + 1;
+		check = further + 1;
 		while (check < a->sps.number)
 		{
-			if (items[check].distance < items[smaller].distance)
+			if (items[check].distance > items[further].distance)
 			{
-				swap = items[smaller];
-				items[smaller] = items[check];
+				swap = items[further];
+				items[further] = items[check];
 				items[check] = swap;
 			}
 			check++;
 		}
-		smaller++;
+		further++;
 	}
 	return (0);
 }
@@ -82,14 +82,13 @@ int		update_info_sps(t_item **item, t_adata *a)
 		vetx = (*item)[i].x - a->joe.x;
 		vety = (*item)[i].y - a->joe.y;
 		sp_anglemap = normalrad(atan2(vety, vetx));
-		(*item)[i].angle = normalrad(a->joe.rotangle - sp_anglemap);
+		(*item)[i].angle = normalrad(sp_anglemap - a->joe.rotangle);
 		if (((*item)[i].angle > fovref_min && (*item)[i].angle < 2*M_PI) ||
 				((*item)[i].angle >= 0 && (*item)[i].angle < fovref_max))
 			(*item)[i].is_visible = 1;
 		else
 			(*item)[i].is_visible = 0;
-		(*item)[i].distance = (double)(sqrt(pow(vetx, 2) + pow(vety, 2)/
-					a->map.tile_size));
+		(*item)[i].distance = (double)(sqrt(pow(vetx, 2) + pow(vety, 2)));
 		i++;
 	}
 	return (0);

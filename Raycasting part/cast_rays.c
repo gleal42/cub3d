@@ -6,7 +6,7 @@
 /*   By: gleal <gleal@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/03/12 16:36:09 by gleal             #+#    #+#             */
-/*   Updated: 2021/03/17 20:56:34 by gleal            ###   ########.fr       */
+/*   Updated: 2021/03/18 15:23:12 by gleal            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,7 @@ int		bitmap_offset_sp(t_ray *ray, t_adata *a, t_item *item, int col_id)
 	double	remainder;
 	double	offset;
 
-	remainder = (double)(((double)col_id - a->line_sp.start_x)/item->sprite_hw);
+	remainder = (double)(((double)col_id - item->xstart)/item->sprite_hw);
 	offset = item->imgsp.width * remainder;
 	return (offset);
 }
@@ -88,7 +88,7 @@ int		drawsps(double ray_angle, t_ray *ray, t_adata *a, int col_id)
 	{
 		if ((a->sps.items[i]).is_visible && is_sprite_stripe(&a->sps.items[i], col_id)
 					&& ray->distance > a->sps.items[i].distance
-					&& a->sps.items[i].xstart > 0 && a->sps.items[i].xend < a->map.map_w)
+					&& a->sps.items[i].xstart > 0 && a->sps.items[i].xend < a->win.win_w)
 		{
 			ft_prepare_sprite_line(ray_angle, &a->sps.items[i], a, col_id);
 			linesprite(ray_angle, ray, &a->sps.items[i], a, col_id);
@@ -364,8 +364,8 @@ int		cast_all_rays(t_adata *a)
 		ft_prepare_ray_line(ray_angle, &ray, a);
 		line(ray.line, a);
 		draw3d(ray_angle, &ray, a, col_id);
-		ray_angle = normalrad(ray_angle + (a->ray.fov /a->ray.num_rays)); 
 		drawsps(ray_angle, &ray, a, col_id);
+		ray_angle = normalrad(ray_angle + (a->ray.fov /a->ray.num_rays)); 
 		col_id++;
 	}
 	return (0);
