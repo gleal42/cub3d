@@ -6,48 +6,11 @@
 /*   By: gleal <gleal@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/03/07 13:21:39 by gleal             #+#    #+#             */
-/*   Updated: 2021/03/17 17:47:46 by gleal            ###   ########.fr       */
+/*   Updated: 2021/03/18 18:08:47 by gleal            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "raycasting.h"
-
-double	normalrad(double movestep)
-{
-	if (movestep >= (2 * M_PI))
-		movestep -= (2 * M_PI);
-	if (movestep < (0))
-		movestep += (2 * M_PI);
-	return (movestep);
-}
-
-double	distancepoints(double x1, double y1, double x2, double y2)
-{
-	return (sqrt(pow((x2 -x1), 2) + pow((y2 - y1), 2)));
-}
-
-int		ft_countsprites(char **strs)
-{
-	int		i;
-	int		j;
-	int		counter;
-
-	i = 0;
-	j = 0;
-	counter = 0;
-	while(strs[i])
-	{
-		j = 0;
-		while (strs[i][j])
-		{
-			if (strs[i][j] == '2')
-				counter++;
-			j++;
-		}
-		i++;
-	}
-	return (counter);
-}
 
 double	spawnrotation(char c)
 {
@@ -136,7 +99,6 @@ char	**ft_test_map(void)
 "11111111 1111111 111111111111",
 0
 	};
-
 	i = 0;
 	ft_count_lines(temp);
 	official = malloc(sizeof(char*) * (ft_count_lines(temp) + 1));

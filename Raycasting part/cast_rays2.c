@@ -1,21 +1,15 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_init2.c                                         :+:      :+:    :+:   */
+/*   cast_rays2.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: gleal <gleal@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/03/10 15:32:26 by gleal             #+#    #+#             */
-/*   Updated: 2021/03/18 19:18:22 by gleal            ###   ########.fr       */
+/*   Created: 2021/03/18 18:44:15 by gleal             #+#    #+#             */
+/*   Updated: 2021/03/18 19:41:15 by gleal            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "raycasting.h"
 
-void	ftinit_rays(t_adata *a)
-{
-	a->ray.fov = 60 * (M_PI / 180);
-	a->ray.wall_strip_w = 1;
-	a->ray.num_rays = a->win.win_w / a->ray.wall_strip_w;
-	a->ray.distprojplane = (a->win.win_w / 2) / tan(a->ray.fov / 2);
-}
+

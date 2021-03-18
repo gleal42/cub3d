@@ -6,7 +6,7 @@
 /*   By: gleal <gleal@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/03/06 19:21:33 by gleal             #+#    #+#             */
-/*   Updated: 2021/03/17 20:01:52 by gleal            ###   ########.fr       */
+/*   Updated: 2021/03/18 19:20:10 by gleal            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -156,21 +156,45 @@ void	ftinit_img_m(t_adata *a);
 void	ftinit_img_3d(t_adata *a);
 void	ft_init_all(t_adata *a);
 void	drawbycomp(int  p_w, int  p_h, t_adata *a);
-void	ft_update(t_adata *a);
+void	ft_update_player(t_adata *a);
 int		draw_map(t_adata *a);
 int		draw_minicircle(t_adata *a);
 int		butt_pressed(int keycode, t_adata *a);
 int		butt_released(int keycode, t_adata *a);
 void	ftinit_rays(t_adata *a);
-int		cast_all_rays(t_adata *a);
+int		draw3d(t_adata *a);
 int		line(t_line line, t_adata *a);
 double	normalrad(double movestep);
 int		has_wall(double x, double y, t_adata *a);
-int		draw3d(double ray_angle, t_ray *ray, t_adata *a, int col_id);
+int		draw3dline(double ray_angle, t_ray *ray, t_adata *a, int col_id);
 int		ftinit_texts(t_adata *a);
 int		update_sprites(t_adata *a);
 int		ft_countsprites(char **strs);
 double	distancepoints(double x1, double y1, double x2, double y2);
 int		ftinit_img_sps(t_item *item, t_adata *a);
+int		add_sprites(t_item *items, char **strs, t_adata *a);
+void	ftinit_win(t_adata *a);
+void	ftinit_map(t_adata *a);
+void	ftinit_player(t_adata *a);
+int		ftinit_texts(t_adata *a);
+int		ftinit_sprites(t_adata *a);
+void	ftinit_img_3d(t_adata *a);
+void	ftinit_img_m(t_adata *a);
+int		ftinit_img_sps(t_item *item, t_adata *a);
+int		destroyimg(t_adata *a, t_img *img);
+int		ft_initline(t_adata *a);
+int		ftinitwetext(t_adata *a);
+int		ftiniteatext(t_adata *a);
+int		ftinitsotext(t_adata *a);
+int		ftinitnotext(t_adata *a);
+int		ft_prepare_3d_line(double ray_angle, t_ray *ray, t_adata *a, int col_id);
+int		line3d(double ray_angle, t_ray *ray, t_adata *a, int col_id);
+int		ft_prepare_sprite_line(double ray_angle, t_item *item, t_adata *a, int col_id);
+int		linesprite(double ray_angle, t_ray * ray, t_item *item, t_adata *a, int col_id);
+int		bitmap_offset(t_ray *ray, t_adata *a);
+int		bitmap_offset_sp(t_ray *ray, t_adata *a, t_item *item, int col_id);
+int		has_wall(double x, double y, t_adata *a);
+int		is_sprite_stripe(t_item *item, int col_id);
+int		ft_prepare_ray_line(double ray_angle, t_ray *ray, t_adata *a);
 
 #endif
