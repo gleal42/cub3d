@@ -6,7 +6,7 @@
 /*   By: gleal <gleal@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/03/05 15:32:05 by gleal             #+#    #+#             */
-/*   Updated: 2021/03/05 20:57:48 by gleal            ###   ########.fr       */
+/*   Updated: 2021/03/19 21:31:36 by gleal            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -59,9 +59,9 @@ int		checkfirstwall(char *str)
 	return (1);
 }
 
-int		playeringame(t_map *map)
+int		playeringame(t_parse *parse)
 {
-	if (!map->player_or)
+	if (!parse->player_or)
 		return (0);
 	else
 		return (1);

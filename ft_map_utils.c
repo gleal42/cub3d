@@ -6,7 +6,7 @@
 /*   By: gleal <gleal@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/03/03 14:04:29 by gleal             #+#    #+#             */
-/*   Updated: 2021/03/05 19:19:09 by gleal            ###   ########.fr       */
+/*   Updated: 2021/03/19 21:35:14 by gleal            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -67,30 +67,30 @@ void	*ft_freetext(char **text)
 	return (0);
 }
 
-void	ft_start_tmap(t_map *map)
+void	ft_start_tmap(t_parse *parse)
 {
-	map->lnbr = 0;
-	map->text = malloc(sizeof(char *) * 2);
-	if (!map->text)
+	parse->lnbr = 0;
+	parse->text = malloc(sizeof(char *) * 2);
+	if (!parse->text)
 		return ;
-	map->text[0] = 0;
-	map->text[1] = 0;
-	map->rx = 0;
-	map->ry = 0;
-	map->error = 0;
-	map->no_text = 0;
-	map->so_text = 0;
-	map->we_text = 0;
-	map->ea_text = 0;
-	map->sprite_text = 0;
-	map->rfloor = 0;
-	map->gfloor = 0;
-	map->bfloor = 0;
-	map->rceil = 0;
-	map->gceil = 0;
-	map->bceil = 0;
-	map->map_size = 0;
-    map->player_or = 0;
+	parse->text[0] = 0;
+	parse->text[1] = 0;
+	parse->rx = 0;
+	parse->ry = 0;
+	parse->error = 0;
+	parse->no_text = 0;
+	parse->so_text = 0;
+	parse->we_text = 0;
+	parse->ea_text = 0;
+	parse->sprite_text = 0;
+	parse->rfloor = 0;
+	parse->gfloor = 0;
+	parse->bfloor = 0;
+	parse->rceil = 0;
+	parse->gceil = 0;
+	parse->bceil = 0;
+	parse->map_size = 0;
+    parse->player_or = 0;
 }
 
 int		ft_countchr(char *str, char c)

@@ -6,13 +6,13 @@
 /*   By: gleal <gleal@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/03/04 18:58:48 by gleal             #+#    #+#             */
-/*   Updated: 2021/03/05 21:25:24 by gleal            ###   ########.fr       */
+/*   Updated: 2021/03/19 21:28:52 by gleal            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "cub3d.h"
 
-int		check_valid_map(char **strs, t_map *map)
+int		check_valid_map(char **strs, t_parse *parse)
 {
 	int		i;
 
@@ -28,7 +28,7 @@ int		check_valid_map(char **strs, t_map *map)
 		{
 			if (i < 2)
 				return (0);
-			if (!playeringame(map))
+			if (!playeringame(parse))
 				return (0);
 		}
 		else
@@ -37,13 +37,13 @@ int		check_valid_map(char **strs, t_map *map)
 				return (0);
 			if (!checkmapclosed(&strs[i]))
 				return (0);
-			if (!checkmultiplayer(strs[i], map))
+			if (!checkmultiplayer(strs[i], parse))
 				return (0);
 		}
 		i++;
 	}
-	map->map_size = i;
-	if (!ft_copy_map(strs, map))
+	parse->map_size = i;
+	if (!ft_copy_map(strs, parse))
 		return (0);
 	return (1);
 }
@@ -61,7 +61,7 @@ int		is_map(char *str)
 	return (1);
 }
 
-int		ft_parseceilcolor(char *str, t_map *map)
+int		ft_parseceilcolor(char *str, t_parse *parse)
 {
 	int		i;
 
@@ -70,31 +70,31 @@ int		ft_parseceilcolor(char *str, t_map *map)
 		i++;
 	if (!isdigit(str[i]))
 		return (0);
-	map->rceil = ft_atoi(&str[i]);
+	parse->rceil = ft_atoi(&str[i]);
 	while (ft_isdigit(str[i]))
 		i++;
 	while (ft_isspace(str[i]) || str[i] == ',')
 		i++;
 	if (!isdigit(str[i]))
 		return (0);
-	map->gceil = ft_atoi(&str[i]);
+	parse->gceil = ft_atoi(&str[i]);
 	while (ft_isdigit(str[i]))
 		i++;
 	while (ft_isspace(str[i])  || str[i] == ',')
 		i++;
 	if (!isdigit(str[i]))
 		return (0);
-	map->bceil = ft_atoi(&str[i]);
-	if (map->rceil < 0 || map-> rceil > 255)
+	parse->bceil = ft_atoi(&str[i]);
+	if (parse->rceil < 0 || parse-> rceil > 255)
 		return (0);
-	if (map->gceil < 0 || map-> gceil > 255)
+	if (parse->gceil < 0 || parse-> gceil > 255)
 		return (0);
-	if (map->bceil < 0 || map-> bceil > 255)
+	if (parse->bceil < 0 || parse-> bceil > 255)
 		return (0);
 	return (1);
 }
 
-int		ft_parsefloorcolor(char *str, t_map *map)
+int		ft_parsefloorcolor(char *str, t_parse *parse)
 {
 	int		i;
 
@@ -103,26 +103,26 @@ int		ft_parsefloorcolor(char *str, t_map *map)
 		i++;
 	if (!isdigit(str[i]))
 		return (0);
-	map->rfloor = ft_atoi(&str[i]);
+	parse->rfloor = ft_atoi(&str[i]);
 	while (ft_isdigit(str[i]))
 		i++;
 	while (ft_isspace(str[i]) || str[i] == ',')
 		i++;
 	if (!isdigit(str[i]))
 		return (0);
-	map->gfloor = ft_atoi(&str[i]);
+	parse->gfloor = ft_atoi(&str[i]);
 	while (ft_isdigit(str[i]))
 		i++;
 	while (ft_isspace(str[i])  || str[i] == ',')
 		i++;
 	if (!isdigit(str[i]))
 		return (0);
-	map->bfloor = ft_atoi(&str[i]);
-	if (map->rfloor < 0 || map-> rfloor > 255)
+	parse->bfloor = ft_atoi(&str[i]);
+	if (parse->rfloor < 0 || parse-> rfloor > 255)
 		return (0);
-	if (map->gfloor < 0 || map-> gfloor > 255)
+	if (parse->gfloor < 0 || parse-> gfloor > 255)
 		return (0);
-	if (map->bfloor < 0 || map-> bfloor > 255)
+	if (parse->bfloor < 0 || parse-> bfloor > 255)
 		return (0);
 	return (1);
 }

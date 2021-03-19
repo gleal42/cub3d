@@ -6,7 +6,7 @@
 /*   By: gleal <gleal@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/03/03 19:53:19 by gleal             #+#    #+#             */
-/*   Updated: 2021/03/06 12:33:07 by gleal            ###   ########.fr       */
+/*   Updated: 2021/03/19 21:21:53 by gleal            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,7 +39,7 @@ void	ft_replacetabs(char **temp, char **str, int len)
 	*str = 0;
 }
 
-void	*ft_realloctabs(char *str, int tab_nbr, t_map *map)
+void	*ft_realloctabs(char *str, int tab_nbr, t_parse *parse)
 {
 	int len;
 	char	*temp;
@@ -48,54 +48,54 @@ void	*ft_realloctabs(char *str, int tab_nbr, t_map *map)
 	temp = malloc(sizeof(char) * len + 1);
 	if (!temp)
 	{
-		map->error++;
+		parse->error++;
 		return (0);
 	}
 	ft_replacetabs(&temp, &str, len);
 	return (temp);
 }
 
-void	ft_tabtospace(t_map *map)
+void	ft_tabtospace(t_parse *parse)
 {
 	int	i;
 	int	tab_nbr;
 
 	i = 0;
-	while (map->text[i])
+	while (parse->text[i])
 	{
-		if (ft_strchr(map->text[i], '\t'))
+		if (ft_strchr(parse->text[i], '\t'))
 		{
-			tab_nbr = ft_countchr(map->text[i], '\t');
-			map->text[i] = ft_realloctabs(map->text[i], tab_nbr, map);
+			tab_nbr = ft_countchr(parse->text[i], '\t');
+			parse->text[i] = ft_realloctabs(parse->text[i], tab_nbr, parse);
 		}
 		i++;
 	}
 }
 
-void	ft_new_line(t_map *map)
+void	ft_new_line(t_parse *parse)
 {
 	char	**temp;
 	int	i;
 
 	i = 0;
-	(map->lnbr)++;
-	temp = malloc(sizeof(char *) * ((map->lnbr) + 2));
+	(parse->lnbr)++;
+	temp = malloc(sizeof(char *) * ((parse->lnbr) + 2));
 	if (!temp)
 		return ;
-	while (map->text[i])
+	while (parse->text[i])
 	{
-		temp[i] = map->text[i];
+		temp[i] = parse->text[i];
 		i++;
 	}
-	temp[map->lnbr] = 0;
-	temp[map->lnbr + 1] = 0;
-	free(map->text);
-	map->text = temp;
+	temp[parse->lnbr] = 0;
+	temp[parse->lnbr + 1] = 0;
+	free(parse->text);
+	parse->text = temp;
 }
 
-void	cub_extract(t_map *map, int fd)
+void	cub_extract(t_parse *parse, int fd)
 {
-	while (get_next_line(fd, &(map->text[map->lnbr])) > 0)
-		ft_new_line(map);
-	ft_tabtospace(map);
+	while (get_next_line(fd, &(parse->text[parse->lnbr])) > 0)
+		ft_new_line(parse);
+	ft_tabtospace(parse);
 }

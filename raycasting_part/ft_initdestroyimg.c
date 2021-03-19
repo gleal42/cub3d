@@ -6,7 +6,7 @@
 /*   By: gleal <gleal@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/03/18 17:03:49 by gleal             #+#    #+#             */
-/*   Updated: 2021/03/18 17:05:12 by gleal            ###   ########.fr       */
+/*   Updated: 2021/03/19 20:37:55 by gleal            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,7 +23,7 @@ int		destroyimg(t_adata *a, t_img *img)
 int		ftinit_img_sps(t_item *item, t_adata *a)
 {
 	item->imgsp.ptr = mlx_xpm_file_to_image(a->win.mlx,
-	"../textures/barrel.xpm", &item->imgsp.width, &item->imgsp.height);
+	"./textures/barrel.xpm", &item->imgsp.width, &item->imgsp.height);
 	item->imgsp.addr = (int *)mlx_get_data_addr(item->imgsp.ptr,
 	&item->imgsp.pixel_bits, &item->imgsp.line_bytes, &item->imgsp.endian);
 	return (0);

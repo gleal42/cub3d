@@ -6,7 +6,7 @@
 /*   By: gleal <gleal@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/03/08 17:40:35 by gleal             #+#    #+#             */
-/*   Updated: 2021/03/19 16:25:46 by gleal            ###   ########.fr       */
+/*   Updated: 2021/03/19 21:47:06 by gleal            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,7 +41,7 @@ void	ftinit_player(t_adata *a)
 
 void	ftinit_map(t_adata *a)
 {
-	a->map.maptxt = ft_test_map();
+	a->map.maptxt = a->parse.mapstr;
 	a->map.map_rows = ft_count_lines(a->map.maptxt);
 	a->map.map_cols = ft_max_strlen(a->map.maptxt);
 	a->map.tile_size = 18;
@@ -49,11 +49,3 @@ void	ftinit_map(t_adata *a)
 	a->map.map_w = a->map.map_cols * a->map.tile_size;
 }
 
-void	ftinit_win(t_adata *a)
-{
-	a->win.mlx = mlx_init();
-	a->win.win_w = 1920;
-	a->win.win_h = 1080;
-	a->win.win = mlx_new_window(a->win.mlx, a->win.win_w,
-	a->win.win_h, "Wolfenstein3D");
-}

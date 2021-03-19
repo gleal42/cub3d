@@ -1,10 +1,10 @@
 R 1920 1080
-NO ./textures/stone.xpm
-SO ./textures/cobblestone.xpm
-WE ./textures/wood_plank.xpm
-EA ./textures/grass.xpm
+NO ./textures/redbrick.xpm
+SO ./textures/wood.xpm
+WE ./textures/greystone.xpm
+EA ./textures/purplestone.xpm
 
-S ./textures/diamond.xpm
+S ./textures/barrel.xpm
 F 122,100,0
 C 225,30,0
 
