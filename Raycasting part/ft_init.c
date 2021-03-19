@@ -6,7 +6,7 @@
 /*   By: gleal <gleal@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/03/08 17:40:35 by gleal             #+#    #+#             */
-/*   Updated: 2021/03/18 17:07:35 by gleal            ###   ########.fr       */
+/*   Updated: 2021/03/19 16:25:46 by gleal            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,8 +14,6 @@
 
 int		ftinit_sprites(t_adata *a)
 {
-	int		i;
-
 	a->sps.number = ft_countsprites(a->map.maptxt);
 	a->sps.items = malloc(sizeof(t_item) * (a->sps.number));
 	add_sprites(a->sps.items, a->map.maptxt, a);
@@ -53,8 +51,6 @@ void	ftinit_map(t_adata *a)
 
 void	ftinit_win(t_adata *a)
 {
-	t_win		win;
-
 	a->win.mlx = mlx_init();
 	a->win.win_w = 1920;
 	a->win.win_h = 1080;

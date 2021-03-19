@@ -6,7 +6,7 @@
 /*   By: gleal <gleal@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/03/18 18:32:47 by gleal             #+#    #+#             */
-/*   Updated: 2021/03/18 18:43:22 by gleal            ###   ########.fr       */
+/*   Updated: 2021/03/19 16:49:14 by gleal            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -71,13 +71,9 @@ int		update_info_sps(t_item **item, t_adata *a)
 {
 	int			i;
 	double		sp_anglemap;
-	double		fovref_min;
-	double		fovref_max;
 	double		vetx;
 	double		vety;
 
-	fovref_min = 2 * M_PI - (a->ray.fov / 2);
-	fovref_max = a->ray.fov / 2;
 	i = 0;
 	while (i < a->sps.number)
 	{
@@ -85,8 +81,9 @@ int		update_info_sps(t_item **item, t_adata *a)
 		vety = (*item)[i].y - a->joe.y;
 		sp_anglemap = normalrad(atan2(vety, vetx));
 		(*item)[i].angle = normalrad(sp_anglemap - a->joe.rotangle);
-		if (((*item)[i].angle > fovref_min && (*item)[i].angle < 2 * M_PI) ||
-				((*item)[i].angle >= 0 && (*item)[i].angle < fovref_max))
+		if (((*item)[i].angle > a->ray.fovref_min &&
+		(*item)[i].angle < 2 * M_PI) ||
+		((*item)[i].angle >= 0 && (*item)[i].angle < a->ray.fovref_max))
 			(*item)[i].is_visible = 1;
 		else
 			(*item)[i].is_visible = 0;

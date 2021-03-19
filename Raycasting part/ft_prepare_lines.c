@@ -6,14 +6,14 @@
 /*   By: gleal <gleal@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/03/18 19:17:21 by gleal             #+#    #+#             */
-/*   Updated: 2021/03/18 19:18:22 by gleal            ###   ########.fr       */
+/*   Updated: 2021/03/19 16:32:05 by gleal            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "raycasting.h"
 
-int		ft_prepare_sprite_line(double ray_angle,
-		t_item *item, t_adata *a, int col_id)
+int		ft_prepare_sprite_line(t_item *item, t_adata *a,
+		int col_id)
 {
 	double		line_height;
 
@@ -38,8 +38,6 @@ int		ft_prepare_sprite_line(double ray_angle,
 int		ft_prepare_3d_line(double ray_angle, t_ray *ray, t_adata *a, int col_id)
 {
 	double		line_height;
-	double		adjusted_pos;
-	double		nofish_ang;
 	double		nofish_dist;
 
 	nofish_dist = (ray->distance / a->map.tile_size) *
@@ -62,7 +60,7 @@ int		ft_prepare_3d_line(double ray_angle, t_ray *ray, t_adata *a, int col_id)
 	return (0);
 }
 
-int		ft_prepare_ray_line(double ray_angle, t_ray *ray, t_adata *a)
+int		ft_prepare_ray_line(t_ray *ray, t_adata *a)
 {
 	ray->line.start_x = a->joe.x;
 	ray->line.start_y = a->joe.y;

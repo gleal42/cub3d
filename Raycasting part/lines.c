@@ -6,13 +6,13 @@
 /*   By: gleal <gleal@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/03/18 16:56:54 by gleal             #+#    #+#             */
-/*   Updated: 2021/03/18 18:57:16 by gleal            ###   ########.fr       */
+/*   Updated: 2021/03/19 16:25:20 by gleal            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "raycasting.h"
 
-int		linesprite(double ray_angle, t_ray *ray, t_item *item,
+int		linesprite(t_item *item,
 		t_adata *a, int col_id)
 {
 	double remain_pixels;
@@ -24,7 +24,7 @@ int		linesprite(double ray_angle, t_ray *ray, t_item *item,
 	pixelx = a->line_sp.start_x;
 	pixely = a->line_sp.start_y;
 	texy = 0;
-	texx = bitmap_offset_sp(ray, a, item, col_id);
+	texx = bitmap_offset_sp(item, col_id);
 	remain_pixels = a->line_sp.pixels;
 	while (remain_pixels >= 0)
 	{
@@ -40,7 +40,7 @@ int		linesprite(double ray_angle, t_ray *ray, t_item *item,
 	return (0);
 }
 
-int		line3d(double ray_angle, t_ray *ray, t_adata *a, int col_id)
+int		line3d(t_ray *ray, t_adata *a)
 {
 	double remain_pixels;
 	double pixelx;

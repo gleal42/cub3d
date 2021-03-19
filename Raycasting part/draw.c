@@ -6,7 +6,7 @@
 /*   By: gleal <gleal@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/03/11 20:57:10 by gleal             #+#    #+#             */
-/*   Updated: 2021/03/18 18:51:31 by gleal            ###   ########.fr       */
+/*   Updated: 2021/03/19 16:39:21 by gleal            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,7 @@
 int		draw3dline(double ray_angle, t_ray *ray, t_adata *a, int col_id)
 {
 	ft_prepare_3d_line(ray_angle, ray, a, col_id);
-	line3d(ray_angle, ray, a, col_id);
+	line3d(ray, a);
 	return (0);
 }
 
@@ -52,7 +52,7 @@ int		draw_comp_map(int p_w, int p_h, t_adata *a)
 
 	cur_x = (int)p_w / a->map.tile_size;
 	cur_y = (int)p_h / a->map.tile_size;
-	if (cur_x >= ft_strlen(a->map.maptxt[cur_y]))
+	if (cur_x >= (int)ft_strlen(a->map.maptxt[cur_y]))
 		a->img_m.addr[(int)(p_h * a->map.map_w + p_w)] = 0xD6D6D6;
 	else if (a->map.maptxt[cur_y][cur_x] == '1')
 		a->img_m.addr[(int)(p_h * a->map.map_w + p_w)] = 0x85b569;
