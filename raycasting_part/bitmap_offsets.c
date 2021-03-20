@@ -6,7 +6,7 @@
 /*   By: gleal <gleal@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/03/18 17:27:38 by gleal             #+#    #+#             */
-/*   Updated: 2021/03/19 16:18:56 by gleal            ###   ########.fr       */
+/*   Updated: 2021/03/20 14:45:24 by gleal            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,7 +27,7 @@ int		bitmap_offset(t_ray *ray, t_adata *a)
 	double	ray_x;
 	double	ray_y;
 	double	remainder;
-	double	offset;
+	int		offset;
 
 	ray_x = ray->wall_hit_x / a->map.tile_size;
 	ray_y = ray->wall_hit_y / a->map.tile_size;

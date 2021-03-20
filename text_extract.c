@@ -6,7 +6,7 @@
 /*   By: gleal <gleal@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/03/03 19:53:19 by gleal             #+#    #+#             */
-/*   Updated: 2021/03/19 21:21:53 by gleal            ###   ########.fr       */
+/*   Updated: 2021/03/20 17:12:17 by gleal            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,7 @@ void	ft_replacetabs(char **temp, char **str, int len)
 	size_t	i;
 	size_t	j;
 	
-	**temp = '\0';
+	temp[0][0] = '\0';
 	i = 0;
 	j = 0;
 	while (i < ft_strlen(str[0]))

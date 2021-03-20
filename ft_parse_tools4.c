@@ -6,7 +6,7 @@
 /*   By: gleal <gleal@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/03/05 19:01:43 by gleal             #+#    #+#             */
-/*   Updated: 2021/03/19 21:31:36 by gleal            ###   ########.fr       */
+/*   Updated: 2021/03/20 16:56:35 by gleal            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,9 +24,11 @@ int		ft_copy_map(char **map_start, t_parse *parse)
 	while (is_map(map_start[i]))
 	{
 		temp[i] = ft_strdup(map_start[i]);
+		if (!temp[i])
+			return (0);
 		i++;
 	}
-	temp[i] = 0;
+	temp[i] = NULL;
 	parse->mapstr = temp;
 	return (1);
 }

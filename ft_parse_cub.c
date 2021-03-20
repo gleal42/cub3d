@@ -6,7 +6,7 @@
 /*   By: gleal <gleal@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/03/03 20:01:55 by gleal             #+#    #+#             */
-/*   Updated: 2021/03/19 21:32:55 by gleal            ###   ########.fr       */
+/*   Updated: 2021/03/20 16:56:05 by gleal            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -99,11 +99,12 @@ int		ft_parse_cub(char **text, t_parse *parse)
 				return (ft_error(INVALIDMAP));
 			while (is_map(text[i + 1]) && text[i])
 				i++;
+			break ;
 		}
 		else if (text[i][0] != '\0')
 			return (ft_error(INVALIDCHAR));
 		i++;
 	}
-	free_all_strs(parse->text);
+	ft_freetext(parse->text);
 	return (1);
 }

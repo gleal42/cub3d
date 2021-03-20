@@ -6,7 +6,7 @@
 /*   By: gleal <gleal@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/03/18 16:42:55 by gleal             #+#    #+#             */
-/*   Updated: 2021/03/19 21:48:30 by gleal            ###   ########.fr       */
+/*   Updated: 2021/03/20 17:24:04 by gleal            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,14 +14,16 @@
 
 int		has_wall(double x, double y, t_adata *a)
 {
-	int mapgridx;
-	int mapgridy;
+	int		mapgridx;
+	int		mapgridy;
 
-	if (x < 0 || x > a->map.map_w || y < 0 || y > a->map.map_h)
+	if ((int)x < 0 || (int)x > a->map.map_w || (int)y < 0 || (int)y > a->map.map_h)
 		return (1);
-	mapgridx = floor(x / a->map.tile_size);
-	mapgridy = floor(y / a->map.tile_size);
-	if (a->map.maptxt[mapgridy][mapgridx] == '1')
+	mapgridx = (int)x / a->map.tile_size;
+	mapgridy = (int)y / a->map.tile_size;
+	if (mapgridx >= (int)ft_strlen(a->map.maptxt[mapgridy]))
+		return (1);
+	if (a->map.maptxt[(int)mapgridy][(int)mapgridx] == '1')
 		return (1);
 	return (0);
 }
