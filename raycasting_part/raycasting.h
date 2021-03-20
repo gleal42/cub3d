@@ -6,7 +6,7 @@
 /*   By: gleal <gleal@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/03/06 19:21:33 by gleal             #+#    #+#             */
-/*   Updated: 2021/03/19 19:58:10 by gleal            ###   ########.fr       */
+/*   Updated: 2021/03/20 20:26:54 by gleal            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,6 +20,7 @@
 # define LEFT_ARROW 123
 # define RIGHT_ARROW 124
 
+double			calculate_tilesize(t_adata *a);
 char			**ft_test_map(void);
 int				ft_max_strlen(char **strs);
 int				ft_count_lines(char **strs);
@@ -60,10 +61,7 @@ void			ftinit_img_m(t_adata *a);
 int				ftinit_img_sps(t_item *item, t_adata *a);
 int				destroyimg(t_adata *a, t_img *img);
 int				ft_initline(t_adata *a);
-int				ftinitwetext(t_adata *a);
-int				ftiniteatext(t_adata *a);
-int				ftinitsotext(t_adata *a);
-int				ftinitnotext(t_adata *a);
+int		ftinittext(t_adata *a, t_img *imgt, char *textpath);
 int				ft_prepare_3d_line(double ray_angle,
 				t_ray *ray, t_adata *a, int col_id);
 int				line3d(t_ray *ray, t_adata *a);
