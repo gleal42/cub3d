@@ -6,7 +6,7 @@
 #    By: gleal <gleal@student.42lisboa.com>         +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2021/02/09 15:43:58 by gleal             #+#    #+#              #
-#    Updated: 2021/03/19 19:30:29 by gleal            ###   ########.fr        #
+#    Updated: 2021/03/21 15:50:38 by gleal            ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -43,6 +43,7 @@ SRCS = ft_map_utils.c \
 	   ./raycasting_part/cast_rays_vertical.c \
 	   ./raycasting_part/horiz_vert_raycomp.c \
 	   ./raycasting_part/bitmap_offsets.c \
+	   ./raycasting_part/color_utils.c \
 
 OBJS = $(SRCS:.c=.o)
 

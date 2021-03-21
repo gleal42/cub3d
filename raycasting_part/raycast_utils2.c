@@ -6,11 +6,41 @@
 /*   By: gleal <gleal@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/03/18 16:42:55 by gleal             #+#    #+#             */
-/*   Updated: 2021/03/20 20:27:47 by gleal            ###   ########.fr       */
+/*   Updated: 2021/03/21 17:21:52 by gleal            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "raycasting.h"
+
+int		find_text_wallhit(double ray_angle, t_ray *ray, t_adata *a)
+{
+	if (ray->hit_vertical)
+	{
+		if (normalrad(ray_angle) > M_PI && normalrad(ray_angle) < 2 * M_PI)
+		{
+			ray->text_wallhit = a->notext;
+			return (0);
+		}
+		else
+		{
+			ray->text_wallhit = a->sotext;
+			return (0);
+		}
+	}
+	else
+	{
+		if (normalrad(ray_angle) > M_PI_2 && normalrad(ray_angle) < (3 * M_PI_2))
+		{
+			ray->text_wallhit = a->sotext;
+			return (0);
+		}
+		else
+		{
+			ray->text_wallhit = a->sotext;
+			return (0);
+		}
+	}
+}
 
 int		has_wall(double x, double y, t_adata *a)
 {

@@ -1,32 +1,38 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   cub3d.c                                            :+:      :+:    :+:   */
+/*   color_utils.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: gleal <gleal@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/03/02 15:01:37 by gleal             #+#    #+#             */
-/*   Updated: 2021/03/21 16:36:27 by gleal            ###   ########.fr       */
+/*   Created: 2021/03/21 14:54:52 by gleal             #+#    #+#             */
+/*   Updated: 2021/03/21 14:56:30 by gleal            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "cub3d.h"
+#include "raycasting.h"
 
-void	cub3d(char *cubname)
+int		create_trgb(int t, int r, int g, int b)
 {
-	int fd;
-	t_adata		a;
+	return(t << 24 | r << 16 | g << 8 | b);
+}
 
-		ft_start_tmap(&a.parse);
-		fd = open(cubname, O_RDONLY);
-		cub_extract(&a.parse, fd);
-		if (a.parse.error)
-		{
-			printf("there was an error while extracting");
-			return ;
-		}
-		if (!ft_parse_cub(a.parse.text, &a.parse))
-			return ;
-		start_game(&a);
-		ft_freetext(a.parse.mapstr);
+int		get_t(int trgb)
+{
+	return (trgb & (0xFF << 24));
+}
+
+int		get_r(int trgb)
+{
+	return (trgb & (0xFF << 16));
+}
+
+int		get_g(int trgb)
+{
+	return (trgb & (0xFF << 8));
+}
+
+int		get_b(int trgb)
+{
+	return (trgb & 0xFF);
 }

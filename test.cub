@@ -5,8 +5,8 @@ WE ./textures/greystone.xpm
 EA ./textures/purplestone.xpm
 
 S ./textures/barrel.xpm
-F 122,100,0
-C 225,30,0
+F 77,92,53
+C 163,208,230
 
 		1111111111111111111111111
 		1000000000110000000000001

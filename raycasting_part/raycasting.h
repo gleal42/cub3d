@@ -6,7 +6,7 @@
 /*   By: gleal <gleal@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/03/06 19:21:33 by gleal             #+#    #+#             */
-/*   Updated: 2021/03/20 20:26:54 by gleal            ###   ########.fr       */
+/*   Updated: 2021/03/21 17:22:09 by gleal            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -64,7 +64,7 @@ int				ft_initline(t_adata *a);
 int		ftinittext(t_adata *a, t_img *imgt, char *textpath);
 int				ft_prepare_3d_line(double ray_angle,
 				t_ray *ray, t_adata *a, int col_id);
-int				line3d(t_ray *ray, t_adata *a);
+int				line3d(t_ray *ray, t_adata *a, t_text text_wallhit);
 int				ft_prepare_sprite_line(t_item *item, t_adata *a,
 				int col_id);
 int				linesprite(t_item *item,
@@ -89,5 +89,9 @@ int				horizontal_cast_facingdown(t_adata *a, t_ray *ray,
 				double *nexttouch_horx, double *nexttouch_hory);
 void			horiz_vert_raycomp(t_adata *a, t_ray *ray,
 				double *horz_dist, double *vert_dist);
+int				create_trgb(int t, int r, int g, int b);
+int				draw_floorrgb(t_adata *a);
+int				draw_ceilingrgb(t_adata *a);
+int		find_text_wallhit(double ray_angle, t_ray *ray, t_adata *a);
 
 #endif

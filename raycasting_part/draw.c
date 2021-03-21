@@ -6,7 +6,7 @@
 /*   By: gleal <gleal@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/03/11 20:57:10 by gleal             #+#    #+#             */
-/*   Updated: 2021/03/19 16:39:21 by gleal            ###   ########.fr       */
+/*   Updated: 2021/03/21 17:04:38 by gleal            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,7 @@
 int		draw3dline(double ray_angle, t_ray *ray, t_adata *a, int col_id)
 {
 	ft_prepare_3d_line(ray_angle, ray, a, col_id);
-	line3d(ray, a);
+	line3d(ray, a, ray->text_wallhit);
 	return (0);
 }
 

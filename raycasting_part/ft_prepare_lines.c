@@ -6,7 +6,7 @@
 /*   By: gleal <gleal@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/03/18 19:17:21 by gleal             #+#    #+#             */
-/*   Updated: 2021/03/19 16:32:05 by gleal            ###   ########.fr       */
+/*   Updated: 2021/03/21 17:27:02 by gleal            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -57,6 +57,7 @@ int		ft_prepare_3d_line(double ray_angle, t_ray *ray, t_adata *a, int col_id)
 	pow(a->line_3d.deltay, 2));
 	a->line_3d.deltax /= a->line_3d.pixels;
 	a->line_3d.deltay /= a->line_3d.pixels;
+	find_text_wallhit(ray_angle, ray, a);
 	return (0);
 }
 

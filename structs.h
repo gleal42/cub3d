@@ -6,7 +6,7 @@
 /*   By: gleal <gleal@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/03/19 19:46:44 by gleal             #+#    #+#             */
-/*   Updated: 2021/03/20 19:47:03 by gleal            ###   ########.fr       */
+/*   Updated: 2021/03/21 17:04:03 by gleal            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -89,6 +89,12 @@ typedef struct	s_line
 	double		pixels;
 }				t_line;
 
+typedef struct	s_text
+{
+	char		*text_name;
+	t_img		imgt;
+}				t_text;
+
 typedef struct	s_ray
 {
 	double		fov;
@@ -114,14 +120,9 @@ typedef struct	s_ray
 	int			found_ver_wall;
 	double		distance;
 	int			hit_vertical;
+	t_text		text_wallhit;
 	t_line		line;
 }				t_ray;
-
-typedef struct	s_text
-{
-	char		*text_name;
-	t_img		imgt;
-}				t_text;
 
 typedef struct	s_item
 {
