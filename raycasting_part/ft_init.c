@@ -6,7 +6,7 @@
 /*   By: gleal <gleal@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/03/08 17:40:35 by gleal             #+#    #+#             */
-/*   Updated: 2021/03/20 20:25:05 by gleal            ###   ########.fr       */
+/*   Updated: 2021/03/21 21:38:42 by gleal            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,7 +37,7 @@ void	ftinit_player(t_adata *a)
 	a->joe.turndir = 0;
 	a->joe.walkdir = 0;
 	a->joe.movespeed = 0.35;
-	a->joe.rotatespeed = 5 * (M_PI / 180);
+	a->joe.rotatespeed = 7 * (M_PI / 180);
 }
 
 void	ftinit_map(t_adata *a)

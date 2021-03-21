@@ -6,7 +6,7 @@
 /*   By: gleal <gleal@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/03/19 19:46:44 by gleal             #+#    #+#             */
-/*   Updated: 2021/03/21 17:04:03 by gleal            ###   ########.fr       */
+/*   Updated: 2021/03/21 19:00:16 by gleal            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -70,7 +70,7 @@ typedef struct	s_player
 	double		x;
 	double		y;
 	double		radius;
-	int			walkdir;
+	char		walkdir;
 	int			turndir;
 	double		rotangle;
 	double		movespeed;

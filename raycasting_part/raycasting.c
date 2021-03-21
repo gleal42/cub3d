@@ -6,7 +6,7 @@
 /*   By: gleal <gleal@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/03/08 15:20:19 by gleal             #+#    #+#             */
-/*   Updated: 2021/03/21 16:03:24 by gleal            ###   ########.fr       */
+/*   Updated: 2021/03/21 18:51:17 by gleal            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,6 +48,7 @@ int		start_game(t_adata *a)
 	mlx_do_key_autorepeatoff(a->win.mlx);
 	mlx_hook(a->win.win, 2, 1L << 0, &butt_pressed, a);
 	mlx_hook(a->win.win, 3, 1L << 1, &butt_released, a);
+	mlx_hook(a->win.win, 17, 1L<<17, &clicked_cross, a);
 	mlx_loop_hook(a->win.mlx, &render_next_frame, a);
 	mlx_loop(a->win.mlx);
 	return (1);

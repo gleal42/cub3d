@@ -6,7 +6,7 @@
 #    By: gleal <gleal@student.42lisboa.com>         +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2021/02/09 15:43:58 by gleal             #+#    #+#              #
-#    Updated: 2021/03/21 15:50:38 by gleal            ###   ########.fr        #
+#    Updated: 2021/03/21 21:00:17 by gleal            ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -23,6 +23,7 @@ SRCS = ft_map_utils.c \
 	   ft_parse_tools3.c \
 	   ft_parse_tools4.c \
 	   ft_map_utils2.c \
+	   free_utils.c \
 	   ./raycasting_part/raycasting.c \
 	   ./raycasting_part/events.c \
 	   ./raycasting_part/ft_init.c \

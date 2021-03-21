@@ -6,7 +6,7 @@
 /*   By: gleal <gleal@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/03/06 19:21:33 by gleal             #+#    #+#             */
-/*   Updated: 2021/03/21 17:22:09 by gleal            ###   ########.fr       */
+/*   Updated: 2021/03/21 21:06:08 by gleal            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,6 +19,11 @@
 # define DOWN_ARROW 125
 # define LEFT_ARROW 123
 # define RIGHT_ARROW 124
+# define ESC_KEY 53
+# define W_KEY 13
+# define A_KEY 0
+# define S_KEY 1
+# define D_KEY 2
 
 double			calculate_tilesize(t_adata *a);
 char			**ft_test_map(void);
@@ -92,6 +97,8 @@ void			horiz_vert_raycomp(t_adata *a, t_ray *ray,
 int				create_trgb(int t, int r, int g, int b);
 int				draw_floorrgb(t_adata *a);
 int				draw_ceilingrgb(t_adata *a);
-int		find_text_wallhit(double ray_angle, t_ray *ray, t_adata *a);
+int				find_text_wallhit(double ray_angle, t_ray *ray, t_adata *a);
+int				clicked_cross(int keycode, t_adata *a);
+void			clean_sprites(t_adata *a, t_sps *sps);
 
 #endif
