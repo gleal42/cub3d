@@ -6,7 +6,7 @@
 /*   By: gleal <gleal@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/03/18 16:56:54 by gleal             #+#    #+#             */
-/*   Updated: 2021/03/21 17:03:40 by gleal            ###   ########.fr       */
+/*   Updated: 2021/03/22 18:42:40 by gleal            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -78,7 +78,7 @@ int		line(t_line line, t_adata *a)
 	remain_pixels = line.pixels;
 	while (remain_pixels > 0)
 	{
-		a->img_m.addr[(int)pixely * a->map.map_w + (int)pixelx] = line.color;
+		a->img_3d.addr[(int)pixely * (int)a->win.win_w + (int)pixelx] = line.color;
 		pixelx += line.deltax;
 		pixely += line.deltay;
 		--remain_pixels;

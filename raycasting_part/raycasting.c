@@ -6,7 +6,7 @@
 /*   By: gleal <gleal@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/03/08 15:20:19 by gleal             #+#    #+#             */
-/*   Updated: 2021/03/21 18:51:17 by gleal            ###   ########.fr       */
+/*   Updated: 2021/03/22 19:27:43 by gleal            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,19 +25,13 @@ void	ft_init_all(t_adata *a)
 int		render_next_frame(t_adata *a)
 {
 	ftinit_img_3d(a);
-	ftinit_img_m(a);
 	ft_update_player(a);
 	update_sprites(a);
-	draw_map(a);
-	draw_minicircle(a);
-	ft_initline(a);
-	line(a->line, a);
 	draw_floorrgb(a);
 	draw_ceilingrgb(a);
 	draw3d(a);
+	draw_map(a);
 	mlx_put_image_to_window(a->win.mlx, a->win.win, a->img_3d.ptr, 0, 0);
-	mlx_put_image_to_window(a->win.mlx, a->win.win, a->img_m.ptr, 0, 0);
-	destroyimg(a, &a->img_m);
 	destroyimg(a, &a->img_3d);
 	return (0);
 }

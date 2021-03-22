@@ -1,8 +1,8 @@
 R 1920 1080
-NO ./textures/redbrick.xpm
-SO ./textures/wood.xpm
-WE ./textures/greystone.xpm
-EA ./textures/purplestone.xpm
+NO ./textures/planks.xpm
+SO ./textures/planks.xpm
+WE ./textures/planks.xpm
+EA ./textures/planks.xpm
 
 S ./textures/barrel.xpm
 F 77,92,53

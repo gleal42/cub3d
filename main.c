@@ -6,7 +6,7 @@
 /*   By: gleal <gleal@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/03/02 15:01:55 by gleal             #+#    #+#             */
-/*   Updated: 2021/03/21 22:15:28 by gleal            ###   ########.fr       */
+/*   Updated: 2021/03/22 20:04:40 by gleal            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,11 +25,16 @@ int		main(int argc, char **argv)
 {
 	if (argc < 2)
 		printf("You forgot the cub file name");
-	if (argc == 2)
+	else if (argc == 2)
 		cub3d(argv[1]);
-	/*if (argc == 3)
+	else if (argc == 3)
 	{
-		if (ft_strcmp("--save", argv[2]) == 0)
+		if (!(ft_strncmp("--save", argv[2], ft_strlen(argv[2]))) &&
+				ft_strlen(argv[2]) == 6)
 			screenshot(argv[1]);
-	}*/
+		else
+			printf("WRONG");
+	}
+	else
+		printf("WRONG");
 }

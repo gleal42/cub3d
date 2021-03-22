@@ -6,7 +6,7 @@
 /*   By: gleal <gleal@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/03/02 15:13:07 by gleal             #+#    #+#             */
-/*   Updated: 2021/03/19 19:48:41 by gleal            ###   ########.fr       */
+/*   Updated: 2021/03/22 16:57:42 by gleal            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -85,5 +85,6 @@ int		checkfirstwall(char *str);
 int		ft_copy_map(char **map_start, t_parse *parse);
 void	free_all_strs(char **strs);
 int		start_game(t_adata *a);
+void	screenshot(char *cubname);
 
 #endif

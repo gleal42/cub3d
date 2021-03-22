@@ -6,7 +6,7 @@
 /*   By: gleal <gleal@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/03/09 19:42:43 by gleal             #+#    #+#             */
-/*   Updated: 2021/03/21 21:37:39 by gleal            ###   ########.fr       */
+/*   Updated: 2021/03/22 18:50:29 by gleal            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -66,6 +66,5 @@ int		butt_pressed(int keycode, t_adata *a)
 		a->joe.turndir = 1;
 	else if (keycode == LEFT_ARROW)
 		a->joe.turndir = -1;
-	printf("%d\n", keycode);
 	return (0);
 }

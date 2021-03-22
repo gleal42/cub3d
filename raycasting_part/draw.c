@@ -6,7 +6,7 @@
 /*   By: gleal <gleal@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/03/11 20:57:10 by gleal             #+#    #+#             */
-/*   Updated: 2021/03/21 17:04:38 by gleal            ###   ########.fr       */
+/*   Updated: 2021/03/22 19:18:37 by gleal            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,26 +22,7 @@ int		draw3dline(double ray_angle, t_ray *ray, t_adata *a, int col_id)
 int		draw_comp_circle(int p_w, int p_h, t_adata *a)
 {
 	if (sqrt(pow(a->joe.x - p_w, 2) + pow(a->joe.y - p_h, 2)) <= a->joe.radius)
-		a->img_m.addr[(p_h * a->map.map_w + p_w)] = 0xb87cb3;
-	return (0);
-}
-
-int		draw_minicircle(t_adata *a)
-{
-	int	pixel_w;
-	int	pixel_h;
-
-	pixel_h = 0;
-	while (pixel_h < a->map.map_h)
-	{
-		pixel_w = 0;
-		while (pixel_w < a->map.map_w)
-		{
-			draw_comp_circle(pixel_w, pixel_h, a);
-			pixel_w++;
-		}
-		pixel_h++;
-	}
+		a->img_3d.addr[(p_h * (int)a->win.win_w + p_w)] = 0xb87cb3;
 	return (0);
 }
 
@@ -53,17 +34,17 @@ int		draw_comp_map(int p_w, int p_h, t_adata *a)
 	cur_x = (int)p_w / a->map.tile_size;
 	cur_y = (int)p_h / a->map.tile_size;
 	if (cur_x >= (int)ft_strlen(a->map.maptxt[cur_y]))
-		a->img_m.addr[(int)(p_h * a->map.map_w + p_w)] = 0xD6D6D6;
+		return (0);
 	else if (a->map.maptxt[cur_y][cur_x] == '1')
-		a->img_m.addr[(int)(p_h * a->map.map_w + p_w)] = 0x85b569;
+		a->img_3d.addr[(int)(p_h * (int)a->win.win_w + p_w)] = 0x85b569;
 	else if (ft_strchr("02NSWE", a->map.maptxt[cur_y][cur_x]))
-		a->img_m.addr[(int)(p_h * a->map.map_w + p_w)] = 0xebdbb7;
+		a->img_3d.addr[(int)(p_h * (int)a->win.win_w + p_w)] = 0xebdbb7;
 	else
-		a->img_m.addr[(int)(p_h * a->map.map_w + p_w)] = 0xD6D6D6;
-	return (0);
+		return (0);
+	return (1);
 }
 
-int		draw_map(t_adata *a)
+int		draw_comp(t_adata *a, int (*comp)(int, int, t_adata *))
 {
 	int	pixel_w;
 	int	pixel_h;
@@ -74,10 +55,19 @@ int		draw_map(t_adata *a)
 		pixel_w = 0;
 		while (pixel_w < a->map.map_w)
 		{
-			draw_comp_map(pixel_w, pixel_h, a);
+			comp(pixel_w, pixel_h, a);
 			pixel_w++;
 		}
 		pixel_h++;
 	}
+	return (0);
+}
+
+int		draw_map(t_adata *a)
+{
+	draw_comp(a, &draw_comp_map);
+	draw_comp(a, &draw_comp_circle);
+	ft_initline(a);
+	line(a->line, a);
 	return (0);
 }

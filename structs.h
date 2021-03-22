@@ -6,12 +6,23 @@
 /*   By: gleal <gleal@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/03/19 19:46:44 by gleal             #+#    #+#             */
-/*   Updated: 2021/03/21 19:00:16 by gleal            ###   ########.fr       */
+/*   Updated: 2021/03/22 17:27:17 by gleal            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef STRUCTS_H
 # define STRUCTS_H
+
+typedef	struct	s_bmp
+{
+	int				filesize;
+	char			*img;
+	unsigned char	fileheader[14];
+	unsigned char	infoheader[40];
+	unsigned char	pad[3];
+	int				color;
+	int				fd;
+}				t_bmp;
 
 typedef struct	s_parse
 {
