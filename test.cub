@@ -4,7 +4,7 @@ SO ./textures/planks.xpm
 WE ./textures/planks.xpm
 EA ./textures/planks.xpm
 
-S ./textures/barrel.xpm
+S ./textures/creeper.xpm
 F 77,92,53
 C 163,208,230
 

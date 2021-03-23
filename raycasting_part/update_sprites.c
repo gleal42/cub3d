@@ -6,7 +6,7 @@
 /*   By: gleal <gleal@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/03/18 18:32:47 by gleal             #+#    #+#             */
-/*   Updated: 2021/03/19 16:49:14 by gleal            ###   ########.fr       */
+/*   Updated: 2021/03/23 20:13:12 by gleal            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,14 +16,17 @@ int		spritescreenposition(t_item *item, t_adata *a)
 {
 	double	centersprite;
 
-	item->sprite_hw = a->ray.distprojplane /
+	item->sprite_w = ((item->imgsp.width /item->imgsp.height) *
+	a->ray.distprojplane) /
+	(item->distance / a->map.tile_size);
+	item->sprite_h = a->ray.distprojplane /
 	(item->distance / a->map.tile_size);
 	item->ystart = a->win.win_h / 2 -
-	item->sprite_hw / 2;
-	item->yend = item->ystart + item->sprite_hw;
+	item->sprite_h / 2;
+	item->yend = item->ystart + item->sprite_h;
 	centersprite = tan(item->angle) * a->ray.distprojplane;
-	item->xstart = a->win.win_w / 2 + centersprite - item->sprite_hw / 2;
-	item->xend = item->xstart + item->sprite_hw;
+	item->xstart = a->win.win_w / 2 + centersprite - item->sprite_w / 2;
+	item->xend = item->xstart + item->sprite_w;
 	return (0);
 }
 

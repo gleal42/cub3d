@@ -6,7 +6,7 @@
 /*   By: gleal <gleal@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/03/19 19:46:44 by gleal             #+#    #+#             */
-/*   Updated: 2021/03/22 17:27:17 by gleal            ###   ########.fr       */
+/*   Updated: 2021/03/23 19:03:39 by gleal            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -141,7 +141,8 @@ typedef struct	s_item
 	double		y;
 	double		angle;
 	double		distance;
-	double		sprite_hw;
+	double		sprite_h;
+	double		sprite_w;
 	double		ystart;
 	double		yend;
 	double		xstart;
