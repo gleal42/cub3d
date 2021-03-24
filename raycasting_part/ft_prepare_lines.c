@@ -6,7 +6,7 @@
 /*   By: gleal <gleal@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/03/18 19:17:21 by gleal             #+#    #+#             */
-/*   Updated: 2021/03/23 20:22:02 by gleal            ###   ########.fr       */
+/*   Updated: 2021/03/24 20:42:04 by gleal            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,13 +17,13 @@ int		ft_prepare_sprite_line(t_item *item, t_adata *a,
 {
 	double		line_height;
 
-	line_height = a->ray.distprojplane / (item->distance / a->map.tile_size);
+	line_height = item->sprite_h;
 	a->line_sp.start_x = col_id;
-	a->line_sp.start_y = (a->win.win_h / 2) - (line_height / 2);
+	a->line_sp.start_y = (a->win.win_h / 2) - (line_height * 11 / 40);
 	if (a->line_sp.start_y < 0)
 		a->line_sp.start_y = 0;
 	a->line_sp.end_x = col_id;
-	a->line_sp.end_y = (a->win.win_h / 2) + (line_height / 2);
+	a->line_sp.end_y = (a->win.win_h / 2) + (line_height * 29 / 40);
 	if (a->line_sp.end_y >= a->win.win_h)
 		a->line_sp.end_y = a->win.win_h - 1.0;
 	a->line_sp.deltax = a->line_sp.end_x - a->line_sp.start_x;

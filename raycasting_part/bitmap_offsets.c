@@ -6,11 +6,26 @@
 /*   By: gleal <gleal@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/03/18 17:27:38 by gleal             #+#    #+#             */
-/*   Updated: 2021/03/23 19:13:32 by gleal            ###   ########.fr       */
+/*   Updated: 2021/03/24 21:40:27 by gleal            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "raycasting.h"
+
+int		bitmap_offset_floor(t_adata *a, double *x, double *y)
+{
+	while (*x < -1)
+		(*x)++;
+	while (*y < -1)
+		(*y)++;
+	while (*x > 1)
+		(*x)--;
+	while (*y > 1)
+		(*y)--;
+	*x = fabs(*x) * a->wetext.imgt.width;
+	*y = fabs(*y) * a->wetext.imgt.height;
+	return (0);
+}
 
 int		bitmap_offset_sp(t_item *item, int col_id)
 {

@@ -6,7 +6,7 @@
 /*   By: gleal <gleal@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/03/19 19:46:44 by gleal             #+#    #+#             */
-/*   Updated: 2021/03/23 19:03:39 by gleal            ###   ########.fr       */
+/*   Updated: 2021/03/24 20:58:23 by gleal            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -174,6 +174,7 @@ typedef struct	s_adata
 	t_text		wetext;
 	t_sps		sps;
 	t_line		line_sp;
+	t_img		imgflr;
 }				t_adata;
 
 #endif

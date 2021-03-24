@@ -6,11 +6,21 @@
 /*   By: gleal <gleal@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/03/08 15:20:19 by gleal             #+#    #+#             */
-/*   Updated: 2021/03/22 19:27:43 by gleal            ###   ########.fr       */
+/*   Updated: 2021/03/24 21:45:33 by gleal            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "raycasting.h"
+
+/*int		ftinitfloor(t_adata *a)
+{
+	a->imgflr.ptr = mlx_xpm_file_to_image(a->win.mlx,
+	"./textures/grass.xpm", &(a->imgflr.width), &(a->imgflr.height));
+	a->imgflr.addr = (int *)mlx_get_data_addr((a->imgflr.ptr),
+	&(a->imgflr.pixel_bits), &(a->imgflr.line_bytes),
+	&(a->imgflr.endian));
+	return (0);
+}*/
 
 void	ft_init_all(t_adata *a)
 {
@@ -20,6 +30,7 @@ void	ft_init_all(t_adata *a)
 	ftinit_texts(a);
 	ftinit_rays(a);
 	ftinit_sprites(a);
+//	ftinitfloor(a);
 }
 
 int		render_next_frame(t_adata *a)

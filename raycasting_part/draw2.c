@@ -6,11 +6,35 @@
 /*   By: gleal <gleal@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/03/18 21:51:03 by gleal             #+#    #+#             */
-/*   Updated: 2021/03/21 16:12:06 by gleal            ###   ########.fr       */
+/*   Updated: 2021/03/24 21:36:26 by gleal            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "raycasting.h"
+
+int		drawfloortxt(t_ray *ray, t_adata *a, int col_id)
+{
+	double column_angle;
+	int row;
+	double	x;
+	double	y;
+	double	distance;
+
+	column_angle = normalrad(ray->ray_angle - a->joe.rotangle);
+	row = a->line_3d.end_y + 1;
+	while (row < a->win.win_h)
+	{
+		distance = ((0.5 / (row - a->win.win_h/2)) * a->ray.distprojplane) /
+		cos(column_angle);
+		x = (a->joe.x / a-> map.tile_size) - (distance * sin(ray->ray_angle));
+		y = (a->joe.y / a-> map.tile_size) + (distance * cos(ray->ray_angle));
+		bitmap_offset_floor(a, &x, &y);
+		a->img_3d.addr[(row * (int)a->win.win_w + col_id)] =
+		a->wetext.imgt.addr[(int)y * a->wetext.imgt.width + (int)x];
+		row++;
+	}
+	return (0);
+} 
 
 int		drawsps(t_ray *ray, t_adata *a, int col_id)
 {

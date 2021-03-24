@@ -6,7 +6,7 @@
 /*   By: gleal <gleal@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/03/06 19:21:33 by gleal             #+#    #+#             */
-/*   Updated: 2021/03/21 21:06:08 by gleal            ###   ########.fr       */
+/*   Updated: 2021/03/24 21:02:59 by gleal            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -100,5 +100,7 @@ int				draw_ceilingrgb(t_adata *a);
 int				find_text_wallhit(double ray_angle, t_ray *ray, t_adata *a);
 int				clicked_cross(int keycode, t_adata *a);
 void			clean_sprites(t_adata *a, t_sps *sps);
+int		drawfloortxt(t_ray *ray, t_adata *a, int col_id);
+int		bitmap_offset_floor(t_adata *a, double *x, double *y);
 
 #endif
