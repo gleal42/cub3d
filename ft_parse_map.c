@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_parse_tools3.c                                  :+:      :+:    :+:   */
+/*   ft_parse_map.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: gleal <gleal@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/03/05 15:32:05 by gleal             #+#    #+#             */
-/*   Updated: 2021/03/19 21:31:36 by gleal            ###   ########.fr       */
+/*   Created: 2021/03/25 17:36:21 by gleal             #+#    #+#             */
+/*   Updated: 2021/03/25 19:48:13 by gleal            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,15 +50,6 @@ int		checkmapclosed(char **strs)
 	return (1);
 }
 
-int		checkfirstwall(char *str)
-{
-	while (ft_isspace(*str))
-		str++;
-	if (*str != '1')
-		return (0);
-	return (1);
-}
-
 int		playeringame(t_parse *parse)
 {
 	if (!parse->player_or)
@@ -72,8 +63,37 @@ int		checkwall(char *str)
 	while (*str)
 	{
 		if (*str != '1' && !ft_isspace(*str))
-				return (0);
+			return (0);
 		str++;
 	}
+	return (1);
+}
+
+int		check_valid_map(char **strs, t_parse *parse)
+{
+	int		i;
+
+	i = -1;
+	while (is_map(strs[++i]))
+	{
+		if (i == 0 && !checkwall(strs[i]))
+			return (0);
+		else if (!is_map(strs[i + 1]))
+		{
+			if (i < 2)
+				return (0);
+			if (!playeringame(parse))
+				return (0);
+		}
+		else
+		{
+			if (!checkmapclosed(&strs[i]) ||
+				!checkmultiplayer(strs[i], parse))
+				return (0);
+		}
+	}
+	parse->map_size = i;
+	if (!ft_copy_map(strs, parse))
+		return (0);
 	return (1);
 }

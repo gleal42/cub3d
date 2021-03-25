@@ -6,7 +6,7 @@
 #    By: gleal <gleal@student.42lisboa.com>         +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2021/02/09 15:43:58 by gleal             #+#    #+#              #
-#    Updated: 2021/03/22 16:33:16 by gleal            ###   ########.fr        #
+#    Updated: 2021/03/25 18:10:52 by gleal            ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -14,15 +14,17 @@ CC = gcc
 FLAGS = -Wall -Wextra -Werror -g -fsanitize=address -fno-omit-frame-pointer -Iraycasting_part
 NAME = cub3D
 SRCS = ft_map_utils.c \
+	   ft_error.c \
 	   text_extract.c \
 	   cub3d.c \
 	   main.c \
 	   ft_parse_cub.c \
+	   ft_parse_cub_utils.c \
+	   ft_parse_cub_utils2.c \
 	   ft_parse_tools.c \
 	   ft_parse_tools2.c \
-	   ft_parse_tools3.c \
+	   ft_parse_map.c \
 	   ft_parse_tools4.c \
-	   ft_map_utils2.c \
 	   free_utils.c \
 	   ./raycasting_part/raycasting.c \
 	   ./raycasting_part/events.c \

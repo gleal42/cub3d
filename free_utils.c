@@ -6,7 +6,7 @@
 /*   By: gleal <gleal@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/03/21 20:41:51 by gleal             #+#    #+#             */
-/*   Updated: 2021/03/21 21:18:49 by gleal            ###   ########.fr       */
+/*   Updated: 2021/03/25 17:23:39 by gleal            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,4 +23,27 @@ void	clean_sprites(t_adata *a, t_sps *sps)
 		i++;
 	}
 	free(sps->items);
+}
+
+void	*ft_freetext(char **text)
+{
+	size_t	i;
+
+	i = 0;
+	while (text[i])
+	{
+		free(text[i]);
+		i++;
+	}
+	free(text);
+	return (0);
+}
+
+void	free_all_strs(char **strs)
+{
+	while (*strs)
+	{
+		free(*strs);
+		strs++;
+	}
 }

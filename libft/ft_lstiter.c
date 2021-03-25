@@ -1,22 +1,24 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_map_utils2.c                                    :+:      :+:    :+:   */
+/*   ft_lstiter.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: gleal <gleal@student.42.fr>                +#+  +:+       +#+        */
+/*   By: gleal <gleal@student.42lisboa.com>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/03/03 19:01:16 by gleal             #+#    #+#             */
-/*   Updated: 2021/03/05 22:00:13 by gleal            ###   ########.fr       */
+/*   Created: 2021/02/10 23:32:17 by gleal             #+#    #+#             */
+/*   Updated: 2021/02/10 23:55:11 by gleal            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "cub3d.h"
+#include "libft.h"
 
-void	free_all_strs(char **strs)
+void	ft_lstiter(t_list *lst, void (*f)(void *))
 {
-	while (*strs)
+	if (!lst || !f)
+		return ;
+	while (lst)
 	{
-		free(*strs);
-		strs++;
+		f(lst->content);
+		lst = lst->next;
 	}
 }

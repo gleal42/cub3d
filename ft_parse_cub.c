@@ -6,105 +6,47 @@
 /*   By: gleal <gleal@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/03/03 20:01:55 by gleal             #+#    #+#             */
-/*   Updated: 2021/03/20 16:56:05 by gleal            ###   ########.fr       */
+/*   Updated: 2021/03/25 20:38:00 by gleal            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "cub3d.h"
 
-int		ft_screensize(char *str, t_parse *parse)
+int		all_but_map(char **text, t_parse *parse, int *i, int *count)
 {
-	int		i;
-
-	i = 1;
-	while (ft_isspace(str[i]))
-		i++;
-	parse->rx = ft_atoi(&str[i]);
-	while (ft_isdigit(str[i]))
-		i++;
-	while (ft_isspace(str[i]))
-		i++;
-	parse->ry = ft_atoi(&str[i]);
-	if (parse->rx <= 0 || parse->ry <= 0 || parse->rx > MAX_X_SIZE || parse->ry > MAX_Y_SIZE)
-		return (0);
+	while (text[(*i)] && (*count) < 8)
+	{
+		if (!check_resolution(text, parse, i, count) ||
+			!check_textures(text, parse, i, count) ||
+			!check_rgbs(text, parse, i, count))
+			return (0);
+		if (!check_valid_chars(text, i))
+			return (ft_error(INVALIDCHAR));
+		if (text[(*i)][0] == '\0')
+			(*i)++;
+	}
 	return (1);
 }
 
 int		ft_parse_cub(char **text, t_parse *parse)
 {
 	int		i;
+	int		count;
 
+	count = 0;
 	i = 0;
-	while (text[i])
-	{
-		if (text[i][0] == 'R')
-		{
-			if (parse->rx || parse->ry)
-				return (ft_error(MULTIRES));
-			if(!ft_screensize(text[i], parse))
-				return (ft_error(BADSCREEN));
-		}
-		else if (text[i][0] == 'N' && text[i][1] == 'O')
-		{
-			if (parse->no_text)
-				return (ft_error(MULTINO));
-			if (!ft_parsenorthtext(text[i], parse))
-				return (ft_error(BADNO));
-		}
-		else if (text[i][0] == 'S' && text[i][1] == 'O')
-		{
-			if (parse->so_text)
-				return (ft_error(MULTISO));
-			if (!ft_parsesouthtext(text[i], parse))
-				return (ft_error(BADSO));
-		}
-		else if (text[i][0] == 'W' && text[i][1] == 'E')
-		{
-			if (parse->we_text)
-				return (ft_error(MULTIWE));
-			if (!ft_parsewesttext(text[i], parse))
-				return (ft_error(BADWE));
-		}
-		else if (text[i][0] == 'E' && text[i][1] == 'A')
-		{
-			if (parse->ea_text)
-				return (ft_error(MULTIEA));
-			if (!ft_parseeasttext(text[i], parse))
-				return (ft_error(BADEA));
-		}
-		else if (text[i][0] == 'S' && text[i][1] != 'O')
-		{
-			if (parse->sprite_text)
-				return (ft_error(MULTISPRITE));
-			if (!ft_parsespritetext(text[i], parse))
-				return (ft_error(BADSPRITE));
-		}
-		else if (text[i][0] == 'F')
-		{
-			if (parse->rfloor || parse->gfloor || parse->bfloor)
-				return (ft_error(MULTIFLOOR));
-			if (!ft_parsefloorcolor(text[i], parse))
-				return (ft_error(BADFLOOR));
-		}
-		else if (text[i][0] == 'C')
-		{
-			if (parse->rceil || parse->gceil || parse->bceil)
-				return (ft_error(MULTICEIL));
-			if (!ft_parseceilcolor(text[i], parse))
-				return (ft_error(BADCEIL));
-		}
-		else if (is_map(text[i]))
-		{
-			if(!check_valid_map(&text[i], parse))
-				return (ft_error(INVALIDMAP));
-			while (is_map(text[i + 1]) && text[i])
-				i++;
-			break ;
-		}
-		else if (text[i][0] != '\0')
-			return (ft_error(INVALIDCHAR));
+	if (!all_but_map(text, parse, &i, &count))
+		return (0);
+	if (!text[i])
+		return (ft_error(MISSINGPARAMS));
+	while (!is_map(text[i]) && text[i])
 		i++;
-	}
+	if (!text[i])
+		return (ft_error(INVALIDMAP));
+	if (!check_valid_map(&text[i], parse))
+		return (ft_error(INVALIDMAP));
+	while (is_map(text[i + 1]) && text[i])
+		i++;
 	ft_freetext(parse->text);
 	return (1);
 }

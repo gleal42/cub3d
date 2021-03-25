@@ -6,65 +6,32 @@
 /*   By: gleal <gleal@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/03/03 14:04:29 by gleal             #+#    #+#             */
-/*   Updated: 2021/03/19 21:35:14 by gleal            ###   ########.fr       */
+/*   Updated: 2021/03/25 18:59:25 by gleal            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "cub3d.h"
 
-int		ft_error(int errornbr)
+int		ft_rgb_ceil_check(t_parse *parse)
 {
-	if (errornbr == MULTIRES)
-		printf("multiple resolutions");
-	if (errornbr == BADSCREEN)
-		printf("invalid screensize!");
-	if (errornbr == MULTINO)
-		printf("multiple north textures");
-	if (errornbr == BADNO)
-		printf("can't open north textures");
-	if (errornbr == MULTISO)
-		printf("multiple south textures");
-	if (errornbr == BADSO)
-		printf("can't open south textures");
-	if (errornbr == MULTIWE)
-		printf("multiple west textures");
-	if (errornbr == BADWE)
-		printf("can't open west textures");
-	if (errornbr == MULTIEA)
-		printf("multiple east textures");
-	if (errornbr == BADEA)
-		printf("can't open east textures");
-	if (errornbr == MULTISPRITE)
-		printf("multiple sprite textures");
-	if (errornbr == BADSPRITE)
-		printf("can't open sprite textures");
-	if (errornbr == MULTIFLOOR)
-		printf("multiple floor colors");
-	if (errornbr == BADFLOOR)
-		printf("invalid floor colors");
-	if (errornbr == MULTICEIL)
-		printf("multiple ceiling colors");
-	if (errornbr == BADCEIL)
-		printf("invalid ceiling colors");
-	if (errornbr == INVALIDMAP)
-		printf("invalid map");
-	if (errornbr == INVALIDCHAR)
-		printf("invalid character in cub text");
-	return (0);
+	if (parse->rceil < 0 || parse->rceil > 255)
+		return (0);
+	if (parse->gceil < 0 || parse->gceil > 255)
+		return (0);
+	if (parse->bceil < 0 || parse->bceil > 255)
+		return (0);
+	return (1);
 }
 
-void	*ft_freetext(char **text)
+int		ft_rgb_floor_check(t_parse *parse)
 {
-	size_t	i;
-
-	i = 0;
-	while (text[i])
-	{
-		free(text[i]);
-		i++;
-	}
-	free(text);
-	return (0);
+	if (parse->rfloor < 0 || parse->rfloor > 255)
+		return (0);
+	if (parse->gfloor < 0 || parse->gfloor > 255)
+		return (0);
+	if (parse->bfloor < 0 || parse->bfloor > 255)
+		return (0);
+	return (1);
 }
 
 void	ft_start_tmap(t_parse *parse)
@@ -90,7 +57,7 @@ void	ft_start_tmap(t_parse *parse)
 	parse->gceil = 0;
 	parse->bceil = 0;
 	parse->map_size = 0;
-    parse->player_or = 0;
+	parse->player_or = 0;
 }
 
 int		ft_countchr(char *str, char c)

@@ -6,17 +6,17 @@
 /*   By: gleal <gleal@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/03/03 19:53:19 by gleal             #+#    #+#             */
-/*   Updated: 2021/03/20 17:12:17 by gleal            ###   ########.fr       */
+/*   Updated: 2021/03/25 17:15:18 by gleal            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "cub3d.h"
 
 void	ft_replacetabs(char **temp, char **str, int len)
-{	
+{
 	size_t	i;
 	size_t	j;
-	
+
 	temp[0][0] = '\0';
 	i = 0;
 	j = 0;
@@ -41,7 +41,7 @@ void	ft_replacetabs(char **temp, char **str, int len)
 
 void	*ft_realloctabs(char *str, int tab_nbr, t_parse *parse)
 {
-	int len;
+	int		len;
 	char	*temp;
 
 	len = ft_strlen(str) + (tab_nbr * 3);
@@ -57,8 +57,8 @@ void	*ft_realloctabs(char *str, int tab_nbr, t_parse *parse)
 
 void	ft_tabtospace(t_parse *parse)
 {
-	int	i;
-	int	tab_nbr;
+	int		i;
+	int		tab_nbr;
 
 	i = 0;
 	while (parse->text[i])
@@ -75,7 +75,7 @@ void	ft_tabtospace(t_parse *parse)
 void	ft_new_line(t_parse *parse)
 {
 	char	**temp;
-	int	i;
+	int		i;
 
 	i = 0;
 	(parse->lnbr)++;
