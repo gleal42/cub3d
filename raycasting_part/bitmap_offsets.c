@@ -6,7 +6,7 @@
 /*   By: gleal <gleal@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/03/18 17:27:38 by gleal             #+#    #+#             */
-/*   Updated: 2021/03/24 21:40:27 by gleal            ###   ########.fr       */
+/*   Updated: 2021/03/25 15:02:25 by gleal            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,16 +14,14 @@
 
 int		bitmap_offset_floor(t_adata *a, double *x, double *y)
 {
-	while (*x < -1)
-		(*x)++;
-	while (*y < -1)
-		(*y)++;
-	while (*x > 1)
+	while (*x >= 1)
 		(*x)--;
-	while (*y > 1)
+	while (*y >= 1)
 		(*y)--;
-	*x = fabs(*x) * a->wetext.imgt.width;
-	*y = fabs(*y) * a->wetext.imgt.height;
+	if (*x >= 0)
+		*x = *x * a->wetext.imgt.width;
+	if (*y >= 0)
+		*y = *y * a->wetext.imgt.height;
 	return (0);
 }
 

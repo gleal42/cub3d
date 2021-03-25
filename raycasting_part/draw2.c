@@ -6,7 +6,7 @@
 /*   By: gleal <gleal@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/03/18 21:51:03 by gleal             #+#    #+#             */
-/*   Updated: 2021/03/24 21:36:26 by gleal            ###   ########.fr       */
+/*   Updated: 2021/03/25 14:58:10 by gleal            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,9 +26,13 @@ int		drawfloortxt(t_ray *ray, t_adata *a, int col_id)
 	{
 		distance = ((0.5 / (row - a->win.win_h/2)) * a->ray.distprojplane) /
 		cos(column_angle);
-		x = (a->joe.x / a-> map.tile_size) - (distance * sin(ray->ray_angle));
-		y = (a->joe.y / a-> map.tile_size) + (distance * cos(ray->ray_angle));
+		x = (a->joe.x / a-> map.tile_size) + (distance * cos(ray->ray_angle));
+		y = (a->joe.y / a-> map.tile_size) + (distance * sin(ray->ray_angle));
 		bitmap_offset_floor(a, &x, &y);
+		if (x >= a->wetext.imgt.width)
+			x = a->wetext.imgt.width - 1.0;
+		if (y >= a->wetext.imgt.height)
+			y = a->wetext.imgt.height - 1.0;
 		a->img_3d.addr[(row * (int)a->win.win_w + col_id)] =
 		a->wetext.imgt.addr[(int)y * a->wetext.imgt.width + (int)x];
 		row++;

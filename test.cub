@@ -1,7 +1,7 @@
 R 1920 1080
 NO ./textures/planks.xpm
 SO ./textures/planks.xpm
-WE ./textures/planks.xpm
+WE ./textures/grass.xpm
 EA ./textures/planks.xpm
 
 S ./textures/creeper.xpm
