@@ -6,7 +6,7 @@
 /*   By: gleal <gleal@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/03/08 17:40:35 by gleal             #+#    #+#             */
-/*   Updated: 2021/03/24 20:39:48 by gleal            ###   ########.fr       */
+/*   Updated: 2021/03/27 17:56:20 by gleal            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,6 @@ int		ftinit_sprites(t_adata *a)
 	add_sprites(a->sps.items, a->map.maptxt, a);
 	return (0);
 }
-
 
 int		ftinit_texts(t_adata *a)
 {

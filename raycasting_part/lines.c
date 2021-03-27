@@ -6,7 +6,7 @@
 /*   By: gleal <gleal@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/03/18 16:56:54 by gleal             #+#    #+#             */
-/*   Updated: 2021/03/23 19:18:05 by gleal            ###   ########.fr       */
+/*   Updated: 2021/03/27 18:18:00 by gleal            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,11 +42,11 @@ int		linesprite(t_item *item,
 
 int		line3d(t_ray *ray, t_adata *a, t_text text_wallhit)
 {
-	double remain_pixels;
-	double pixelx;
-	double pixely;
-	int		texx;
-	int		texy;
+	double		remain_pixels;
+	double		pixelx;
+	double		pixely;
+	int			texx;
+	int			texy;
 
 	pixelx = a->line_3d.start_x;
 	pixely = a->line_3d.start_y;
@@ -78,7 +78,8 @@ int		line(t_line line, t_adata *a)
 	remain_pixels = line.pixels;
 	while (remain_pixels > 0)
 	{
-		a->img_3d.addr[(int)pixely * (int)a->win.win_w + (int)pixelx] = line.color;
+		a->img_3d.addr[(int)pixely * (int)a->win.win_w +
+		(int)pixelx] = line.color;
 		pixelx += line.deltax;
 		pixely += line.deltay;
 		--remain_pixels;

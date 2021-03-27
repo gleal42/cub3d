@@ -6,7 +6,7 @@
 /*   By: gleal <gleal@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/03/02 15:13:07 by gleal             #+#    #+#             */
-/*   Updated: 2021/03/25 20:14:08 by gleal            ###   ########.fr       */
+/*   Updated: 2021/03/27 17:47:41 by gleal            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,20 +21,20 @@
 # include <limits.h>
 # include <unistd.h>
 # include <fcntl.h>
-#include <math.h>
+# include <math.h>
 # include "./libft/libft.h"
 # include "./libft/get_next_line.h"
 # include "./structs.h"
 # include "./raycasting_part/raycasting.h"
 # include "./minilibx/mlx.h"
 
-#define MAX_X_SIZE 2560
-#define MAX_Y_SIZE 1440
-#define MAP_CHARS "012NSEW"
-#define MAP_INSIDE "02NSEW"
-#define PLAYER "NSEW"
+# define MAX_X_SIZE 2560
+# define MAX_Y_SIZE 1440
+# define MAP_CHARS "012NSEW"
+# define MAP_INSIDE "02NSEW"
+# define PLAYER "NSEW"
 
-enum e_errors
+enum	e_errors
 {
 	MALLOCERROR,
 	MULTIRES,

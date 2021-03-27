@@ -6,7 +6,7 @@
 /*   By: gleal <gleal@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/03/18 16:42:55 by gleal             #+#    #+#             */
-/*   Updated: 2021/03/21 17:40:57 by gleal            ###   ########.fr       */
+/*   Updated: 2021/03/27 18:33:30 by gleal            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,31 +16,21 @@ int		find_text_wallhit(double ray_angle, t_ray *ray, t_adata *a)
 {
 	if (ray->hit_vertical)
 	{
-		if (normalrad(ray_angle) > M_PI_2 && normalrad(ray_angle) < (3 * M_PI_2))
-		{
+		if (normalrad(ray_angle) > M_PI_2 &&
+		normalrad(ray_angle) < (3 * M_PI_2))
 			ray->text_wallhit = a->wetext;
-			return (0);
-		}
 		else
-		{
 			ray->text_wallhit = a->eatext;
-			return (0);
-		}
-
 	}
 	else
 	{
-		if (normalrad(ray_angle) > M_PI && normalrad(ray_angle) < 2 * M_PI)
-		{
+		if (normalrad(ray_angle) > M_PI &&
+		normalrad(ray_angle) < 2 * M_PI)
 			ray->text_wallhit = a->notext;
-			return (0);
-		}
 		else
-		{
 			ray->text_wallhit = a->sotext;
-			return (0);
-		}
 	}
+	return (0);
 }
 
 int		has_wall(double x, double y, t_adata *a)
@@ -48,7 +38,8 @@ int		has_wall(double x, double y, t_adata *a)
 	int		mapgridx;
 	int		mapgridy;
 
-	if ((int)x < 0 || (int)x > a->map.map_w || (int)y < 0 || (int)y > a->map.map_h)
+	if ((int)x < 0 || (int)x > a->map.map_w ||
+	(int)y < 0 || (int)y > a->map.map_h)
 		return (1);
 	mapgridx = (int)x / a->map.tile_size;
 	mapgridy = (int)y / a->map.tile_size;

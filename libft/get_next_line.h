@@ -6,16 +6,16 @@
 /*   By: gleal <gleal@student.42lisboa.com>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/02/12 19:04:24 by gleal             #+#    #+#             */
-/*   Updated: 2021/03/02 14:48:10 by gleal            ###   ########.fr       */
+/*   Updated: 2021/03/27 18:38:47 by gleal            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef GET_NEXT_LINE_H
 # define GET_NEXT_LINE_H
 
-#ifndef BUFFER_SIZE
-# define BUFFER_SIZE 64
-#endif
+# ifndef BUFFER_SIZE
+#  define BUFFER_SIZE 64
+# endif
 
 # include <unistd.h>
 # include <fcntl.h>

@@ -6,13 +6,13 @@
 /*   By: gleal <gleal@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/03/07 13:21:39 by gleal             #+#    #+#             */
-/*   Updated: 2021/03/20 19:52:34 by gleal            ###   ########.fr       */
+/*   Updated: 2021/03/27 18:15:40 by gleal            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "raycasting.h"
 
-double	spawnrotation(char c)
+double		spawnrotation(char c)
 {
 	if (c == 'E')
 		return (0);
@@ -24,7 +24,7 @@ double	spawnrotation(char c)
 		return (3 * M_PI_2);
 }
 
-void	ft_playerinfo(t_map2d *map, t_player *joe, char **strs)
+void		ft_playerinfo(t_map2d *map, t_player *joe, char **strs)
 {
 	int		i;
 	int		j;
@@ -52,16 +52,15 @@ double		calculate_tilesize(t_adata *a)
 	int		map_resratio_x;
 	int		map_resratio_y;
 
-	map_resratio_x = (int)((a->parse.rx/a->map.map_cols) / 3);
-	map_resratio_y = (int)((a->parse.ry/a->map.map_rows) / 3);
-
-	if (map_resratio_x <  map_resratio_y)
+	map_resratio_x = (int)((a->parse.rx / a->map.map_cols) / 3);
+	map_resratio_y = (int)((a->parse.ry / a->map.map_rows) / 3);
+	if (map_resratio_x < map_resratio_y)
 		return ((double)(map_resratio_x));
 	else
 		return ((double)(map_resratio_y));
 }
 
-int		ft_max_strlen(char **strs)
+int			ft_max_strlen(char **strs)
 {
 	int		i;
 	int		j;
@@ -82,7 +81,7 @@ int		ft_max_strlen(char **strs)
 	return (max_len);
 }
 
-int		ft_count_lines(char **strs)
+int			ft_count_lines(char **strs)
 {
 	int i;
 

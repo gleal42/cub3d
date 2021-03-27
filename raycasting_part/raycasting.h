@@ -6,7 +6,7 @@
 /*   By: gleal <gleal@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/03/06 19:21:33 by gleal             #+#    #+#             */
-/*   Updated: 2021/03/24 21:02:59 by gleal            ###   ########.fr       */
+/*   Updated: 2021/03/27 18:19:56 by gleal            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -66,7 +66,7 @@ void			ftinit_img_m(t_adata *a);
 int				ftinit_img_sps(t_item *item, t_adata *a);
 int				destroyimg(t_adata *a, t_img *img);
 int				ft_initline(t_adata *a);
-int		ftinittext(t_adata *a, t_img *imgt, char *textpath);
+int				ftinittext(t_adata *a, t_img *imgt, char *textpath);
 int				ft_prepare_3d_line(double ray_angle,
 				t_ray *ray, t_adata *a, int col_id);
 int				line3d(t_ray *ray, t_adata *a, t_text text_wallhit);
@@ -100,7 +100,7 @@ int				draw_ceilingrgb(t_adata *a);
 int				find_text_wallhit(double ray_angle, t_ray *ray, t_adata *a);
 int				clicked_cross(int keycode, t_adata *a);
 void			clean_sprites(t_adata *a, t_sps *sps);
-int		drawfloortxt(t_ray *ray, t_adata *a, int col_id);
-int		bitmap_offset_floor(t_adata *a, double *x, double *y);
+int				drawfloortxt(t_ray *ray, t_adata *a, int col_id);
+int				bitmap_offset_floor(t_adata *a, double *x, double *y);
 
 #endif

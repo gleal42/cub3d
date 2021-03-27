@@ -6,7 +6,7 @@
 /*   By: gleal <gleal@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/03/22 16:07:24 by gleal             #+#    #+#             */
-/*   Updated: 2021/03/22 20:03:56 by gleal            ###   ########.fr       */
+/*   Updated: 2021/03/27 18:01:18 by gleal            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,10 +46,10 @@ static void		init_header(t_adata *a, t_bmp *bmp)
 	write(bmp->fd, bmp->infoheader, 40);
 }
 
-static	void	draw_bmp(t_adata *a, t_bmp *bmp)
+static void		draw_bmp(t_adata *a, t_bmp *bmp)
 {
-	int	i;
-	int	j;
+	int				i;
+	int				j;
 	unsigned char	buffer[3];
 
 	j = (a->win.win_h - 1);
@@ -58,9 +58,12 @@ static	void	draw_bmp(t_adata *a, t_bmp *bmp)
 		i = 0;
 		while (i <= a->win.win_w - 1)
 		{
-			buffer[0] = (unsigned char)(a->img_3d.addr[((int)j * (int)(a->win.win_w) + (int)i)]);
-			buffer[1] = (unsigned char)(a->img_3d.addr[((int)j * (int)(a->win.win_w)+ (int)i)] >> 8);
-			buffer[2] = (unsigned char)(a->img_3d.addr[((int)j * (int)(a->win.win_w)+ (int)i)] >> 16);
+			buffer[0] = (unsigned char)(a->img_3d.addr[((int)j *
+			(int)(a->win.win_w) + (int)i)]);
+			buffer[1] = (unsigned char)(a->img_3d.addr[((int)j *
+			(int)(a->win.win_w) + (int)i)] >> 8);
+			buffer[2] = (unsigned char)(a->img_3d.addr[((int)j *
+			(int)(a->win.win_w) + (int)i)] >> 16);
 			write(bmp->fd, buffer, 3);
 			i++;
 		}
@@ -82,9 +85,9 @@ void			convert_bmp(t_adata *a)
 	close(bmp.fd);
 }
 
-void	screenshot(char *cubname)
+void			screenshot(char *cubname)
 {
-	int fd;
+	int			fd;
 	t_adata		a;
 
 	ft_start_tmap(&a.parse);

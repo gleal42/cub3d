@@ -6,7 +6,7 @@
 #    By: gleal <gleal@student.42lisboa.com>         +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2021/02/09 15:43:58 by gleal             #+#    #+#              #
-#    Updated: 2021/03/25 18:10:52 by gleal            ###   ########.fr        #
+#    Updated: 2021/03/27 18:31:26 by gleal            ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -30,7 +30,6 @@ SRCS = ft_map_utils.c \
 	   ./raycasting_part/events.c \
 	   ./raycasting_part/ft_init.c \
 	   ./raycasting_part/ft_init2.c \
-	   ./raycasting_part/ft_init_texts.c \
 	   ./raycasting_part/ft_initdestroyimg.c \
 	   ./raycasting_part/update.c \
 	   ./raycasting_part/update_sprites.c \
@@ -41,6 +40,7 @@ SRCS = ft_map_utils.c \
 	   ./raycasting_part/raycast_utils.c \
 	   ./raycasting_part/raycast_utils2.c \
 	   ./raycasting_part/raycast_utils3.c \
+	   ./raycasting_part/raycast_utils4.c \
 	   ./raycasting_part/cast_rays.c \
 	   ./raycasting_part/cast_rays_horizontal.c \
 	   ./raycasting_part/cast_rays_vertical.c \

@@ -6,7 +6,7 @@
 /*   By: gleal <gleal@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/03/18 21:51:03 by gleal             #+#    #+#             */
-/*   Updated: 2021/03/27 18:11:44 by gleal            ###   ########.fr       */
+/*   Updated: 2021/03/25 14:58:10 by gleal            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,20 +14,20 @@
 
 int		drawfloortxt(t_ray *ray, t_adata *a, int col_id)
 {
-	double		column_angle;
-	int			row;
-	double		x;
-	double		y;
-	double		distance;
+	double column_angle;
+	int row;
+	double	x;
+	double	y;
+	double	distance;
 
 	column_angle = normalrad(ray->ray_angle - a->joe.rotangle);
 	row = a->line_3d.end_y + 1;
 	while (row < a->win.win_h)
 	{
-		distance = ((0.5 / (row - a->win.win_h / 2)) * a->ray.distprojplane) /
+		distance = ((0.5 / (row - a->win.win_h/2)) * a->ray.distprojplane) /
 		cos(column_angle);
-		x = (a->joe.x / a->map.tile_size) + (distance * cos(ray->ray_angle));
-		y = (a->joe.y / a->map.tile_size) + (distance * sin(ray->ray_angle));
+		x = (a->joe.x / a-> map.tile_size) + (distance * cos(ray->ray_angle));
+		y = (a->joe.y / a-> map.tile_size) + (distance * sin(ray->ray_angle));
 		bitmap_offset_floor(a, &x, &y);
 		if (x >= a->wetext.imgt.width)
 			x = a->wetext.imgt.width - 1.0;
@@ -38,7 +38,7 @@ int		drawfloortxt(t_ray *ray, t_adata *a, int col_id)
 		row++;
 	}
 	return (0);
-}
+} 
 
 int		drawsps(t_ray *ray, t_adata *a, int col_id)
 {
@@ -62,9 +62,9 @@ int		drawsps(t_ray *ray, t_adata *a, int col_id)
 
 int		draw_ceilingrgb(t_adata *a)
 {
-	int			p_w;
-	int			p_h;
-	double		adjust_height_half;
+	int	p_w;
+	int	p_h;
+	double	adjust_height_half;
 
 	adjust_height_half = ceil((double)(a->win.win_h / 2)) - 1;
 	p_h = 0;
@@ -73,9 +73,10 @@ int		draw_ceilingrgb(t_adata *a)
 		p_w = 0;
 		while (p_w < a->win.win_w)
 		{
-			a->img_3d.addr[(int)(p_h * a->win.win_w + p_w)] =
-			create_trgb(0, a->parse.rceil,
-			a->parse.gceil, a->parse.bceil);
+				a->img_3d.addr[(int)(p_h * a->win.win_w + p_w)] =
+				create_trgb(0, a->parse.rceil,
+				a->parse.gceil, a->parse.bceil);
+				;
 			p_w++;
 		}
 		p_h++;
@@ -85,8 +86,8 @@ int		draw_ceilingrgb(t_adata *a)
 
 int		draw_floorrgb(t_adata *a)
 {
-	int		p_w;
-	int		p_h;
+	int	p_w;
+	int	p_h;
 	double	adjust_height_half;
 
 	adjust_height_half = ceil((double)(a->win.win_h / 2)) - 1;
@@ -96,9 +97,10 @@ int		draw_floorrgb(t_adata *a)
 		p_w = 0;
 		while (p_w < a->win.win_w)
 		{
-			a->img_3d.addr[(int)(p_h * a->win.win_w + p_w)] =
-			create_trgb(0, a->parse.rfloor,
-			a->parse.gfloor, a->parse.bfloor);
+				a->img_3d.addr[(int)(p_h * a->win.win_w + p_w)] =
+				create_trgb(0, a->parse.rfloor,
+				a->parse.gfloor, a->parse.bfloor);
+				;
 			p_w++;
 		}
 		p_h++;

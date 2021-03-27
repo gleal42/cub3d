@@ -6,7 +6,7 @@
 /*   By: gleal <gleal@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/03/09 19:42:43 by gleal             #+#    #+#             */
-/*   Updated: 2021/03/24 20:39:48 by gleal            ###   ########.fr       */
+/*   Updated: 2021/03/27 18:12:16 by gleal            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,7 +54,7 @@ int		butt_pressed(int keycode, t_adata *a)
 {
 	if (keycode == ESC_KEY)
 		cleanclose(a);
-	if(keycode == W_KEY)
+	if (keycode == W_KEY)
 		a->joe.walkdir = 'w';
 	else if (keycode == S_KEY)
 		a->joe.walkdir = 's';

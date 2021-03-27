@@ -6,7 +6,7 @@
 /*   By: gleal <gleal@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/03/10 19:02:02 by gleal             #+#    #+#             */
-/*   Updated: 2021/03/21 19:42:48 by gleal            ###   ########.fr       */
+/*   Updated: 2021/03/27 17:55:41 by gleal            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,11 +25,11 @@ void	update_position(t_adata *a)
 	if (a->joe.walkdir == 'w')
 		move_angle = normalrad(move_angle);
 	else if (a->joe.walkdir == 's')
-		move_angle = normalrad(move_angle +  M_PI);
+		move_angle = normalrad(move_angle + M_PI);
 	else if (a->joe.walkdir == 'a')
-		move_angle = normalrad(move_angle -  M_PI_2);
+		move_angle = normalrad(move_angle - M_PI_2);
 	else if (a->joe.walkdir == 'd')
-		move_angle = normalrad(move_angle +  M_PI_2);
+		move_angle = normalrad(move_angle + M_PI_2);
 	movestep = a->joe.movespeed * a->map.tile_size;
 	next_playerx = a->joe.x + (cos(move_angle) * movestep);
 	next_playery = a->joe.y + (sin(move_angle) * movestep);
@@ -39,7 +39,6 @@ void	update_position(t_adata *a)
 		a->joe.y = next_playery;
 	}
 }
-
 
 void	update_orientation(t_adata *a)
 {
