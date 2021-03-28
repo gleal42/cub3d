@@ -6,11 +6,34 @@
 /*   By: gleal <gleal@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/03/28 17:28:05 by gleal             #+#    #+#             */
-/*   Updated: 2021/03/28 19:08:34 by gleal            ###   ########.fr       */
+/*   Updated: 2021/03/28 22:29:10 by gleal            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "bonuscub.h"
+
+void	pickaxe_animation(t_adata *a)
+{
+	int			p_w;
+	int			p_h;
+	int			start_w;
+	int			start_h;
+
+	start_w = a->win.win_w  - a->wetext.imgt.width;
+	start_h = a->win.win_h  - a->wetext.imgt.height;
+	p_h = a->win.win_h - 1;
+	while (p_h > start_h)
+	{
+		p_w = a->win.win_w - 1;
+		while (p_w > start_w)
+		{
+			a->img_3d.addr[(int)(p_h * a->win.win_w + p_w)] =
+				a->wetext.imgt.addr[(p_h - start_h) * (a->wetext.imgt.width-1)  + (p_w - start_w)];
+			p_w--;
+		}
+		p_h--;
+	}
+ }
 
 int		drawfloortxt(t_ray *ray, t_adata *a, int col_id)
 {

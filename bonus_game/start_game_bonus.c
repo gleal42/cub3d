@@ -6,7 +6,7 @@
 /*   By: gleal <gleal@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/03/28 17:52:37 by gleal             #+#    #+#             */
-/*   Updated: 2021/03/28 19:16:59 by gleal            ###   ########.fr       */
+/*   Updated: 2021/03/28 22:08:09 by gleal            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,6 +20,7 @@ void	ft_init_all(t_adata *a)
 	ftinit_texts(a);
 	ftinit_rays(a);
 	ftinit_sprites(a);
+	ft_init_animation(a);
 }
 
 int		render_next_frame(t_adata *a)
@@ -30,7 +31,7 @@ int		render_next_frame(t_adata *a)
 	draw_ceilingrgb(a);
 	draw3d(a);
 	draw_map(a);
-	//draw_pickaxe(a);
+	pickaxe_animation(a);
 	mlx_put_image_to_window(a->win.mlx, a->win.win, a->img_3d.ptr, 0, 0);
 	destroyimg(a, &a->img_3d);
 	return (0);

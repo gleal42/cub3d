@@ -6,7 +6,7 @@
 #    By: gleal <gleal@student.42lisboa.com>         +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2021/02/09 15:43:58 by gleal             #+#    #+#              #
-#    Updated: 2021/03/28 18:04:56 by gleal            ###   ########.fr        #
+#    Updated: 2021/03/28 22:02:22 by gleal            ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -61,10 +61,11 @@ SRCS_BONUS := ./bonus_game/cub3d_bonus.c \
 	./bonus_game/lines_bonus.c \
 	./bonus_game/draw_bonus.c \
 	./bonus_game/draw2_bonus.c \
-	./bonus_game/bitmap_offsets_bonus.c
+	./bonus_game/bitmap_offsets_bonus.c \
+	./bonus_game/ft_init_anim.c
 OBJS_BONUS := $(SRCS_BONUS:.c=.o)
 
-all: $(NAME)
+all: libft minilibx $(NAME) 
 
 libft:
 	make -C libft/

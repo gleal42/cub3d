@@ -6,7 +6,7 @@
 /*   By: gleal <gleal@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/03/19 19:46:44 by gleal             #+#    #+#             */
-/*   Updated: 2021/03/24 20:58:23 by gleal            ###   ########.fr       */
+/*   Updated: 2021/03/28 21:43:39 by gleal            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -86,6 +86,8 @@ typedef struct	s_player
 	double		rotangle;
 	double		movespeed;
 	double		rotatespeed;
+	int			anim_start;
+	int			anim_count;
 }				t_player;
 
 typedef struct	s_line

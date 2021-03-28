@@ -1,11 +1,11 @@
 R 1920 1080
 
-NO ./textures/planks.xpm
-SO ./textures/grass.xpm
+NO ./textures/greystone.xpm
+SO ./textures/purplestone.xpm
 WE ./textures/redbrick.xpm
 EA ./textures/wood.xpm
 
-S ./textures/creeper.xpm
+S ./textures/attack_torch.xpm
 F 77,92,53
 C 163,208,230
 

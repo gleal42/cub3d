@@ -6,11 +6,11 @@
 /*   By: gleal <gleal@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/03/09 19:42:43 by gleal             #+#    #+#             */
-/*   Updated: 2021/03/28 15:54:18 by gleal            ###   ########.fr       */
+/*   Updated: 2021/03/28 22:04:45 by gleal            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "start_game.h"
+#include "bonuscub.h"
 
 void	cleanclose(t_adata *a)
 {

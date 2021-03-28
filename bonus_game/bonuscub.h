@@ -6,7 +6,7 @@
 /*   By: gleal <gleal@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/03/28 18:07:34 by gleal             #+#    #+#             */
-/*   Updated: 2021/03/28 19:11:58 by gleal            ###   ########.fr       */
+/*   Updated: 2021/03/28 22:03:59 by gleal            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,6 +32,17 @@
 # define MAP_CHARS "012NSEW"
 # define MAP_INSIDE "02NSEW"
 # define PLAYER "NSEW"
+# define UP_ARROW 126
+# define DOWN_ARROW 125
+# define LEFT_ARROW 123
+# define RIGHT_ARROW 124
+# define ESC_KEY 53
+# define W_KEY 13
+# define A_KEY 0
+# define S_KEY 1
+# define D_KEY 2
+#define SPACE_KEY 49
+
 enum	e_errors
 {
 	MALLOCERROR,
@@ -127,5 +138,9 @@ int				ft_prepare_sprite_line(t_item *item, t_adata *a,
 				int col_id);
 int				linesprite(t_item *item,
 				t_adata *a, int col_id);
+void	pickaxe_animation(t_adata *a);
+void	ft_init_animation(t_adata *a);
+void			clean_sprites(t_adata *a, t_sps *sps);
+int				has_wall(double x, double y, t_adata *a);
 
 #endif
