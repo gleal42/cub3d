@@ -1,16 +1,16 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   cast_rays.c                                        :+:      :+:    :+:   */
+/*   cast_rays_bonus.c                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: gleal <gleal@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/03/12 16:36:09 by gleal             #+#    #+#             */
-/*   Updated: 2021/03/24 21:43:33 by gleal            ###   ########.fr       */
+/*   Created: 2021/03/28 17:50:23 by gleal             #+#    #+#             */
+/*   Updated: 2021/03/28 18:16:38 by gleal            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "raycasting.h"
+#include "bonuscub.h"
 
 int		ray_construct(double ray_angle, t_ray *ray)
 {
@@ -78,8 +78,6 @@ int		draw3d(t_adata *a)
 	{
 		ray_construct(ray.ray_angle, &ray);
 		dda_alg(&ray, a);
-		ft_prepare_ray_line(&ray, a);
-		//line(ray.line, a);
 		draw3dline(ray.ray_angle, &ray, a, col_id);
 		drawfloortxt(&ray, a, col_id);
 		drawsps(&ray, a, col_id);
@@ -89,3 +87,4 @@ int		draw3d(t_adata *a)
 	}
 	return (0);
 }
+

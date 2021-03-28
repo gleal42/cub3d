@@ -1,21 +1,21 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   draw.c                                             :+:      :+:    :+:   */
+/*   draw_bonus.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: gleal <gleal@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/03/11 20:57:10 by gleal             #+#    #+#             */
-/*   Updated: 2021/03/28 15:54:18 by gleal            ###   ########.fr       */
+/*   Created: 2021/03/28 19:10:30 by gleal             #+#    #+#             */
+/*   Updated: 2021/03/28 19:10:42 by gleal            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "start_game.h"
+#include "bonuscub.h"
 
 int		draw3dline(double ray_angle, t_ray *ray, t_adata *a, int col_id)
 {
 	ft_prepare_3d_line(ray_angle, ray, a, col_id);
-	line3d(ray, a, ray->text_wallhit);
+	line3d(ray, a);
 	return (0);
 }
 
@@ -71,3 +71,4 @@ int		draw_map(t_adata *a)
 	line(a->line, a);
 	return (0);
 }
+

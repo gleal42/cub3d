@@ -6,11 +6,11 @@
 /*   By: gleal <gleal@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/03/21 20:41:51 by gleal             #+#    #+#             */
-/*   Updated: 2021/03/27 20:08:46 by gleal            ###   ########.fr       */
+/*   Updated: 2021/03/28 16:04:07 by gleal            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../mandatory_game/start_game.h"
+#include "cub3d.h"
 
 void	clean_sprites(t_adata *a, t_sps *sps)
 {

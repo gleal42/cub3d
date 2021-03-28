@@ -6,24 +6,11 @@
 /*   By: gleal <gleal@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/03/18 17:27:38 by gleal             #+#    #+#             */
-/*   Updated: 2021/03/27 20:04:39 by gleal            ###   ########.fr       */
+/*   Updated: 2021/03/28 17:00:07 by gleal            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "./start_game.h"
-
-int		bitmap_offset_floor(t_adata *a, double *x, double *y)
-{
-	while (*x >= 1)
-		(*x)--;
-	while (*y >= 1)
-		(*y)--;
-	if (*x >= 0)
-		*x = *x * a->wetext.imgt.width;
-	if (*y >= 0)
-		*y = *y * a->wetext.imgt.height;
-	return (0);
-}
+#include "start_game.h"
 
 int		bitmap_offset_sp(t_item *item, int col_id)
 {
@@ -47,12 +34,12 @@ int		bitmap_offset(t_ray *ray, t_adata *a)
 	if (ray->hit_vertical)
 	{
 		remainder = ray_y - floor(ray_y);
-		offset = a->sotext.imgt.width * remainder;
+		offset = ray->text_wallhit.imgt.width * remainder;
 	}
 	else
 	{
 		remainder = ray_x - floor(ray_x);
-		offset = a->sotext.imgt.width * remainder;
+		offset = ray->text_wallhit.imgt.width * remainder;
 	}
 	return (offset);
 }

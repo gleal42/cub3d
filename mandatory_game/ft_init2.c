@@ -6,11 +6,11 @@
 /*   By: gleal <gleal@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/03/10 15:32:26 by gleal             #+#    #+#             */
-/*   Updated: 2021/03/27 20:00:18 by gleal            ###   ########.fr       */
+/*   Updated: 2021/03/28 15:54:19 by gleal            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "./start_game.h"
+#include "start_game.h"
 
 void	ftinit_rays(t_adata *a)
 {

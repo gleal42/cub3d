@@ -6,11 +6,11 @@
 /*   By: gleal <gleal@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/03/05 19:01:43 by gleal             #+#    #+#             */
-/*   Updated: 2021/03/27 19:33:43 by gleal            ###   ########.fr       */
+/*   Updated: 2021/03/28 15:47:14 by gleal            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../includes/cub3d.h"
+#include "cub3d.h"
 
 int		ft_copy_map(char **map_start, t_parse *parse)
 {

@@ -6,11 +6,11 @@
 /*   By: gleal <gleal@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/03/19 15:56:05 by gleal             #+#    #+#             */
-/*   Updated: 2021/03/27 20:02:28 by gleal            ###   ########.fr       */
+/*   Updated: 2021/03/28 15:54:17 by gleal            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "./start_game.h"
+#include "start_game.h"
 
 int		horizontal_cast_facingdown(t_adata *a, t_ray *ray,
 		double *nexttouch_horx, double *nexttouch_hory)

@@ -6,11 +6,11 @@
 /*   By: gleal <gleal@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/03/18 18:32:47 by gleal             #+#    #+#             */
-/*   Updated: 2021/03/27 20:01:30 by gleal            ###   ########.fr       */
+/*   Updated: 2021/03/28 15:54:20 by gleal            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "./start_game.h"
+#include "start_game.h"
 
 int		spritescreenposition(t_item *item, t_adata *a)
 {

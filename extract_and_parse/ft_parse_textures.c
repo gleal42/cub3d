@@ -6,11 +6,11 @@
 /*   By: gleal <gleal@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/03/25 19:09:48 by gleal             #+#    #+#             */
-/*   Updated: 2021/03/27 19:31:58 by gleal            ###   ########.fr       */
+/*   Updated: 2021/03/28 15:47:14 by gleal            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../includes/cub3d.h"
+#include "cub3d.h"
 
 int		check_walltextures_horiz(char **text, t_parse *parse,
 		int *i, int *count)

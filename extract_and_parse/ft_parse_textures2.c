@@ -6,11 +6,11 @@
 /*   By: gleal <gleal@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/03/04 18:25:12 by gleal             #+#    #+#             */
-/*   Updated: 2021/03/27 19:32:27 by gleal            ###   ########.fr       */
+/*   Updated: 2021/03/28 15:47:14 by gleal            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../includes/cub3d.h"
+#include "cub3d.h"
 
 int		ft_parsespritetext(char *str, t_parse *parse)
 {

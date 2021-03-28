@@ -6,11 +6,11 @@
 /*   By: gleal <gleal@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/03/18 17:52:40 by gleal             #+#    #+#             */
-/*   Updated: 2021/03/27 20:05:34 by gleal            ###   ########.fr       */
+/*   Updated: 2021/03/28 15:54:20 by gleal            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "./start_game.h"
+#include "start_game.h"
 
 int		is_sprite_stripe(t_item *item, int col_id)
 {

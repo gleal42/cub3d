@@ -6,7 +6,7 @@
 /*   By: gleal <gleal@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/03/02 15:13:07 by gleal             #+#    #+#             */
-/*   Updated: 2021/03/27 22:20:05 by gleal            ###   ########.fr       */
+/*   Updated: 2021/03/28 18:20:29 by gleal            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,12 +22,12 @@
 # include <unistd.h>
 # include <fcntl.h>
 # include <math.h>
-# include "libft.h"
-# include "get_next_line.h"
-# include "structs.h"
-# include "../extract_and_parse/ft_parse.h"
-# include "../mandatory_game/start_game.h"
+# include "../libft/libft.h"
+# include "../libft/get_next_line.h"
 # include "../minilibx/mlx.h"
+# include "structs.h"
+# include "ft_parse.h"
+# include "start_game.h"
 
 # define MAX_X_SIZE 2560
 # define MAX_Y_SIZE 1440

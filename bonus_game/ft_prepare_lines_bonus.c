@@ -6,11 +6,11 @@
 /*   By: gleal <gleal@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/03/18 19:17:21 by gleal             #+#    #+#             */
-/*   Updated: 2021/03/28 16:36:50 by gleal            ###   ########.fr       */
+/*   Updated: 2021/03/28 18:08:52 by gleal            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "start_game.h"
+#include "bonuscub.h"
 
 int		ft_prepare_sprite_line(t_item *item, t_adata *a,
 		int col_id)
@@ -57,7 +57,6 @@ int		ft_prepare_3d_line(double ray_angle, t_ray *ray, t_adata *a, int col_id)
 	pow(a->line_3d.deltay, 2));
 	a->line_3d.deltax /= a->line_3d.pixels;
 	a->line_3d.deltay /= a->line_3d.pixels;
-	find_text_wallhit(ray_angle, ray, a);
 	return (0);
 }
 

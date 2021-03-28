@@ -6,11 +6,11 @@
 /*   By: gleal <gleal@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/03/22 16:07:24 by gleal             #+#    #+#             */
-/*   Updated: 2021/03/27 20:06:06 by gleal            ###   ########.fr       */
+/*   Updated: 2021/03/28 15:54:17 by gleal            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "./start_game.h"
+#include "start_game.h"
 
 static void		set_header(unsigned char *header, int param)
 {

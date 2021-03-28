@@ -6,14 +6,14 @@
 /*   By: gleal <gleal@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/03/27 19:55:03 by gleal             #+#    #+#             */
-/*   Updated: 2021/03/27 19:55:27 by gleal            ###   ########.fr       */
+/*   Updated: 2021/03/28 18:24:39 by gleal            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef START_GAME_H
 # define START_GAME_H
 
-# include "../includes/cub3d.h"
+# include "cub3d.h"
 
 # define UP_ARROW 126
 # define DOWN_ARROW 125
@@ -34,7 +34,6 @@ void			ft_init_map(t_adata *a);
 void			ft_init_player(t_adata *a);
 void			ft_playerinfo(t_map2d *map, t_player *joe, char **strs);
 void			events(t_adata *a);
-void			ftinit_img_m(t_adata *a);
 void			ftinit_img_3d(t_adata *a);
 void			ft_init_all(t_adata *a);
 void			drawbycomp(int p_w, int p_h, t_adata *a);

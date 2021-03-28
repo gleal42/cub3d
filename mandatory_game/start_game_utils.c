@@ -6,11 +6,11 @@
 /*   By: gleal <gleal@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/03/07 13:21:39 by gleal             #+#    #+#             */
-/*   Updated: 2021/03/27 20:05:05 by gleal            ###   ########.fr       */
+/*   Updated: 2021/03/28 15:54:20 by gleal            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "./start_game.h"
+#include "start_game.h"
 
 double		spawnrotation(char c)
 {

@@ -6,11 +6,11 @@
 /*   By: gleal <gleal@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/03/25 17:36:21 by gleal             #+#    #+#             */
-/*   Updated: 2021/03/27 19:33:20 by gleal            ###   ########.fr       */
+/*   Updated: 2021/03/28 15:47:13 by gleal            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../includes/cub3d.h"
+#include "cub3d.h"
 
 int		check_all_sides(char **strs, int j)
 {

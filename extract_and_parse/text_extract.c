@@ -6,11 +6,11 @@
 /*   By: gleal <gleal@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/03/03 19:53:19 by gleal             #+#    #+#             */
-/*   Updated: 2021/03/27 21:03:44 by gleal            ###   ########.fr       */
+/*   Updated: 2021/03/28 15:47:15 by gleal            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../includes/cub3d.h"
+#include "cub3d.h"
 
 void	ft_replacetabs(char **temp, char **str, int len)
 {

@@ -6,11 +6,11 @@
 /*   By: gleal <gleal@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/03/12 16:36:09 by gleal             #+#    #+#             */
-/*   Updated: 2021/03/27 20:01:56 by gleal            ###   ########.fr       */
+/*   Updated: 2021/03/28 16:36:50 by gleal            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "./start_game.h"
+#include "start_game.h"
 
 int		ray_construct(double ray_angle, t_ray *ray)
 {
@@ -78,7 +78,6 @@ int		draw3d(t_adata *a)
 	{
 		ray_construct(ray.ray_angle, &ray);
 		dda_alg(&ray, a);
-		ft_prepare_ray_line(&ray, a);
 		draw3dline(ray.ray_angle, &ray, a, col_id);
 		drawsps(&ray, a, col_id);
 		ray.ray_angle = normalrad(ray.ray_angle

@@ -6,11 +6,11 @@
 /*   By: gleal <gleal@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/03/03 20:01:55 by gleal             #+#    #+#             */
-/*   Updated: 2021/03/27 19:29:43 by gleal            ###   ########.fr       */
+/*   Updated: 2021/03/28 15:47:13 by gleal            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../includes/cub3d.h"
+#include "cub3d.h"
 
 int		all_but_map(char **text, t_parse *parse, int *i, int *count)
 {

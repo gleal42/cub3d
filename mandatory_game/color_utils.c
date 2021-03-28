@@ -6,11 +6,11 @@
 /*   By: gleal <gleal@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/03/21 14:54:52 by gleal             #+#    #+#             */
-/*   Updated: 2021/03/27 20:05:48 by gleal            ###   ########.fr       */
+/*   Updated: 2021/03/28 15:54:18 by gleal            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "./start_game.h"
+#include "start_game.h"
 
 int		create_trgb(int t, int r, int g, int b)
 {

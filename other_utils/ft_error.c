@@ -6,11 +6,11 @@
 /*   By: gleal <gleal@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/03/25 17:16:11 by gleal             #+#    #+#             */
-/*   Updated: 2021/03/27 20:09:23 by gleal            ###   ########.fr       */
+/*   Updated: 2021/03/28 16:04:08 by gleal            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../includes/cub3d.h"
+#include "cub3d.h"
 
 int		ft_error_pt2(int errornbr)
 {

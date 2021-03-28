@@ -6,11 +6,11 @@
 /*   By: gleal <gleal@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/03/08 17:40:35 by gleal             #+#    #+#             */
-/*   Updated: 2021/03/27 19:59:27 by gleal            ###   ########.fr       */
+/*   Updated: 2021/03/28 15:54:18 by gleal            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "./start_game.h"
+#include "start_game.h"
 
 int		ftinit_sprites(t_adata *a)
 {

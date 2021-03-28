@@ -6,11 +6,11 @@
 /*   By: gleal <gleal@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/03/19 16:01:04 by gleal             #+#    #+#             */
-/*   Updated: 2021/03/27 20:03:04 by gleal            ###   ########.fr       */
+/*   Updated: 2021/03/28 15:54:19 by gleal            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "./start_game.h"
+#include "start_game.h"
 
 void	horiz_vert_raycomp(t_adata *a, t_ray *ray,
 		double *horz_dist, double *vert_dist)

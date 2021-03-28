@@ -1,16 +1,16 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   lines.c                                            :+:      :+:    :+:   */
+/*   lines_bonus.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: gleal <gleal@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/03/18 16:56:54 by gleal             #+#    #+#             */
-/*   Updated: 2021/03/28 15:54:19 by gleal            ###   ########.fr       */
+/*   Created: 2021/03/28 18:53:52 by gleal             #+#    #+#             */
+/*   Updated: 2021/03/28 18:55:11 by gleal            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "start_game.h"
+#include "bonuscub.h"
 
 int		linesprite(t_item *item,
 		t_adata *a, int col_id)
@@ -40,7 +40,7 @@ int		linesprite(t_item *item,
 	return (0);
 }
 
-int		line3d(t_ray *ray, t_adata *a, t_text text_wallhit)
+int		line3d(t_ray *ray, t_adata *a)
 {
 	double		remain_pixels;
 	double		pixelx;
@@ -56,12 +56,12 @@ int		line3d(t_ray *ray, t_adata *a, t_text text_wallhit)
 	while (remain_pixels > 0)
 	{
 		a->img_3d.addr[((int)pixely * (int)a->win.win_w + (int)pixelx)] =
-		text_wallhit.imgt.addr[(int)texy *
-		(int)text_wallhit.imgt.width + (int)texx];
+		a->notext.imgt.addr[(int)texy *
+		(int)a->notext.imgt.width + (int)texx];
 		pixelx += a->line_3d.deltax;
 		pixely += a->line_3d.deltay;
 		texy = ((pixely - a->line_3d.start_y) *
-		text_wallhit.imgt.width) / a->line_3d.pixels;
+		a->notext.imgt.width) / a->line_3d.pixels;
 		--remain_pixels;
 	}
 	return (0);
@@ -86,3 +86,4 @@ int		line(t_line line, t_adata *a)
 	}
 	return (0);
 }
+
