@@ -6,7 +6,7 @@
 /*   By: gleal <gleal@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/03/25 17:36:21 by gleal             #+#    #+#             */
-/*   Updated: 2021/03/28 15:47:13 by gleal            ###   ########.fr       */
+/*   Updated: 2021/03/29 19:16:16 by gleal            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -76,6 +76,7 @@ int		check_valid_map(char **strs, t_parse *parse)
 	i = -1;
 	while (is_map(strs[++i]))
 	{
+		parse->nbr_str = i;
 		if (i == 0 && !checkwall(strs[i]))
 			return (0);
 		else if (!is_map(strs[i + 1]))
@@ -92,7 +93,6 @@ int		check_valid_map(char **strs, t_parse *parse)
 				return (0);
 		}
 	}
-	parse->map_size = i;
 	if (!ft_copy_map(strs, parse))
 		return (0);
 	return (1);

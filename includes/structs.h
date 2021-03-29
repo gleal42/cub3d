@@ -6,7 +6,7 @@
 /*   By: gleal <gleal@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/03/19 19:46:44 by gleal             #+#    #+#             */
-/*   Updated: 2021/03/28 21:43:39 by gleal            ###   ########.fr       */
+/*   Updated: 2021/03/29 18:25:52 by gleal            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,6 +45,7 @@ typedef struct	s_parse
 	int		map_size;
 	char	player_or;
 	char	**mapstr;
+	int		nbr_str;
 }				t_parse;
 
 typedef struct	s_win
@@ -74,6 +75,8 @@ typedef struct	s_map2d
 	int		map_h;
 	double	map_rows;
 	double	map_cols;
+	double	map_r_half;
+	double	map_b_half;
 }				t_map2d;
 
 typedef struct	s_player

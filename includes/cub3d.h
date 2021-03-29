@@ -6,7 +6,7 @@
 /*   By: gleal <gleal@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/03/02 15:13:07 by gleal             #+#    #+#             */
-/*   Updated: 2021/03/28 19:35:24 by gleal            ###   ########.fr       */
+/*   Updated: 2021/03/29 20:01:41 by gleal            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,5 +34,7 @@
 # define MAP_CHARS "012NSEW"
 # define MAP_INSIDE "02NSEW"
 # define PLAYER "NSEW"
+
+int		is_cubfile(char *file);
 
 #endif

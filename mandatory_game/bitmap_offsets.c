@@ -6,7 +6,7 @@
 /*   By: gleal <gleal@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/03/18 17:27:38 by gleal             #+#    #+#             */
-/*   Updated: 2021/03/28 17:00:07 by gleal            ###   ########.fr       */
+/*   Updated: 2021/03/29 20:14:46 by gleal            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,7 @@ int		bitmap_offset_sp(t_item *item, int col_id)
 	double	offset;
 
 	remainder = (double)(((double)col_id - item->xstart) / item->sprite_w);
-	offset = item->imgsp.width * remainder;
+	offset = (item->imgsp.width - 1) * remainder;
 	return (offset);
 }
 
@@ -34,12 +34,12 @@ int		bitmap_offset(t_ray *ray, t_adata *a)
 	if (ray->hit_vertical)
 	{
 		remainder = ray_y - floor(ray_y);
-		offset = ray->text_wallhit.imgt.width * remainder;
+		offset = (ray->text_wallhit.imgt.width - 1) * remainder;
 	}
 	else
 	{
 		remainder = ray_x - floor(ray_x);
-		offset = ray->text_wallhit.imgt.width * remainder;
+		offset = (ray->text_wallhit.imgt.width - 1) * remainder;
 	}
 	return (offset);
 }

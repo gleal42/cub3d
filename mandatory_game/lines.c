@@ -6,7 +6,7 @@
 /*   By: gleal <gleal@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/03/18 16:56:54 by gleal             #+#    #+#             */
-/*   Updated: 2021/03/28 15:54:19 by gleal            ###   ########.fr       */
+/*   Updated: 2021/03/29 19:37:46 by gleal            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -55,6 +55,8 @@ int		line3d(t_ray *ray, t_adata *a, t_text text_wallhit)
 	remain_pixels = a->line_3d.pixels;
 	while (remain_pixels > 0)
 	{
+		if (texy == text_wallhit.imgt.width)
+			texy = text_wallhit.imgt.width - 1;
 		a->img_3d.addr[((int)pixely * (int)a->win.win_w + (int)pixelx)] =
 		text_wallhit.imgt.addr[(int)texy *
 		(int)text_wallhit.imgt.width + (int)texx];

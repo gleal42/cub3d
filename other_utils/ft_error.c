@@ -6,11 +6,20 @@
 /*   By: gleal <gleal@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/03/25 17:16:11 by gleal             #+#    #+#             */
-/*   Updated: 2021/03/28 16:04:08 by gleal            ###   ########.fr       */
+/*   Updated: 2021/03/29 20:06:51 by gleal            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "cub3d.h"
+
+int		ft_error_pt3(int errornbr)
+{
+	if (errornbr == NOT_CUB_ERROR)
+		printf("please cub");
+	if (errornbr == INVALID_FILE)
+		printf("invalid file");
+	return (0);
+}
 
 int		ft_error_pt2(int errornbr)
 {
@@ -30,6 +39,8 @@ int		ft_error_pt2(int errornbr)
 		printf("invalid character in cub text");
 	if (errornbr == MISSINGPARAMS)
 		printf("missing at least one parameter");
+	if (errornbr == PARSING_ERROR)
+		printf("there was an error while parsing");
 	return (0);
 }
 
@@ -64,5 +75,6 @@ int		ft_error(int errornbr)
 {
 	ft_error_pt1(errornbr);
 	ft_error_pt2(errornbr);
+	ft_error_pt3(errornbr);
 	return (0);
 }

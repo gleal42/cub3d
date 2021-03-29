@@ -6,7 +6,7 @@
 /*   By: gleal <gleal@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/03/03 20:01:55 by gleal             #+#    #+#             */
-/*   Updated: 2021/03/28 15:47:13 by gleal            ###   ########.fr       */
+/*   Updated: 2021/03/29 18:20:12 by gleal            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,6 +14,7 @@
 
 int		all_but_map(char **text, t_parse *parse, int *i, int *count)
 {
+	ft_init_textures(parse);
 	while (text[(*i)] && (*count) < 8)
 	{
 		if (!check_resolution(text, parse, i, count) ||
