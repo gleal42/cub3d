@@ -6,7 +6,7 @@
 /*   By: gleal <gleal@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/03/28 17:28:05 by gleal             #+#    #+#             */
-/*   Updated: 2021/03/28 22:29:10 by gleal            ###   ########.fr       */
+/*   Updated: 2021/03/29 16:24:04 by gleal            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,24 +14,31 @@
 
 void	pickaxe_animation(t_adata *a)
 {
-	int			p_w;
-	int			p_h;
-	int			start_w;
-	int			start_h;
+	double		p_w;
+	double		p_h;
+	double		start_w;
+	double		start_h;
+	int			m_y;
+	int			m_x;
 
-	start_w = a->win.win_w  - a->wetext.imgt.width;
-	start_h = a->win.win_h  - a->wetext.imgt.height;
-	p_h = a->win.win_h - 1;
-	while (p_h > start_h)
+	start_w = ceil((double)(a->win.win_w / 2));
+	start_h = ceil((double)(a->win.win_h / 2));
+	p_h = start_h;
+	while ((int)p_h < a->win.win_h)
 	{
-		p_w = a->win.win_w - 1;
-		while (p_w > start_w)
+		p_w = start_w;
+		while ((int)p_w < a->win.win_w)
 		{
-			a->img_3d.addr[(int)(p_h * a->win.win_w + p_w)] =
-				a->wetext.imgt.addr[(p_h - start_h) * (a->wetext.imgt.width-1)  + (p_w - start_w)];
-			p_w--;
+			m_y = calc_texy(p_h - start_h, a->win.win_h - 1 - start_h, a);
+			m_x = calc_texx(p_w - start_w, a->win.win_w - 1 - start_w, a);
+			if (a->wetext.imgt.addr [m_y * a->wetext.imgt.width + m_x])
+			{
+				a->img_3d.addr[(int)(int)p_h * (int)a->win.win_w + (int)p_w] =
+				a->wetext.imgt.addr [m_y * a->wetext.imgt.width + m_x];
+			}
+			p_w++;
 		}
-		p_h--;
+		p_h++;
 	}
  }
 

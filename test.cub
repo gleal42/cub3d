@@ -5,7 +5,7 @@ SO ./textures/purplestone.xpm
 WE ./textures/redbrick.xpm
 EA ./textures/wood.xpm
 
-S ./textures/attack_torch.xpm
+S ./textures/creeper.xpm
 F 77,92,53
 C 163,208,230
 

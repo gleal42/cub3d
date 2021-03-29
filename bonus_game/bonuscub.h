@@ -6,7 +6,7 @@
 /*   By: gleal <gleal@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/03/28 18:07:34 by gleal             #+#    #+#             */
-/*   Updated: 2021/03/28 22:03:59 by gleal            ###   ########.fr       */
+/*   Updated: 2021/03/29 16:22:34 by gleal            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -142,5 +142,7 @@ void	pickaxe_animation(t_adata *a);
 void	ft_init_animation(t_adata *a);
 void			clean_sprites(t_adata *a, t_sps *sps);
 int				has_wall(double x, double y, t_adata *a);
+int		calc_texx(double small_dist, double big_dist, t_adata *a);
+int		calc_texy(double small_dist, double big_dist, t_adata *a);
 
 #endif
