@@ -6,7 +6,7 @@
 /*   By: gleal <gleal@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/03/28 18:07:34 by gleal             #+#    #+#             */
-/*   Updated: 2021/03/29 16:22:34 by gleal            ###   ########.fr       */
+/*   Updated: 2021/03/29 17:04:04 by gleal            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,7 +41,7 @@
 # define A_KEY 0
 # define S_KEY 1
 # define D_KEY 2
-#define SPACE_KEY 49
+# define SPACE_BAR 49
 
 enum	e_errors
 {
@@ -67,31 +67,32 @@ enum	e_errors
 	MISSINGPARAMS
 };
 
-int		check_resolution(char **text, t_parse *parse, int *i, int *count);
-int		check_textures(char **text, t_parse *parse, int *i, int *count);
-int		check_rgbs(char **text, t_parse *parse, int *i, int *count);
-int		check_valid_chars(char **text, int *i);
-int		is_map(char *str);
-void	*ft_realloctabs(char *str, int tab_nbr, t_parse *parse);
-void	*ft_freetext(char **strs);
-void	ft_start_tmap(t_parse *parse);
-int		ft_countchr(char *str, char c);
-void	cub_extract(t_parse *parse, int fd);
-int		ft_parse_cub(char **text, t_parse *parse);
-int		ft_isspace(char c);
-int		ft_error(int errornbr);
-int		ft_parsenorthtext(char *str, t_parse *parse);
-int		ft_parsesouthtext(char *str, t_parse *parse);
-int		ft_parsewesttext(char *str, t_parse *parse);
-int		ft_parseeasttext(char *str, t_parse *parse);
-int		ft_parsespritetext(char *str, t_parse *parse);
-int		checkmultiplayer(char *str, t_parse *parse);
-int		check_valid_map(char **strs, t_parse *parse);
-int		ft_copy_map(char **map_start, t_parse *parse);
-int		start_game(t_adata *a);
-int		butt_pressed(int keycode, t_adata *a);
-int		butt_released(int keycode, t_adata *a);
-int		clicked_cross(int keycode, t_adata *a);
+int				check_resolution(char **text, t_parse *parse,
+				int *i, int *count);
+int				check_textures(char **text, t_parse *parse, int *i, int *count);
+int				check_rgbs(char **text, t_parse *parse, int *i, int *count);
+int				check_valid_chars(char **text, int *i);
+int				is_map(char *str);
+void			*ft_realloctabs(char *str, int tab_nbr, t_parse *parse);
+void			*ft_freetext(char **strs);
+void			ft_start_tmap(t_parse *parse);
+int				ft_countchr(char *str, char c);
+void			cub_extract(t_parse *parse, int fd);
+int				ft_parse_cub(char **text, t_parse *parse);
+int				ft_isspace(char c);
+int				ft_error(int errornbr);
+int				ft_parsenorthtext(char *str, t_parse *parse);
+int				ft_parsesouthtext(char *str, t_parse *parse);
+int				ft_parsewesttext(char *str, t_parse *parse);
+int				ft_parseeasttext(char *str, t_parse *parse);
+int				ft_parsespritetext(char *str, t_parse *parse);
+int				checkmultiplayer(char *str, t_parse *parse);
+int				check_valid_map(char **strs, t_parse *parse);
+int				ft_copy_map(char **map_start, t_parse *parse);
+int				start_game(t_adata *a);
+int				butt_pressed(int keycode, t_adata *a);
+int				butt_released(int keycode, t_adata *a);
+int				clicked_cross(int keycode, t_adata *a);
 void			ftinit_win(t_adata *a);
 void			ftinit_map(t_adata *a);
 void			ftinit_player(t_adata *a);
@@ -138,11 +139,19 @@ int				ft_prepare_sprite_line(t_item *item, t_adata *a,
 				int col_id);
 int				linesprite(t_item *item,
 				t_adata *a, int col_id);
-void	pickaxe_animation(t_adata *a);
-void	ft_init_animation(t_adata *a);
+void			pickaxe_animation(t_adata *a);
+void			ft_init_animation(t_adata *a);
 void			clean_sprites(t_adata *a, t_sps *sps);
 int				has_wall(double x, double y, t_adata *a);
-int		calc_texx(double small_dist, double big_dist, t_adata *a);
-int		calc_texy(double small_dist, double big_dist, t_adata *a);
+void			draw_normal_pickaxe(t_adata *a);
+int				calc_texx_normal(double small_dist,
+				double big_dist, t_adata *a);
+int				calc_texy_normal(double small_dist,
+				double big_dist, t_adata *a);
+void			draw_attack_pickaxe(t_adata *a);
+int				calc_texx_attack(double small_dist,
+				double big_dist, t_adata *a);
+int				calc_texy_attack(double small_dist,
+				double big_dist, t_adata *a);
 
 #endif

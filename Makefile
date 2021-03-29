@@ -6,7 +6,7 @@
 #    By: gleal <gleal@student.42lisboa.com>         +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2021/02/09 15:43:58 by gleal             #+#    #+#              #
-#    Updated: 2021/03/29 16:23:22 by gleal            ###   ########.fr        #
+#    Updated: 2021/03/29 17:11:04 by gleal            ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -63,7 +63,8 @@ SRCS_BONUS := ./bonus_game/cub3d_bonus.c \
 	./bonus_game/draw2_bonus.c \
 	./bonus_game/bitmap_offsets_bonus.c \
 	./bonus_game/ft_init_anim.c \
-	./bonus_game/ft_utils_bonus.c
+	./bonus_game/utils_normal_pickaxe.c \
+	./bonus_game/utils_attack_pickaxe.c
 OBJS_BONUS := $(SRCS_BONUS:.c=.o)
 
 all: libft minilibx $(NAME) 

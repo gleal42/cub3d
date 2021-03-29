@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   events.c                                           :+:      :+:    :+:   */
+/*   events_bonus.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: gleal <gleal@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/03/09 19:42:43 by gleal             #+#    #+#             */
-/*   Updated: 2021/03/28 22:04:45 by gleal            ###   ########.fr       */
+/*   Created: 2021/03/29 16:32:16 by gleal             #+#    #+#             */
+/*   Updated: 2021/03/29 17:02:24 by gleal            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,6 +47,8 @@ int		butt_released(int keycode, t_adata *a)
 		a->joe.turndir = 0;
 	else if (keycode == LEFT_ARROW)
 		a->joe.turndir = 0;
+	else if (keycode == SPACE_BAR)
+		a->joe.anim_start = 0;
 	return (0);
 }
 
@@ -66,5 +68,7 @@ int		butt_pressed(int keycode, t_adata *a)
 		a->joe.turndir = 1;
 	else if (keycode == LEFT_ARROW)
 		a->joe.turndir = -1;
+	else if (keycode == SPACE_BAR)
+		a->joe.anim_start = 1;
 	return (0);
 }
