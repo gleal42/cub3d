@@ -54,4 +54,30 @@ To extract the text there are several things to consider:
 -If there is a line break in the middle of the map strings we need to be able to identify it (for this reason using the libft ft_split function may not be the best option).
 
 In my case I just used the get_next_line function we created in a previous project and reallocated memory to add a new string each time it was needed.
-[text_extracting file](docs/CONTRIBUTING.md)
+[Check my functions to see what I mean](extract_and_parse/text_extract.c)
+
+### Cub parsing
+
+If someone writes an invalid .cub file the program must stop, free the memory allocated up until that point and show some sort of error message.
+So basically we need to imagine all the ways that things can go wrong. Not only that but we should be saving the information as we go.
+
+A few things to test:
+-Resolution values that are bigger that the screens that we have in school or non-digit numbers or more than 2 values (width and height)
+-Textures are a file that doesnt exist (open function would fail) or not a xpm file.
+-There are multiple textures for the same wall (north wall texture).
+-RGBs dont have 3 numbers, are separated by an invalid character (not a comma) or have values below 0 or above 255.
+-There are invalid characters in the cub.
+
+On the map:
+-Multiple players or no player.
+-Invalid characters.
+-Map not closed (again thank you [Dimitri](https://github.com/DimitriDaSilva) for suggesting me to go over the map check if each map character (0, N, S, E, W, 2) didn't have a space character around it (check [check_all_sides function](extract_and_parse/ft_parse_map.c))).
+
+### Understanding the minilibx tool:
+
+First here are the best resources I found:
+https://github.com/taelee42/mlx_example
+https://harm-smits.github.io/42docs/libs/minilibx
+https://github.com/Gontjarow/MiniLibX
+
+Here are the main considerations and most difficult concepts explained:
