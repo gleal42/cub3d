@@ -1,7 +1,7 @@
 # cub3d - School 42
 ## Wolfenstein3d inspired Raycasting project
 
-**Final Score** - 103/100
+### **Final Score** - 103/100
 
 My Raycaster Project:
 
@@ -9,7 +9,7 @@ My Raycaster Project:
 
 In this 42 project we are asked to extract information from a .cub file and use that information to draw a 3d maze on the screen using raycasting principles.
 
-Example of cub file information
+Example of a valid cub file's information:
 ```
 R 1920 1080
 
@@ -76,8 +76,14 @@ On the map:
 ### Understanding the minilibx tool:
 
 First here are the best resources I found:
-https://github.com/taelee42/mlx_example
-https://harm-smits.github.io/42docs/libs/minilibx
-https://github.com/Gontjarow/MiniLibX
+- https://github.com/taelee42/mlx_example
+- https://harm-smits.github.io/42docs/libs/minilibx
+- https://github.com/Gontjarow/MiniLibX
 
 Here are the main considerations and most difficult concepts explained:
+
+We need to initiate and save the pointer to several things:
+- The minilibx itself:
+  - `void *mlx_ptr = mlx_init();`
+- The window you will draw in:
+  - `void    *win_ptr = mlx_new_window(mlx_ptr, WINDOW_WIDTH, WINDOW_HEIGHT, "Name of the window");`
