@@ -87,3 +87,44 @@ We need to initiate and save the pointer to several things:
   - `void *mlx_ptr = mlx_init();`
 - The window you will draw in:
   - `void    *win_ptr = mlx_new_window(mlx_ptr, WINDOW_WIDTH, WINDOW_HEIGHT, "Name of the window");`
+
+
+And now the minilibx gives you 2 options to draw on the screen:
+- You can either use the mlx_put_pixel for every pixel you want to change,
+or
+- You can create an image, change all the pixel colors you want and use the mlx_put_image_to_window a single time.
+
+So, in terms of time and resource efficiency we can agree that using images, especially for a big screen would be preferable, right?
+
+I'm going to assume that you agree with me so that I only need to explain images and not pixels, haha.
+
+#### Images
+
+After reading [Gontjarow's](https://github.com/Gontjarow/MiniLibX/blob/master/docs/mlx-tutorial-create-image.md) explanation this is what I got:
+
+Imagine you want to create a 3x3 pink square in an image. I like [this](https://www.color-hex.com/color/ffdae9) shade. Sounds easy, huh? WRONG!
+
+First you must create an image:
+
+All the images to be created will need these variables so you might as well create a struct to hold them
+
+```
+typedef struct		s_img
+{
+	void		*ptr;
+	char		*addr;		// In my code I changed this to int *, which I will explain in a second
+	int		bitsinpixel;	//when using ARGB this value is always 32
+	int		line_bytes;	//This value represents (your image width) * 4 which I will also explain after
+	int		endian;		//This value can be either 0 or 1 and will indicate how the ARGB bytes are organized (from front to back or back to front)
+}			t_img;
+```
+
+So the first thing you need to do is create an image:
+
+```
+t_img pink_cube;
+pink_cube.ptr = mlx_new_image(mlx_ptr, 3, 3);
+```
+
+Then you need to create a string that will describe all the pixels on the screen:
+
