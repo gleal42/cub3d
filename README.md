@@ -48,7 +48,7 @@ I believe this project has several challenges
 1. Creating the bmp screenshot file.
 
 
-### Text Extraction
+## Text Extraction
 
 To extract the text there are several things to consider:
 
@@ -59,7 +59,7 @@ To extract the text there are several things to consider:
 In my case I just used the get_next_line function we created in a previous project and reallocated memory to add a new string each time it was needed.
 [Check my functions to see what I mean](extract_and_parse/text_extract.c)
 
-### Cub parsing
+## Cub parsing
 
 If someone writes an invalid .cub file the program must stop, free the memory allocated up until that point and show some sort of error message.
 So basically we need to imagine all the ways that things can go wrong. Not only that but we should be saving the information as we go.
@@ -76,7 +76,7 @@ On the map:
 -Invalid characters.
 -Map not closed (again thank you [Dimitri](https://github.com/DimitriDaSilva) for suggesting me to go over the map check if each map character (0, N, S, E, W, 2) didn't have a space character around it (check [check_all_sides function](extract_and_parse/ft_parse_map.c))).
 
-### Understanding the minilibx tool:
+## Understanding the minilibx tool:
 
 First here are the best resources I found:
 - https://github.com/taelee42/mlx_example
@@ -101,7 +101,7 @@ So, in terms of time and resource efficiency we can agree that using images, esp
 
 I'm going to assume that you agree with me so that I only need to explain images and not pixels, haha.
 
-#### Images
+### Images
 
 After reading [Gontjarow's](https://github.com/Gontjarow/MiniLibX/blob/master/docs/mlx-tutorial-create-image.md) explanation this is what I got:
 
@@ -250,7 +250,7 @@ Now that the address is filled with the cute pink color that I chose for you it'
 
 Another topic that was difficult for me to understand was how events and hooking events worked.
 
-#### Events
+### Events
 
 [harms-smiths](https://harm-smits.github.io/42docs/libs/minilibx/events.html) has a great example of an event hook.
 
@@ -269,7 +269,7 @@ I believe these were the main problems I faced (apart from sometimes the functio
 
 Now that we understand a little bit more about the minilibx tool we can move on to the raycasting part, which will be super exciting! Defitely the coolest part of the subject.
 
-### Raycasting Part and Drawing calculations
+## Raycasting Part and Drawing calculations
 
 Okay so for the raycasting part the main resources that I followed were the following:
 
@@ -408,13 +408,13 @@ We can calculate the height, width, the position on the screen and the correspon
 For the floor we find the bottom of the wall lines we drew before and we draw a line imediatly below it.
 The only challenge is to find which part of the texture we need to draw for each texture. We must find the x and y positions on the map (as seen from above)and find the corresponding texture coordinates. I followed [these](https://www.permadi.com/tutorial/raycast/rayc12.html) calculations and saw [this Stackoverflow post](https://gamedev.stackexchange.com/questions/159285/ray-casting-floor-casting-part-fails).
 
-### Creeper Textures
+## Creeper Textures
 
 In order to create my creeper sprites I first found images online of creepers, I tried to add a black background around the creeper and I finally[converted](https://convertio.co/png-xpm/) it to xpm. After that most images were not perfect so I had to use vim and manually substitute the pixel colors on the xpm file.
 
 It's really intuitive. Usually spaces represent the black color so, to make a particular pixel black we can simply replace the letter that represents a different color with a space. If you look at one of my [xpm pictures](textures/creeper.xpm) you can see what I mean. Before there were random letters around the creeper. I just replace them with spaces.
 
-### Animation
+## Animation
 
 For the animation I just created 2 variables:
 - Start_animation
@@ -422,7 +422,7 @@ For the animation I just created 2 variables:
 
 If I click on the space bar it changes the start_animation variable to one. If that value is 1 I replace the normal_torch texture with the attack_torch texture and leave it on the screen while the animation_counter doesnt reach a random number (I chose 5 but it will depend on how fast the game is running).
 
-### BMP Screenshot
+## BMP Screenshot
 
 So how do you create a bmp screenshot you will need to run your program but without a loop hook to create an image with the correct colors.
 
