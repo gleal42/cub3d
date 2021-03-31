@@ -270,3 +270,15 @@ I believe these were the main problems I faced (apart from sometimes the functio
 Now that we understand a little bit more about the minilibx tool we can move on to the raycasting part, which will be super exciting! Defitely the coolest part of the subject.
 
 ### Raycasting Part
+
+Okay so for the raycasting part the main resources that I followed were the following:
+
+To create a minimap and use trigonometrics for raycasting:
+- [Pikuma Javascript Raycasting Introduction](https://courses.pikuma.com/courses/take/raycasting/lessons/7485598-introduction-and-learning-outcomes)
+
+To understand the calculations behind the projection itself:
+[Permadi's Raycasting Tutorial](https://www.permadi.com/tutorial/raycast/rayc1.html)
+
+And I also peaked a lot on [Dimitri's](https://github.com/DimitriDaSilva) code, haha.
+
+I will try to simplify it as much as possible:
