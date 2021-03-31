@@ -378,6 +378,38 @@ In 3.5 * 3 = 10.5 y position ('1' & '0' & '0' full squares and half the 'N' squa
 
 Okay, hopefully this makes sense because with this scale we can now calculate the corresponding texture strip.
 
-Imagine our ray hits a wall in the (3,7.5) position (in the middle of third wall (I put an underscore above it to show which wall I'm talking about)).
+Imagine our ray hits a wall in the (7.5, 3) position (in the middle of third wall (I put an underscore above it to show which wall I'm talking about)).
 
-What we can do is
+We can do a while loop
+
+```
+while (x >= 3)
+	x-=3
+```
+We will end up with 1.5. This represent half the square size on our map.
+
+To find the corresponding slice on the texture we can calculate this through:
+1.5/3 * texture_width.
+
+If a texture is 64 pixels. the wall strip's texture will be drawn with the 32nd texture strip (x = 32).
+
+
+### Sprites
+
+The major difficulties about sprites were:
+
+1. Reorganizing sprites drawing order based on distance (Sprites thar are further away must be drawn first).
+2. Comparing each wall ray distance with the sprite distance to check if the sprite is closer or further away compared to the wall ray distance (if there is a wall strip closer to the player than the sprite we draw the wall. If the sprite distance is closer than the wall ray distance we draw the sprite.
+
+We can calculate the height, width, the position on the screen and the corresponding texture strip of the sprite based on the principles we talked about for the walls.
+
+### Floor
+
+For the floor we find the bottom of the wall lines we drew before and we draw a line imediatly below it.
+The only challenge is to find which part of the texture we need to draw for each texture. We must find the x and y positions on the map (as seen from above)and find the corresponding texture coordinates. I followed [these](https://www.permadi.com/tutorial/raycast/rayc12.html) calculations and saw [this Stackoverflow post](https://gamedev.stackexchange.com/questions/159285/ray-casting-floor-casting-part-fails).
+
+### Creeper Textures
+
+In order to create my creeper sprites I first found images online of creepers, I tried to add a black background around the creeper and I finally[converted](https://convertio.co/png-xpm/) it to xpm. After that most images were not perfect so I had to use vim and manually substitute the pixel colors on the xpm file.
+
+It's really intuitive. Usually spaces represent the black color so, to make a particular pixel black we can simply replace the letter that represents a different color with a space. If you look at one of my [xpm pictures](textures/creeper.xpm) you can see what I mean
