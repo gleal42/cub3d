@@ -5,6 +5,7 @@
 
 My Raycaster Project:
 XPM textures created from Minecraft content
+
 ![](https://media.giphy.com/media/1PO14pi2J8nwflaMSc/giphy.gif)
 
 In this 42 project we are asked to extract information from a .cub file and use that information to draw a 3d maze on the screen using raycasting principles.
