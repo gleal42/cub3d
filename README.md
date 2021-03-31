@@ -145,7 +145,7 @@ And now we are pointing to a string that looks like this:
 
 And we want it to look like this:
 
-> |0|255|218|233| |0|255|218|233| |0|255|218|233| *+*|0|255|218|233|*+* |0|255|218|233| |0|255|218|233| |0|255|218|233| |0|255|218|233| |0|255|218|233|
+> |0|255|218|233| |0|255|218|233| |0|255|218|233| ***|0|255|218|233|*** |0|255|218|233| |0|255|218|233| |0|255|218|233| |0|255|218|233| |0|255|218|233|
 
 The string created has 9 * 4 = 36 characters and character represents either Alpha, Red, Green or Blue values.
 
