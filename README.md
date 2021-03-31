@@ -255,7 +255,18 @@ Another topic that was difficult for me to understand was how events and hooking
 [harms-smiths](https://harm-smits.github.io/42docs/libs/minilibx/events.html) has a great example of an event hook.
 
 `mlx_hook(vars.win, 2, 1L<<0, close, &vars);` 
+In this example we us the X11 Keypress event (02) and Keypress Mask (1L<<0) so that everytime we press any key it will activate the close function and it will receive t_vars \*vars as a parameter(You can choose any pointer you want instead of t_vars *):
+`int             close(int keycode, t_vars *vars)`
+
+But maybe I just want an event to happen when I press the arrow key. How can I find out this value? There's nothing online:
+This may seem obvious for most people but you can just do a `printf("%d\n", keycode)` and if you press the keycode while looking at the window you created there will be numbers printing out in the console_log, which will be the keycodes to the buttons you pushed.
+
+**NOW THIS IS IMPORTANT:** Don't forget to put a *LINE BREAK* after %d. The computers at 42 weren't printing anything if there was no line break.
+
+Afte you know the keycodes it's relatively easy. Just do a if keycode == ARROW_UP_KEYCODE and then you choose what you want to happen.
+
+I believe these were the main problems I faced (apart from sometimes the functions not working for some reason and then working if I placed them in a different function).
+
 Now that we understand a little bit more about the minilibx tool we can move on to the raycasting part, which will be super exciting! Defitely the coolest part of the subject.
 
-
-### Understanding the minilibx tool:
+### Raycasting Part
