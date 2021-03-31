@@ -269,7 +269,7 @@ I believe these were the main problems I faced (apart from sometimes the functio
 
 Now that we understand a little bit more about the minilibx tool we can move on to the raycasting part, which will be super exciting! Defitely the coolest part of the subject.
 
-### Raycasting Part
+### Raycasting Part and Drawing calculations
 
 Okay so for the raycasting part the main resources that I followed were the following:
 
@@ -279,6 +279,72 @@ To create a minimap and use trigonometrics for raycasting:
 To understand the calculations behind the projection itself:
 - [Permadi's Raycasting Tutorial](https://www.permadi.com/tutorial/raycast/rayc1.html)
 
+For a fun Youtube video implementing Raycasting in C:
+- I watched [this video](https://www.youtube.com/watch?v=gYRrGTC7GtA)
+
 - And I also peaked a lot on [Dimitri's](https://github.com/DimitriDaSilva) code, haha.
 
+
 I will try to simplify it as much as possible:
+
+Raycasting is basically taking your field of view, dividing it by your window width and calculating the distance from your face to the wall strip in each one of these divisions. (Explanations are clearer in Pikuma's Javascript tutorial).
+
+
+### Drawing calculations
+
+Let's picture this:
+- Our window is 500 pixels width and 500 pixels height.
+- We pick a [field of view](https://en.wikipedia.org/wiki/Field_of_view) of 60 degrees (usual in FPS games). The bigger your field of view the more you can see around you and the closest you get to a 360 picture. With a field of view of 60 you just see what's in front of you.
+- Our height is 1,5meters.
+- The wall's height is 3 meters.
+- The wall is 6 meters away from us.
+
+Okay, now I will help you calculate the size that the walls will have on the screen (a simplified version to be better understood).
+
+In order to calculate them I will use the concept of triangle similarity and the [Projection Plane](https://www.permadi.com/tutorial/raycast/rayc9.html):
+
+This concept is in my opinion the most important to grasp in order to draw not only the walls but also the sprites, floor and ceiling.
+Using our screen and field of view we have 2 similar triangles.
+
+> One triangle is between our face and the projection plane (the screen) and we can [calculate](https://www.permadi.com/tutorial/raycast/rayc5.html) this distance.
+Half the screen size / tan(half our field of view)
+(500/2) / tan(30 degrees) = 433.012701892
+Our face is 433.012701892 pixels away from the screen. 
+
+I know.. I know... pixels is not really a measurement of distance outside the screen, but it doesnt matter. What matters is this distance in pixels from our face to the projection plane/screen is proportional to the distance in meters from our face to the wall (6 meters).
+
+> The other triangle is between our face and the wall (which we know is 6 meters away).
+
+Okay now look at [this](https://www.permadi.com/tutorial/raycast/rayc9.html).
+
+Projected wall height = wall actual height / distance to the wall * distance to projection plane
+
+Projected wall height = (3 meters / 6 meters) * 433.012701892 = 216.506350946 ≈ 216 pixels.
+
+GREAT!! We now know the height in pixels that our wall will have on our screen! Yay.
+
+Now were do we place this line?
+
+As we said in the beggining our player is 1,5 meters tall.
+(1.5/3) * 500 = 250 we will draw (3-1.5)/3 = 0.5 = the middle of our wall. (Don't worry about these calculations. In the Wolfenstein game the player was half of the walls so the middle of the screen will always correspond with the middle of the wall/sprites.
+
+So the wall line has to be centered on the screen.
+The beggining of the wall strip will be on 250 - (216/2) = 142nd pixel
+The end of the wall strip will be on the 250 + (216/2) = 358th pixel
+
+We draw a line from the 142nd pixel to the 358th and booom. We have a wall strip.
+
+Now we just have to repeat this process for each collumn/width pixel on our screen. To do this we use the raycasting principle.
+
+### Raycasting
+
+Okay for this part I really suggest following [Pikuma's Tutorial](https://courses.pikuma.com/courses/take/raycasting/lessons/7485598-introduction-and-learning-outcomes).
+
+After you finish the tutorial you will understand how to use the player rotation in radians, you will have a cute minimap, and the distances for each one of the rays. You will then use these distances to draw lines the way I just described.
+
+### Wall textures
+
+Okay once we followed Pikuma's tutorial this is the things we have to do:
+
+1. Assign each texture to the correct wall.
+2. Find out which part of the wall we are hitting so we know the correct part of the texture to assign to that
