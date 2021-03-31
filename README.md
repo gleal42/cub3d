@@ -126,5 +126,43 @@ t_img pink_cube;
 pink_cube.ptr = mlx_new_image(mlx_ptr, 3, 3);
 ```
 
-Then you need to create a string that will describe all the pixels on the screen:
+Then in order to change the pixels in the image you just created you need to do this function:
+
+```
+pink_cube.addr = mlx_get_data_addr(pink_cub.ptr, &img.bitsinpixel, &line_bytes, &img.endian);
+```
+This is what just happened:
+- img.bitsinpixel is now = 32
+- line_bytes = 3 * 4 = 12
+- img.endian = 1 (As long as we use ARGB color layout)
+
+And now we are pointing to a string that looks like this:
+
+> |0|0|0|0| |0|0|0|0| |0|0|0|0| |0|0|0|0| |0|0|0|0| |0|0|0|0| |0|0|0|0| |0|0|0|0| |0|0|0|0|
+
+And we want it to look like this:
+
+> |0|255|218|233| |0|255|218|233| |0|255|218|233| *+*|0|255|218|233|*+* |0|255|218|233| |0|255|218|233| |0|255|218|233| |0|255|218|233| |0|255|218|233|
+
+The string created has 9 * 4 = 36 characters and character represents either Alpha, Red, Green or Blue values.
+
+
+I want you to look at the 4 characters that are in bold an italics.
+
+That is the 4th pixel represented on the string.
+However we have a 3x3 cube so what is this 4th pixel pointing to?
+
+It is pointing at the first pixel on the second line of our pink cube.
+
+So the imagine this. Everytime the string reaches the end of the line. The next pixel is the first one of the next line:
+
+- 4th pixel on string = 1st pixel second line
+- 5th pixel on string = 2nd pixel second line
+- 6th pixel on string = 3rd pixel second line
+
+ **AND**
+- 7th pixel on string = 1st pixel third line
+
+
+Okay now that we got this down it's time to understand why people are using 	int	*addr instead of char *addr and why it works:
 
