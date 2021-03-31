@@ -277,8 +277,8 @@ To create a minimap and use trigonometrics for raycasting:
 - [Pikuma Javascript Raycasting Introduction](https://courses.pikuma.com/courses/take/raycasting/lessons/7485598-introduction-and-learning-outcomes)
 
 To understand the calculations behind the projection itself:
-[Permadi's Raycasting Tutorial](https://www.permadi.com/tutorial/raycast/rayc1.html)
+- [Permadi's Raycasting Tutorial](https://www.permadi.com/tutorial/raycast/rayc1.html)
 
-And I also peaked a lot on [Dimitri's](https://github.com/DimitriDaSilva) code, haha.
+- And I also peaked a lot on [Dimitri's](https://github.com/DimitriDaSilva) code, haha.
 
 I will try to simplify it as much as possible:
