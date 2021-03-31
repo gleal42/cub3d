@@ -412,4 +412,22 @@ The only challenge is to find which part of the texture we need to draw for each
 
 In order to create my creeper sprites I first found images online of creepers, I tried to add a black background around the creeper and I finally[converted](https://convertio.co/png-xpm/) it to xpm. After that most images were not perfect so I had to use vim and manually substitute the pixel colors on the xpm file.
 
-It's really intuitive. Usually spaces represent the black color so, to make a particular pixel black we can simply replace the letter that represents a different color with a space. If you look at one of my [xpm pictures](textures/creeper.xpm) you can see what I mean
+It's really intuitive. Usually spaces represent the black color so, to make a particular pixel black we can simply replace the letter that represents a different color with a space. If you look at one of my [xpm pictures](textures/creeper.xpm) you can see what I mean. Before there were random letters around the creeper. I just replace them with spaces.
+
+### Animation
+
+For the animation I just created 2 variables:
+- Start_animation
+- Animation_counter
+
+If I click on the space bar it changes the start_animation variable to one. If that value is 1 I replace the normal_torch texture with the attack_torch texture and leave it on the screen while the animation_counter doesnt reach a random number (I chose 5 but it will depend on how fast the game is running).
+
+### BMP Screenshot
+
+So how do you create a bmp screenshot you will need to run your program but without a loop hook to create an image with the correct colors.
+
+You then need to open a new xpm file with the apropriate flags, create the appropriate [Bitmap file header and BITMAPINFOHEADER](https://en.wikipedia.org/wiki/BMP_file_format#Bitmap_file_header) and then copy the pixel colors from the image and you created previously to the bmp file (the same way you would do to copy the textures to the walls).
+
+One side note if you have implemented transparency then if you copy my code it won't work for the screenshot. As you can see in my [screenshot file](mandatory_game/bmp_screenshot.c) I specified a 24 bit color depth, which is why I was only copying 3 characters instead of 4 (no alpha).
+
+Hopefully these tips are helpful for you to develop the project. Any implementation doubt feel free to look at my code or shoot me a message on slack or send me an email(check my profile).
