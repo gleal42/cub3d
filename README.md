@@ -344,7 +344,40 @@ After you finish the tutorial you will understand how to use the player rotation
 
 ### Wall textures
 
-Okay once we followed Pikuma's tutorial this is the things we have to do:
+Okay once we followed Pikuma's tutorial these are the things we still have left to do:
 
 1. Assign each texture to the correct wall.
-2. Find out which part of the wall we are hitting so we know the correct part of the texture to assign to that
+2. Find out which part of the wall we are hitting so we know the correct part of the texture to assign to that wall strip.
+
+To find the correct wall using the ray angle and the wall orientation (Horizontal or Vertical).
+
+For example if the ray rotation angle is 0 radians (looking to the right) and we hit a vertical wall we know that the texture we will choose is the East side texture.
+
+To find which part of the wall we are hitting I suggest looking at [Permadi's](https://www.permadi.com/tutorial/raycast/rayc10.html) explanation.
+
+But summing up.
+We define how wide we want the walls to be:
+
+Following the previous example in which the walls were 3 meters, maybe we want the walls width to be 3 meters as well so that the three dimensional space is divided in squares/cubes and to make it easier to imagine.
+
+Imagine this map:
+```
+Imagine this map:
+  _
+11111
+10001
+10001
+10N01
+11111
+```
+It is definitely easier to imagine if each represents a 3 meters square, right? What is great about Pikuma's tutorial is that we can use the tile_size to visualize this and just use the distance in pixels on the map as the way to do the raycasting.
+
+So in this case our player would be:
+In 2.5 * 3 = 7.5 x position ('1' & '0' full squares and half the 'N' square)
+In 3.5 * 3 = 10.5 y position ('1' & '0' & '0' full squares and half the 'N' square)
+
+Okay, hopefully this makes sense because with this scale we can now calculate the corresponding texture strip.
+
+Imagine our ray hits a wall in the (3,7.5) position (in the middle of third wall (I put an underscore above it to show which wall I'm talking about)).
+
+What we can do is
