@@ -167,5 +167,95 @@ So the imagine this. Everytime the string reaches the end of the line. The next 
 - 7th pixel on string = 1st pixel third line
 
 
-Okay now that we got this down it's time to understand why people are using 	int	*addr instead of char *addr and why it works:
+Okay now that we got this down, it's time to understand why people are using 	int	*addr instead of char *addr and why it works:
 
+Things that we know:
+- The size of a pixel using ARGB is 32 bits (4 bytes)
+- The size of a character is 1 byte.
+- The size of an int is 4 bytes.
+- The reason why the max value of an unsigned char is 255 is because the maximum value 8 bits can represent in bynary: 
+  - 1111|1111 
+    - Which in decimal system is (2^8 - 1) = 255
+    - Which in hexadecimal system is 0XFF
+- The reason why the max value of an unsigned int is 42949672955 is because the maximum value 32 bits can represent in bynary:
+  - 1111|1111|1111|1111|1111|1111|1111|1111
+    - Which in decimal system is (2^32 - 1) = 42949672955
+    - Which in hexadecimal system is 0XFFFFFFFF
+
+So, in memory an int is 32 bits standing side by side and 4 chars are also 32 bits standing side by side and a pixel in ARGB is also 32 bits.
+
+Essencially what this all means is that if we have the values for each one of the 4 characters that represent colors (Alpha, Red, Green or BLue) we can convert it to an int using bit operations (I know, these sound pretty scary).
+
+So when we look that the color operations that [harms-smith](https://harm-smits.github.io/42docs/libs/minilibx/colors.html) did, this is what is happening
+
+Let's look at our [pink color](https://www.color-hex.com/color/ffdae9):
+Hexadecimal value: 0x00ffdae9
+Alpha Value: 0x00 (Not transparent)
+Red Value: 255 = 0xff
+Green Value: 218 = 0xda
+Blue Value: 233 = 0xe9
+
+I want you to look at each of the numbers:
+
+> Notice how the color is composed of 8 hexadecimal digits
+> Each of the components (A, R, G, B) is composed of 2 hexadecimal digits.
+
+
+```
+int		create_trgb(int t, int r, int g, int b)
+{
+	return(t << 24 | r << 16 | g << 8 | b);
+}
+```
+So analyzing [this operation](https://harm-smits.github.io/42docs/libs/minilibx/colors.html) this is what is happening:
+
+1. We get the red value (255).
+2. Our int is now 0x000000FF
+3. We want the red value to be in the red character position (second set of 2 digits)
+4. We perform the opeartion r << 16, which means we are multiplying the value by 2^16 or by 256^2, shifting the binary values 16 spaces to the left or shifting the hexadecimal values 4 digits to the left or even say shifting 2 bytes to the left or 2 characters to the left (These all mean more or less the same thing so don't worry if you dont get one of these opeartions, it will make more sense as you think about them).
+5. Now our int is 0x00FF0000, which means that the red component is in the right place and we can now do the same for each of the other components (Alpha, Green, blue).
+
+So now, hopefully you understand a little better how the ARGB components can easily be converted to an int.
+So instead of this:
+> |0|255|218|233| |0|255|218|233| |0|255|218|233| ***|0|255|218|233|*** |0|255|218|233| |0|255|218|233| |0|255|218|233| |0|255|218|233| |0|255|218|233|
+
+We can have this:
+0x00ffdae9 | 0x00ffdae9 | 0x00ffdae9 | 0x00ffdae9 | 0x00ffdae9 | 0x00ffdae9 | 0x00ffdae9 | 0x00ffdae9 | 0x00ffdae9
+
+We now can go to our struct and replace **char	\*addr** by **int \*addr** and just place the color value directly in each one of the pixels.
+
+We can do this with a small while loop
+
+```
+int color = create_trgb(0, 255, 218, 233) = 0x00ffdae9
+int width;
+int height = 0;
+
+while (height < 3)
+{
+	width = 0;
+	while (width < 3)
+	{
+		pink_cube.addr(height * 3 + width) = color;
+		width++;
+	}
+	height++;
+}
+```
+Now that the address is filled with the cute pink color that I chose for you it's time to put it on the screen.
+```
+		mlx_put_image_to_window(mlx_ptr, win_ptr, pink_cube.ptr, 0, 0); \\ These zeroes are the coordinates of the window in which you want to place the first pixel of our cute pink cube. Try changing its values to check different coordinates.
+		mlx_loop(mlx);
+```
+
+Another topic that was difficult for me to understand was how events and hooking events worked.
+
+#### Events
+
+[harms-smiths](https://harm-smits.github.io/42docs/libs/minilibx/events.html) has a great example of an event hook.
+
+`mlx_hook(vars.win, 2, 1L<<0, close, &vars);` 
+Now that we understand a little bit more about the minilibx tool we can move on to the raycasting part, which will be super exciting! Defitely the coolest part of the subject.
+
+
+### Understanding the minilibx tool:
