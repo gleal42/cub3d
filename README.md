@@ -51,7 +51,9 @@ I believe this project has several challenges
 ### Text Extraction
 
 To extract the text there are several things to consider:
+
 -Tabs need to be replaced with 4 spaces (Thank you [Dimitri](https://github.com/DimitriDaSilva)) for the tip.
+
 -If there is a line break in the middle of the map strings we need to be able to identify it (for this reason using the libft ft_split function may not be the best option).
 
 In my case I just used the get_next_line function we created in a previous project and reallocated memory to add a new string each time it was needed.
