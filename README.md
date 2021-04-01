@@ -374,8 +374,9 @@ After you finish the tutorial you will understand how to use the player rotation
 
 Okay once we followed Pikuma's tutorial these are the things we still have left to do:
 
-1. Assign each texture to the correct wall.
-2. Find out which part of the wall we are hitting so we know the correct part of the texture to assign to that wall strip.
+1. Draw the walls using the distances of the rays (don't forget to correct the [fisheye effect](https://permadi.com/1996/05/ray-casting-tutorial-8/)
+2. Assign each texture to the correct wall.
+3. Find out which part of the wall we are hitting so we know the correct part of the texture to assign to that wall strip.
 
 To find the correct wall using the ray angle and the wall orientation (Horizontal or Vertical).
 
