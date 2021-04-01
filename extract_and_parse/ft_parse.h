@@ -3,16 +3,20 @@
 /*                                                        :::      ::::::::   */
 /*   ft_parse.h                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: gleal <gleal@student.42.fr>                +#+  +:+       +#+        */
+/*   By: gleal <gleal@student.42lisboa.com>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/03/27 21:41:45 by gleal             #+#    #+#             */
-/*   Updated: 2021/03/29 20:05:35 by gleal            ###   ########.fr       */
+/*   Updated: 2021/04/01 00:15:13 by gleal            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef FT_PARSE_H
 # define FT_PARSE_H
-
+/* An enumerator will create different numbers for each one of these errors
+It is equivalent to having
+# define NOT_CUB_ERROR 0 
+# define INVALID_FILE 1
+etc*/
 enum	e_errors
 {
 	NOT_CUB_ERROR,

@@ -3,15 +3,15 @@
 /*                                                        :::      ::::::::   */
 /*   draw2_bonus.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: gleal <gleal@student.42.fr>                +#+  +:+       +#+        */
+/*   By: gleal <gleal@student.42lisboa.com>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/03/28 17:28:05 by gleal             #+#    #+#             */
-/*   Updated: 2021/03/29 17:04:21 by gleal            ###   ########.fr       */
+/*   Updated: 2021/04/01 00:47:44 by gleal            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "bonuscub.h"
-
+/* Here is where I added the new textures and animations */
 void	pickaxe_animation(t_adata *a)
 {
 	if (a->joe.anim_count == 0)

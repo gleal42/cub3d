@@ -3,15 +3,15 @@
 /*                                                        :::      ::::::::   */
 /*   ft_parse_rgbs.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: gleal <gleal@student.42.fr>                +#+  +:+       +#+        */
+/*   By: gleal <gleal@student.42lisboa.com>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/03/29 18:03:13 by gleal             #+#    #+#             */
-/*   Updated: 2021/03/29 18:03:19 by gleal            ###   ########.fr       */
+/*   Updated: 2021/04/01 00:08:20 by gleal            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "cub3d.h"
-
+/* checking if the RGB values given are valid */
 int		ft_rgb_ceil_check(t_parse *parse)
 {
 	if (parse->rceil < 0 || parse->rceil > 255)

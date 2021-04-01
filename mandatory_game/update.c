@@ -3,15 +3,17 @@
 /*                                                        :::      ::::::::   */
 /*   update.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: gleal <gleal@student.42.fr>                +#+  +:+       +#+        */
+/*   By: gleal <gleal@student.42lisboa.com>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/03/10 19:02:02 by gleal             #+#    #+#             */
-/*   Updated: 2021/03/28 15:54:20 by gleal            ###   ########.fr       */
+/*   Updated: 2021/04/01 00:46:19 by gleal            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "start_game.h"
-
+/* PI is the same as 180 degrees so you're going backwards
+PI/2 is the same as 90 degrees to the right
+-PI/2 is the same as -90 degrees or the same as 90 degrees to the left */
 void	update_position(t_adata *a)
 {
 	double	movestep;

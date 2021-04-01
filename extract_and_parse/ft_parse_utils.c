@@ -3,15 +3,16 @@
 /*                                                        :::      ::::::::   */
 /*   ft_parse_utils.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: gleal <gleal@student.42.fr>                +#+  +:+       +#+        */
+/*   By: gleal <gleal@student.42lisboa.com>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/03/29 18:13:02 by gleal             #+#    #+#             */
-/*   Updated: 2021/03/29 18:13:13 by gleal            ###   ########.fr       */
+/*   Updated: 2021/04/01 00:12:37 by gleal            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "cub3d.h"
-
+/* if there is a line break the get next line function will turn in into a zero so if the 
+first character is a zero I know someone added a linebreak in the middle of the map */
 int		is_map(char *str)
 {
 	if (*str == '\0')

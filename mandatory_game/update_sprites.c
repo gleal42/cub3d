@@ -3,15 +3,15 @@
 /*                                                        :::      ::::::::   */
 /*   update_sprites.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: gleal <gleal@student.42.fr>                +#+  +:+       +#+        */
+/*   By: gleal <gleal@student.42lisboa.com>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/03/18 18:32:47 by gleal             #+#    #+#             */
-/*   Updated: 2021/03/28 15:54:20 by gleal            ###   ########.fr       */
+/*   Updated: 2021/04/01 00:43:53 by gleal            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "start_game.h"
-
+/* the reason I multiply it by 0.8 is because I felt the some sprites were too big.(unnecessary)*/
 int		spritescreenposition(t_item *item, t_adata *a)
 {
 	double	centersprite;

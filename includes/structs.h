@@ -3,16 +3,17 @@
 /*                                                        :::      ::::::::   */
 /*   structs.h                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: gleal <gleal@student.42.fr>                +#+  +:+       +#+        */
+/*   By: gleal <gleal@student.42lisboa.com>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/03/19 19:46:44 by gleal             #+#    #+#             */
-/*   Updated: 2021/03/29 18:25:52 by gleal            ###   ########.fr       */
+/*   Updated: 2021/04/01 00:22:16 by gleal            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef STRUCTS_H
 # define STRUCTS_H
-
+/* Having multiple structs helps us have variables organized by their usage.
+We can then have a master struct which connects all the structs */
 typedef	struct	s_bmp
 {
 	int				filesize;

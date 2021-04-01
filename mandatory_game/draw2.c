@@ -3,15 +3,15 @@
 /*                                                        :::      ::::::::   */
 /*   draw2.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: gleal <gleal@student.42.fr>                +#+  +:+       +#+        */
+/*   By: gleal <gleal@student.42lisboa.com>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/03/18 21:51:03 by gleal             #+#    #+#             */
-/*   Updated: 2021/03/28 16:43:39 by gleal            ###   ########.fr       */
+/*   Updated: 2021/04/01 00:37:17 by gleal            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "start_game.h"
-
+/* To draw the floor and ceiling I just 2 rectangles behind the 3d wall projections */
 int		drawsps(t_ray *ray, t_adata *a, int col_id)
 {
 	int		i;

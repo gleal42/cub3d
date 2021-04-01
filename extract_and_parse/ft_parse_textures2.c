@@ -3,15 +3,15 @@
 /*                                                        :::      ::::::::   */
 /*   ft_parse_textures2.c                               :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: gleal <gleal@student.42.fr>                +#+  +:+       +#+        */
+/*   By: gleal <gleal@student.42lisboa.com>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/03/29 18:06:51 by gleal             #+#    #+#             */
-/*   Updated: 2021/03/29 18:06:55 by gleal            ###   ########.fr       */
+/*   Updated: 2021/04/01 00:11:31 by gleal            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "cub3d.h"
-
+/* checking if the texture files exist. Probably it would be a good idea to make sure that these are XPM*/
 int		ft_parsespritetext(char *str, t_parse *parse)
 {
 	int i;

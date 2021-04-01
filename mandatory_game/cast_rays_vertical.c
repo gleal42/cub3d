@@ -3,15 +3,16 @@
 /*                                                        :::      ::::::::   */
 /*   cast_rays_vertical.c                               :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: gleal <gleal@student.42.fr>                +#+  +:+       +#+        */
+/*   By: gleal <gleal@student.42lisboa.com>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/03/19 15:58:10 by gleal             #+#    #+#             */
-/*   Updated: 2021/03/28 15:54:18 by gleal            ###   ########.fr       */
+/*   Updated: 2021/04/01 00:35:00 by gleal            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "start_game.h"
-
+/* Vertical casting is different if the player is left or right because we need to check if a particular wall intersection is a hit or not.
+But because these wall hits are located on the perifery of the wall we need to add or subtract 1 to the x position to make sure that is is inside the wall*/
 int		vertical_cast_facingright(t_adata *a, t_ray *ray,
 		double *nexttouch_verx, double *nexttouch_very)
 {

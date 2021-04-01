@@ -3,15 +3,15 @@
 /*                                                        :::      ::::::::   */
 /*   ft_parse_map2.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: gleal <gleal@student.42.fr>                +#+  +:+       +#+        */
+/*   By: gleal <gleal@student.42lisboa.com>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/03/29 18:05:01 by gleal             #+#    #+#             */
-/*   Updated: 2021/03/29 19:17:25 by gleal            ###   ########.fr       */
+/*   Updated: 2021/04/01 00:05:40 by gleal            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "cub3d.h"
-
+/* copying the map to better use the x and y coordinates */
 int		ft_copy_map(char **map_start, t_parse *parse)
 {
 	char	**temp;
@@ -39,7 +39,7 @@ int		ft_copy_map(char **map_start, t_parse *parse)
 	parse->mapstr = temp;
 	return (1);
 }
-
+/* If I try to assign the player orientation more than once there's an error */
 int		checkmultiplayer(char *str, t_parse *parse)
 {
 	while (*str)

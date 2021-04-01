@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   raycast_utils2.c                                   :+:      :+:    :+:   */
+/*   start_game_utils2.c                                :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: gleal <gleal@student.42.fr>                +#+  +:+       +#+        */
+/*   By: gleal <gleal@student.42lisboa.com>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/03/18 16:42:55 by gleal             #+#    #+#             */
-/*   Updated: 2021/03/28 15:54:20 by gleal            ###   ########.fr       */
+/*   Updated: 2021/04/01 00:40:16 by gleal            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,7 +49,7 @@ int		has_wall(double x, double y, t_adata *a)
 		return (1);
 	return (0);
 }
-
+/* to prevent the angle in radians to turn negative or above 2PI */
 double	normalrad(double movestep)
 {
 	if (movestep >= (2 * M_PI))

@@ -3,15 +3,15 @@
 /*                                                        :::      ::::::::   */
 /*   ft_parse_resolution.c                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: gleal <gleal@student.42.fr>                +#+  +:+       +#+        */
+/*   By: gleal <gleal@student.42lisboa.com>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/03/29 18:03:35 by gleal             #+#    #+#             */
-/*   Updated: 2021/03/29 18:03:40 by gleal            ###   ########.fr       */
+/*   Updated: 2021/04/01 00:07:22 by gleal            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "cub3d.h"
-
+/* extracting the window dimensions and using atoi to turn them into ints */
 int		ft_screensize(char *str, t_parse *parse)
 {
 	int		i;
@@ -30,7 +30,8 @@ int		ft_screensize(char *str, t_parse *parse)
 		return (0);
 	return (1);
 }
-
+/* confirming that there are not multiple resolutions in the cub and that the dimensions 
+are not bigger than the school computers*/
 int		check_resolution(char **text, t_parse *parse, int *i, int *count)
 {
 	if (text[(*i)][0] == 'R')

@@ -3,15 +3,16 @@
 /*                                                        :::      ::::::::   */
 /*   bitmap_offsets.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: gleal <gleal@student.42.fr>                +#+  +:+       +#+        */
+/*   By: gleal <gleal@student.42lisboa.com>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/03/18 17:27:38 by gleal             #+#    #+#             */
-/*   Updated: 2021/03/29 20:14:46 by gleal            ###   ########.fr       */
+/*   Updated: 2021/04/01 00:30:20 by gleal            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "start_game.h"
-
+/* before I calculated the beginning and end of each sprite on the screen. as well as their width
+So if the col_id / width x strip is the same as the start we will assign them the start of the sprite texture */
 int		bitmap_offset_sp(t_item *item, int col_id)
 {
 	double	remainder;
@@ -21,7 +22,9 @@ int		bitmap_offset_sp(t_item *item, int col_id)
 	offset = (item->imgsp.width - 1) * remainder;
 	return (offset);
 }
-
+/* Here I converted the map_tile_size to 1 so that we could use the floor function to calculate the right part of the texture
+E.g. If we were in x = 5 and tile size is 2. After conversion x = 2.5. Floor (2.5) = 2
+2.5 - 2 = 0.5 so we are pointing at the middle of the texture.  */
 int		bitmap_offset(t_ray *ray, t_adata *a)
 {
 	double	ray_x;

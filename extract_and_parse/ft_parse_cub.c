@@ -3,15 +3,18 @@
 /*                                                        :::      ::::::::   */
 /*   ft_parse_cub.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: gleal <gleal@student.42.fr>                +#+  +:+       +#+        */
+/*   By: gleal <gleal@student.42lisboa.com>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/03/03 20:01:55 by gleal             #+#    #+#             */
-/*   Updated: 2021/03/29 18:20:12 by gleal            ###   ########.fr       */
+/*   Updated: 2021/04/01 00:05:38 by gleal            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "cub3d.h"
+/* The reason I separated the map and the rest of the components is because on the Project PDF we had this sentence:
 
+"Except for the map content which always has to be the last, each type of
+element can be set in any order in the file." */
 int		all_but_map(char **text, t_parse *parse, int *i, int *count)
 {
 	ft_init_textures(parse);
@@ -28,7 +31,8 @@ int		all_but_map(char **text, t_parse *parse, int *i, int *count)
 	}
 	return (1);
 }
-
+/* Everytime there is a parsing error the function will return 0 
+and go through the fr_error functions, which will printf an error message */
 int		ft_parse_cub(char **text, t_parse *parse)
 {
 	int		i;

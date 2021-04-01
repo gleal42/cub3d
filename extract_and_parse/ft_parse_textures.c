@@ -3,15 +3,15 @@
 /*                                                        :::      ::::::::   */
 /*   ft_parse_textures.c                                :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: gleal <gleal@student.42.fr>                +#+  +:+       +#+        */
+/*   By: gleal <gleal@student.42lisboa.com>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/03/29 18:06:19 by gleal             #+#    #+#             */
-/*   Updated: 2021/03/29 18:06:24 by gleal            ###   ########.fr       */
+/*   Updated: 2021/04/01 00:09:43 by gleal            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "cub3d.h"
-
+/* Using the elements initials to identify them. We need to use both because sprites and south both start with S */
 int		check_walltextures_horiz(char **text, t_parse *parse,
 		int *i, int *count)
 {

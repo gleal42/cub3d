@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   text_extract.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: gleal <gleal@student.42.fr>                +#+  +:+       +#+        */
+/*   By: gleal <gleal@student.42lisboa.com>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/03/03 19:53:19 by gleal             #+#    #+#             */
-/*   Updated: 2021/03/29 19:14:14 by gleal            ###   ########.fr       */
+/*   Updated: 2021/04/01 00:20:38 by gleal            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,7 +51,8 @@ void	*ft_realloctabs(char *str, int tab_nbr)
 	ft_replacetabs(&temp, &str, len);
 	return (temp);
 }
-
+/* As I mention in the Readme file one thing that we need to do is to replace tabs for spaces.
+To realloc tabs I multiply by 3 because we add 4 spaces and delete a tab */
 int		ft_tabtospace(t_parse *parse)
 {
 	int		i;
@@ -99,7 +100,9 @@ int		ft_new_line(t_parse *parse)
 	parse->text = temp;
 	return (1);
 }
-
+/* To extract the text I first created a char ** with space for 2 strings and put zero on both of them.
+Then in my loop, as long as get_next_line function doesnt reach the end I keep adding space (reallocating memory)
+so that new lines can be added */
 int		cub_extract(t_parse *parse, int fd)
 {
 	while (get_next_line(fd, &(parse->text[parse->lnbr])) > 0)
