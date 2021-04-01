@@ -52,9 +52,9 @@ I believe this project has several challenges
 
 To extract the text there are several things to consider:
 
--Tabs need to be replaced with 4 spaces (Thank you [Dimitri](https://github.com/DimitriDaSilva)) for the tip.
+- Tabs need to be replaced with 4 spaces (Thank you [Dimitri](https://github.com/DimitriDaSilva)) for the tip.
 
--If there is a line break in the middle of the map strings we need to be able to identify it (for this reason using the libft ft_split function may not be the best option).
+- If there is a line break in the middle of the map strings we need to be able to identify it (for this reason using the libft ft_split function may not be the best option).
 
 But the process of extraction is really flexible. You could extract the whole thing to a string and then add an improved split that doesnt ignore if there are multiple line breaks, you could use linked lists instead of reallocating an array of strings constantly, you could even do reallocs letter by letter. It's up to you.
 
@@ -193,10 +193,15 @@ Essencially what this all means is that if we have the values for each one of th
 So when we look that the color operations that [harms-smith](https://harm-smits.github.io/42docs/libs/minilibx/colors.html) did, this is what is happening
 
 Let's look at our [pink color](https://www.color-hex.com/color/ffdae9):
+
 Hexadecimal value: 0x00ffdae9
+
 Alpha Value: 0x00 (Not transparent)
+
 Red Value: 255 = 0xff
+
 Green Value: 218 = 0xda
+
 Blue Value: 233 = 0xe9
 
 I want you to look at each of the numbers:
@@ -343,6 +348,25 @@ Now we just have to repeat this process for each collumn/width pixel on our scre
 ### Raycasting
 
 Okay for this part I really suggest following [Pikuma's Tutorial](https://courses.pikuma.com/courses/take/raycasting/lessons/7485598-introduction-and-learning-outcomes).
+
+The main challenge was converting the Javascript code into C. Here are the main things to consider:
+- Instead of classes for variables just create structs, create the same functions.
+- Using double data type for calculations (If you use integer you will lose all decimal point information). Also, <math.h> functions take double as parameters.
+- Converting double to int to change the values of the actual coordinates of the pixels (there is no 2.4123, 3.124124 coordinate).
+- To avoid overflows do a simple protection like this:
+
+```
+if (x < 0)
+	x = 0;
+if (y < 0)
+	y = 0;
+if (x >= img_width)
+	x = img_width - 1.0;
+if (y >= img_width)
+	x = img_width - 1.0;
+```
+
+This will grant that if when converting to integer if the values are not valid (below zero or above the maximum width) it will fix them and put the first and last value respectively, when needed. 
 
 After you finish the tutorial you will understand how to use the player rotation in radians, you will have a cute minimap, and the distances for each one of the rays. You will then use these distances to draw lines the way I just described.
 
