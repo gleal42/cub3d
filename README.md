@@ -56,6 +56,8 @@ To extract the text there are several things to consider:
 
 -If there is a line break in the middle of the map strings we need to be able to identify it (for this reason using the libft ft_split function may not be the best option).
 
+But the process of extraction is really flexible. You could extract the whole thing to a string and then add an improved split that doesnt ignore if there are multiple line breaks, you could use linked lists instead of reallocating an array of strings constantly, you could even do reallocs letter by letter. It's up to you.
+
 In my case I just used the get_next_line function we created in a previous project and reallocated memory to add a new string each time it was needed.
 [Check my functions to see what I mean](extract_and_parse/text_extract.c)
 
@@ -76,7 +78,7 @@ On the map:
 - Invalid characters.
 - Map not closed (again thank you [Dimitri](https://github.com/DimitriDaSilva) for suggesting me to go over the map check if each map character (0, N, S, E, W, 2) didn't have a space character around it (check [check_all_sides function](extract_and_parse/ft_parse_map.c))).
 
-If you want you can see [all the checks](extract_and_parse/ft_parse_cub.c) I did and think of new ones.
+You you can see [all the checks](extract_and_parse/ft_parse_cub.c) I did and think of new ones.
 
 ## Understanding the minilibx tool:
 
@@ -263,9 +265,9 @@ In this example we us the X11 Keypress event (02) and Keypress Mask (1L<<0) so t
 But maybe I just want an event to happen when I press the arrow key. How can I find out this value? There's nothing online:
 This may seem obvious for most people but you can just do a `printf("%d\n", keycode)` and if you press the keycode while looking at the window you created there will be numbers printing out in the console_log, which will be the keycodes to the buttons you pushed.
 
-**NOW THIS IS IMPORTANT:** Don't forget to put a *LINE BREAK* after %d. The computers at 42 weren't printing anything if there was no line break.
+**NOW THIS IS IMPORTANT:** Don't forget to put a *LINE BREAK* after %d. The computers at 42 weren't printing anything if there was no line break. Thank you tisantos for the tip!
 
-Afte you know the keycodes it's relatively easy. Just do a if keycode == ARROW_UP_KEYCODE and then you choose what you want to happen.
+After you know the keycodes it's relatively easy. Just do a if keycode == ARROW_UP_KEYCODE and then you choose what you want to happen.
 
 I believe these were the main problems I faced (apart from sometimes the functions not working for some reason and then working if I placed them in a different function).
 
