@@ -65,16 +65,18 @@ If someone writes an invalid .cub file the program must stop, free the memory al
 So basically we need to imagine all the ways that things can go wrong. Not only that but we should be saving the information as we go.
 
 A few things to test:
--Resolution values that are bigger that the screens that we have in school or non-digit numbers or more than 2 values (width and height)
--Textures are a file that doesnt exist (open function would fail) or not a xpm file.
--There are multiple textures for the same wall (north wall texture).
--RGBs dont have 3 numbers, are separated by an invalid character (not a comma) or have values below 0 or above 255.
--There are invalid characters in the cub.
+- Resolution values that are bigger that the screens that we have in school or non-digit numbers or more than 2 values (width and height)
+- Textures are a file that doesnt exist (open function would fail) or not a xpm file.
+- There are multiple textures for the same wall (north wall texture).
+- RGBs dont have 3 numbers, are separated by an invalid character (not a comma) or have values below 0 or above 255.
+- There are invalid characters in the cub.
 
 On the map:
--Multiple players or no player.
--Invalid characters.
--Map not closed (again thank you [Dimitri](https://github.com/DimitriDaSilva) for suggesting me to go over the map check if each map character (0, N, S, E, W, 2) didn't have a space character around it (check [check_all_sides function](extract_and_parse/ft_parse_map.c))).
+- Multiple players or no player.
+- Invalid characters.
+- Map not closed (again thank you [Dimitri](https://github.com/DimitriDaSilva) for suggesting me to go over the map check if each map character (0, N, S, E, W, 2) didn't have a space character around it (check [check_all_sides function](extract_and_parse/ft_parse_map.c))).
+
+If you want you can see [all the checks](extract_and_parse/ft_parse_cub.c) I did and think of new ones.
 
 ## Understanding the minilibx tool:
 
